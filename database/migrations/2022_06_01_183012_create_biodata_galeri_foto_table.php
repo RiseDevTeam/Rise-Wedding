@@ -15,16 +15,16 @@ class CreateBiodataGaleriFotoTable extends Migration
     {
         Schema::create('biodata_galeri_foto', function (Blueprint $table) {
             $table->bigIncrements('id_galeri_foto');
-            $table->string('galeri_foto1')->nullable();
-            $table->string('galeri_foto2')->nullable();
-            $table->string('galeri_foto3')->nullable();
-            $table->string('galeri_foto4')->nullable();
-            $table->string('galeri_foto5')->nullable();
-            $table->string('galeri_foto6')->nullable();
-            $table->string('galeri_foto7')->nullable();
-            $table->string('galeri_foto8')->nullable();
-            $table->string('galeri_foto9')->nullable();
-            $table->string('galeri_foto10')->nullable();
+            $table->string('galeri_foto1', '100')->nullable();
+            $table->string('galeri_foto2', '100')->nullable();
+            $table->string('galeri_foto3', '100')->nullable();
+            $table->string('galeri_foto4', '100')->nullable();
+            $table->string('galeri_foto5', '100')->nullable();
+            $table->string('galeri_foto6', '100')->nullable();
+            $table->string('galeri_foto7', '100')->nullable();
+            $table->string('galeri_foto8', '100')->nullable();
+            $table->string('galeri_foto9', '100')->nullable();
+            $table->string('galeri_foto10', '100')->nullable();
             $table->timestamps();
         });
     }

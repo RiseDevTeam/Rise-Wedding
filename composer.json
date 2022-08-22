@@ -29,8 +29,9 @@
         }, 
         "files": [
 
-            "app/Helpers/uploadImage.php"
-    
+            "app/Helpers/uploadImage.php",
+            "app/Helpers/uploadFile.php",
+            "app/Helpers/sideBar.php"
         ]
     },
     "autoload-dev": {

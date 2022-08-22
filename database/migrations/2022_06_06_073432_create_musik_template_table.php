@@ -15,8 +15,8 @@ class CreateMusikTemplateTable extends Migration
     {
         Schema::create('musik_template', function (Blueprint $table) {
             $table->bigIncrements('id_musik_template');
-            $table->string('judul_musik');
-            $table->string('musik');
+            $table->string('judul_musik', '100');
+            $table->string('musik', '100');
             $table->timestamps();
         });
     }

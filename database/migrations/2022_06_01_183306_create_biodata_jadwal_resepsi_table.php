@@ -15,10 +15,10 @@ class CreateBiodataJadwalResepsiTable extends Migration
     {
         Schema::create('biodata_jadwal_resepsi', function (Blueprint $table) {
             $table->bigIncrements('id_jadwal_resepsi');
-            $table->string('jam_mulai_resepsi');
+            $table->time('jam_mulai_resepsi');
             $table->date('tanggal_resepsi');
-            $table->string('waktu_wilayah_resepsi');
-            $table->string('lokasi_resepsi');
+            $table->time('waktu_wilayah_resepsi');
+            $table->text('lokasi_resepsi');
             $table->timestamps();
         });
     }

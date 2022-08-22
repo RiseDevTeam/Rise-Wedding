@@ -56,7 +56,7 @@ class FileTemplateController extends Controller
         if ($request->file('fileTemplate')) {
             $fileTemplate = time();
             // Upload file dengan Helpers Laravel
-            $file = uploadImage($request->file('fileTemplate'), 'file/file_template/', $fileTemplate);
+            $file = uploadFile($request->file('fileTemplate'), 'file/file_template/', $fileTemplate);
         }
 
         if ($request->file('gambarTemplate')) {

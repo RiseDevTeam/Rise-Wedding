@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKategoriTemplateTable extends Migration
+class CreateStaffTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateKategoriTemplateTable extends Migration
      */
     public function up()
     {
-        Schema::create('kategori_template', function (Blueprint $table) {
-            $table->bigIncrements('id_kategori_template');
-            $table->string('kategori', '30');
-            $table->bigInteger('harga');
+        Schema::create('staff', function (Blueprint $table) {
+            $table->bigIncrements('id_staff');
+            $table->bigInteger('id_user');
+            $table->text('alamat');
+            $table->string('jenis_kelamin', '50');
+            $table->bigInteger('nomor_telepon');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateKategoriTemplateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategori_template');
+        Schema::dropIfExists('staff');
     }
 }

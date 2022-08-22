@@ -15,7 +15,7 @@ class CreateKategoriVideoTable extends Migration
     {
         Schema::create('kategori_video', function (Blueprint $table) {
             $table->bigIncrements('id_kategori_video');
-            $table->string('kategori');
+            $table->string('kategori', '30');
             $table->bigInteger('harga');
             $table->timestamps();
         });

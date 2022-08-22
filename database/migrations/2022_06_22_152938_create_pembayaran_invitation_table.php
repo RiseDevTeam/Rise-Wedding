@@ -16,7 +16,7 @@ class CreatePembayaranInvitationTable extends Migration
         Schema::create('pembayaran_invitation', function (Blueprint $table) {
             $table->bigIncrements('id_pembayaran');
             $table->bigInteger('id_pemesanan');
-            $table->string('status')->default('pending');
+            $table->string('status', '30')->default('pending');
             $table->date('tanggal_pembayaran');
             $table->timestamps();
         });

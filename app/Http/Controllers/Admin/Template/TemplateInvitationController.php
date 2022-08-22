@@ -51,6 +51,7 @@ class TemplateInvitationController extends Controller
         $validator = Validator::make($request->all(), [
             'idKategori' => 'required',
             'linkHosting' => 'required',
+            'fileMaster' => 'required|mimes:php,html',
             'gambarTemplate' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
@@ -63,6 +64,13 @@ class TemplateInvitationController extends Controller
             $fileName = time();
             // contoh untuk controllers uploadFile($request->file('file'), 'public/upload/', 'gambar123');
             $image = uploadImage($request->file('gambarTemplate'), 'gambar/gambar_cover_template/', $fileName);
+        }
+
+        if ($request->file('fileMaster')) {
+
+            $NameFile = time();
+            // contoh untuk controllers uploadFile($request->file('file'), 'public/upload/', 'gambar123');
+            $uploadFile = uploadFile($request->file('fileMaster'), 'file/file_master_template/', $NameFile);
         }
 
         TemplateInvitation::create([

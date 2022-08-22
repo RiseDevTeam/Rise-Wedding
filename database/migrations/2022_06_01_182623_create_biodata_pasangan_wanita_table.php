@@ -17,7 +17,7 @@ class CreateBiodataPasanganWanitaTable extends Migration
             $table->bigIncrements('id_pasangan_wanita');
             $table->string('nama_lengkap');
             $table->string('putri_dari');
-            $table->string('gambar_mempelai_wanita');
+            $table->string('gambar_mempelai_wanita', '100');
             $table->string('nama_bapak_wanita');
             $table->string('nama_ibu_wanita');
             $table->timestamps();

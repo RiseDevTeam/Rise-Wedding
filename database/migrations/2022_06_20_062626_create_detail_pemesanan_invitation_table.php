@@ -18,7 +18,7 @@ class CreateDetailPemesananInvitationTable extends Migration
             $table->bigInteger('id_pemesanan');
             $table->bigInteger('id_template')->nullable();
             $table->bigInteger('id_video')->nullable();
-            $table->string('file_template')->nullable();
+            $table->string('file_template', '50')->nullable();
             $table->string('file_vidio')->nullable();
             $table->timestamps();
         });

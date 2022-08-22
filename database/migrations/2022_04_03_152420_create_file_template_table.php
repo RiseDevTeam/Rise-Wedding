@@ -17,8 +17,8 @@ class CreateFileTemplateTable extends Migration
             $table->bigIncrements('id_file_template');
             $table->bigInteger('id_template');
             $table->bigInteger('id_sub_kategori');
-            $table->string('file');
-            $table->string('gambar_template');
+            $table->string('file', '50');
+            $table->string('gambar_template', '50');
             $table->timestamps();
         });
     }

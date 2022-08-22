@@ -1,20 +1,22 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\Admin\Template\FileTemplateController;
-use App\Http\Controllers\Admin\Template\TemplateInvitationController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\User\Home\HomePageController;
-use App\Http\Controllers\User\Pembayaran\PembayaranController;
-use App\Http\Controllers\User\PemesananSaya\PemesananSayaController;
-use App\Http\Controllers\User\TemplateInvitation\PemesananTemplate;
 use App\Http\Controllers\User\Users\UserPageController;
-
+use App\Http\Controllers\Admin\KelolaAkun\PelangganController;
+use App\Http\Controllers\Admin\KelolaAkun\PimpinanController;
+use App\Http\Controllers\User\Pembayaran\PembayaranController;
+use App\Http\Controllers\Admin\Template\FileTemplateController;
 use App\Http\Controllers\Admin\Pemesanan\PemesananAdminController;
+use App\Http\Controllers\User\TemplateInvitation\PemesananTemplate;
+
 use App\Http\Controllers\Admin\Pembayaran\PembayaranAdminController;
+use App\Http\Controllers\User\PemesananSaya\PemesananSayaController;
+use App\Http\Controllers\Admin\Template\TemplateInvitationController;
 
 
 
@@ -84,7 +86,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
 
-    Route::prefix('risedev-wedding-administrator')->middleware('checkStatus:petugas')->group(function () {
+    Route::prefix('risedev-wedding-administrator')->middleware('checkStatus:pimpinan')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
         // route kategori
         Route::resource('kategori', '\App\Http\Controllers\Admin\Kategori\KategoriController');
@@ -113,8 +115,14 @@ Route::middleware(['auth'])->group(function () {
         Route::PUT('file_template/{id}/edit', [FileTemplateController::class, 'update'])->name('file_template.update');
         Route::DELETE('file_template/delete/{id}', [FileTemplateController::class, 'destroy'])->name('file_template.destroy');
 
-        // route akun petugas
-        Route::resource('petugas', '\App\Http\Controllers\Admin\Petugas\PetugasController');
+        // route akun Pimpinan
+        Route::get('pimpinan', [PimpinanController::class, 'pelanggan'])->name('pimpinan.index');
+
+        // route akun Pelanggan
+        Route::get('pelanggan', [PelangganController::class, 'pelanggan'])->name('pelanggan.index');
+
+        // route akun Staff
+        Route::resource('staff', '\App\Http\Controllers\Admin\KelolaAkun\StaffController');
 
         // route video
         Route::resource('kategori_video', '\App\Http\Controllers\Admin\Video\KategoriVideoController');

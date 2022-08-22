@@ -19,7 +19,7 @@ class CreateDetailPembayaranInvitationTable extends Migration
             $table->string('tipe_pembayaran');
             $table->string('kode_transaksi');
             $table->bigInteger('total');
-            $table->string('bukti_pembayaran');
+            $table->string('bukti_pembayaran', '50');
             $table->timestamps();
         });
     }

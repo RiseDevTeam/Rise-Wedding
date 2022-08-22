@@ -18,7 +18,7 @@ class AkunAdminSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Rise Development',
             'email' => 'risedevelopmentteam@gmail.com',
-            'status' => 'petugas',
+            'status' => 'pimpinan',
             'password' => Hash::make('12345678')
         ]);
     }

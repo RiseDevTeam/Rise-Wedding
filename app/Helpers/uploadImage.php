@@ -6,7 +6,7 @@
 if (!function_exists('uploadImage')) {
     function uploadImage($file, $path, $name = null)
     {
-        $fileName = time() . '.' . $file->getClientOriginalExtension();
+        $fileName = time() . rand(1, 100) . '.' . $file->getClientOriginalExtension();
         // $extension = $file->getClientOriginalExtension();
         // $fileName = $name ? $name . '.' .  : $fileName;
         $file->move($path, $fileName);
