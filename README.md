@@ -30,7 +30,7 @@ noted : Bertujuan supaya aplikasi laravel yg di push ke github tidak terlalu bes
 
 ## Data Pada Aplikasi
 
-bisa download di link di bawah :
+bisa download di link dibawah ini :
 
 <p>
 
