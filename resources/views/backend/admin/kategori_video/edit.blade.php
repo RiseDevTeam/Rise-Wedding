@@ -8,6 +8,7 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>Edit Kategori Video</h6>
+                        <hr>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="container-fluid">
@@ -37,13 +38,12 @@
     </div>
 
     @php
-        $id = Crypt::encrypt($edit->id_kategori_video);
+    $id = Crypt::encrypt($edit->id_kategori_video);
     @endphp
 @endsection
 
 @push('script')
     <script>
-
         // scipt untuk harga rupiah
         var rupiah = document.getElementById('harga');
         rupiah.addEventListener('keyup', function(e) {

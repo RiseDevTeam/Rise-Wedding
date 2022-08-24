@@ -9,6 +9,7 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>Tambah File Template</h6>
+                        <hr>
                         <br>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -44,7 +45,8 @@
 
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Upload File Template</label>
-                                    <input class="form-control" id="fileTemplate" value="{{ $edit->file }}" type="file">
+                                    <input class="form-control" id="fileTemplate" value="{{ $edit->file }}"
+                                        type="file">
                                     <div id="validationFile" class="invalid-feedback"></div>
                                 </div>
 

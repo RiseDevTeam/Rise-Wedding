@@ -43,13 +43,6 @@
                             Sign In With Google
                         </a>
                     </div>
-                    <div class="bm">
-                        <a href="form-mitra.html" class="btn">
-                            Ingin Menjadi Mitra ?
-                            <br>
-                            Klik Disini !
-                        </a>
-                    </div>
                 </div>
                 <div class="col-lg-7 col-md-7">
 

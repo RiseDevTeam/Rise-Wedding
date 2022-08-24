@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('css_khusus')
     <link rel="stylesheet" href="{{ asset('user_page/template/public/css/pesanan.css') }}" />
-@section('title', 'Template Invitation')
+@section('title', 'Pemesanan Saya')
 
 @section('content_user')
     <section class="pesanan">
@@ -21,12 +21,7 @@
                         <span class="d-none d-sm-inline">Belum Bayar</span>
                     </button>
                 </li>
-                {{-- <li class="nav-item" data-target-form="#diProsesPesanan" role="presentation">
-                    <button class="nav-link" id="diProses-tab" data-bs-toggle="tab" data-bs-target="#diProses"
-                        type="button" role="tab" aria-controls="diProses" aria-selected="false"><i
-                            class="bx bxs-book me-1"></i>
-                        <span class="d-none d-sm-inline">Sedang Diproses</span></button>
-                </li> --}}
+
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="selesai-tab" data-bs-toggle="tab" data-bs-target="#selesai" type="button"
                         role="tab" aria-controls="selesai" aria-selected="false">
@@ -39,6 +34,7 @@
                 <!-- Semua -->
                 <div class="tab-pane fade show active" id="semua" role="tabpanel" aria-labelledby="semua-tab">
                     @forelse ($semua_pesanan as $pesananSaya)
+                        {{-- @dd($pesananSaya) --}}
                         <div class="tab-pane show active" id="semua">
                             <div class="card" id="tSelesai">
                                 <div class="row">
@@ -74,7 +70,7 @@
                                                 @if ($pesananSaya->status_pemesanan == 'sudah bayar')
                                                     Harga : <b>{{ number_format($pesananSaya->total) }}</b>
                                                 @else
-                                                    Harga : <b>{{ number_format($pesananSaya->harga) }}</b>
+                                                    Harga : <b>{{ number_format($pesananSaya->harga_template) }}</b>
                                                 @endif
                                             </h4>
                                         </div>
@@ -146,7 +142,7 @@
                                                     <a class="bi bi-telegram" href="#"></a>
                                                 </span>
                                                 <h4 class="harga">Harga : <b>Rp.
-                                                        {{ number_format($pembagianPesanan->harga) }}</b></h4>
+                                                        {{ number_format($pembagianPesanan->harga_template) }}</b></h4>
                                             </div>
                                             <!-- Daftar Button -->
                                             <div class="daftar-button">
@@ -219,7 +215,7 @@
                                                     <a class="bi bi-telegram" href="#"></a>
                                                 </span>
                                                 <h4 class="harga">Harga : <b>Rp.
-                                                        {{ number_format($pembagianPesanan->harga) }}</b></h4>
+                                                        {{ number_format($pembagianPesanan->harga_template) }}</b></h4>
                                             </div>
                                             <!-- Daftar Button -->
                                             <div class="daftar-button">

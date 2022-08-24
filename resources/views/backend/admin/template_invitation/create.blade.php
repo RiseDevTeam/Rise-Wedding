@@ -9,6 +9,7 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>Tambah Template Invitation</h6>
+                        <hr>
                         <br>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -38,8 +39,15 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">File Master</label>
+                                    <input class="form-control" id="fileMaster" type="file">
+                                    <div id="validationMaster" class="invalid-feedback"></div>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Gambar Cover Template</label>
-                                    <input class="form-control" id="gambarTemplate" type="file" onchange="gambarSlide();">
+                                    <input class="form-control" id="gambarTemplate" type="file"
+                                        onchange="gambarSlide();">
                                     <div id="validationGambar" class="invalid-feedback"></div>
                                 </div>
 
@@ -90,11 +98,13 @@
 
             let idKategori = document.getElementById('idKategori');
             let linkHosting = document.getElementById('linkHosting');
+            let fileMaster = document.getElementById('fileMaster');
             let gambarTemplate = document.getElementById('gambarTemplate');
 
             const formData = new FormData()
             formData.append("idKategori", idKategori.value)
             formData.append("linkHosting", linkHosting.value)
+            formData.append("fileMaster", fileMaster.files[0])
             formData.append("gambarTemplate", gambarTemplate.files[0])
 
             axios.post("{{ route('template.store') }}", formData)
@@ -115,6 +125,13 @@
                                 idKategori.classList.add("is-invalid")
                                 validationKategori.innerText = dataError.idKategori[0]
                                 validationKategori.style.display = "block"
+                            }
+
+                            if (dataError.fileMaster) {
+                                let validationMaster = document.getElementById('validationMaster')
+                                fileMaster.classList.add("is-invalid")
+                                validationMaster.innerText = dataError.fileMaster[0]
+                                validationMaster.style.display = "block"
                             }
 
                             if (dataError.gambarTemplate) {

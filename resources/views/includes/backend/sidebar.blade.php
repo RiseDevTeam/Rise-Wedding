@@ -42,7 +42,9 @@
 
             <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#KelolaAkun"
-                    class="nav-link {{ set_active('pimpinan.index') }} {{ set_active('pelanggan.index') }} "
+                    class="nav-link {{ set_active('pimpinan.index') }} {{ set_active('pelanggan.index') }} {{ set_active('staff.index') }} 
+                    {{ set_active('staff.create') }} {{ set_active('staff.edit') }}
+                    "
                     aria-controls="menu-video" role="button" aria-expanded="false">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -182,7 +184,8 @@
                                 d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V5zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2H3z" />
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Pembayaran</span>
+                    <span class="nav-link-text ms-1">Pembayaran
+                    </span>
                 </a>
             </li>
 

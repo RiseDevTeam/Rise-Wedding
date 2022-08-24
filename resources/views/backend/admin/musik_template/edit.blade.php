@@ -9,6 +9,7 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>Edit Musik</h6>
+                        <hr>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="container-fluid">
@@ -34,8 +35,7 @@
                                     <br>
                                     @if ($edit->musik)
                                         <audio controls>
-                                            <source src="{{ asset("file/audio_template/$edit->musik") }}"
-                                                type="audio/mpeg">
+                                            <source src="{{ asset("file/audio_template/$edit->musik") }}" type="audio/mpeg">
                                         </audio>
                                     @endif
                                 </div>

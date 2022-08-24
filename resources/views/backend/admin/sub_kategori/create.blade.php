@@ -9,6 +9,7 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>Tambah Kategori</h6>
+                        <hr>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="container-fluid">
@@ -29,7 +30,8 @@
 
                                 <div class="form-group">
                                     <label for="gambar" class="form-label">Keterangan Icon</label>
-                                    <input type="text" class="form-control" id="keterangan" placeholder="keterangan Icon">
+                                    <input type="text" class="form-control" id="keterangan"
+                                        placeholder="keterangan Icon">
                                     <div id="validationKeterangan" class="invalid-feedback"></div>
                                 </div>
 

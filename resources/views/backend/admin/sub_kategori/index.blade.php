@@ -10,6 +10,7 @@
                     <div class="card-header pb-0">
                         <h6>Sub Kategori</h6>
                         <a href="{{ route('sub_kategori.create') }}" class="btn btn-primary">Tambah Data</a>
+                        <hr>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -61,8 +62,8 @@
                                             </td>
 
                                             <td class="align-middle text-center">
-                                                <span class="badge badge bg-gradient-success"><a
-                                                        href="{{ route('sub_kategori.edit', $sub->id_sub_kategori) }}"
+                                                <span class="badge badge bg-gradient-success">
+                                                    <a href="{{ route('sub_kategori.edit', $sub->id_sub_kategori) }}"
                                                         class="text-white"><i class="bi bi-pencil"
                                                             style="font-size: 1.5rem"></i></a></span>
                                                 <form method="POST" id="formHeroDelete">

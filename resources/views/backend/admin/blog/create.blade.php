@@ -8,6 +8,7 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>Tambah Blog</h6>
+                        <hr>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="container-fluid">
@@ -25,7 +26,8 @@
                                     <input class="form-control" id="thumbnail" type="file" onchange="gambarSlide();">
                                     <div id="validationThumbnail" class="invalid-feedback"></div>
 
-                                    <img id="slide-gambar" class="my-3" width="300" src="{{ asset('gambar/default_image.png') }}" />
+                                    <img id="slide-gambar" class="my-3" width="300"
+                                        src="{{ asset('gambar/default_image.png') }}" />
                                 </div>
 
                                 <div class="form-group">
@@ -52,8 +54,6 @@
         </div>
     </div>
     <script>
-        
-
         function gambarSlide() {
             document.getElementById("slide-gambar").style.display = "block";
             var oFReader = new FileReader();
@@ -65,16 +65,14 @@
 
         CKEDITOR.replace('isi', {
             height: 600,
-            filebrowserUploadUrl: "{{route('blog.upload', ['_token' => csrf_token()])}}",
+            filebrowserUploadUrl: "{{ route('blog.upload', ['_token' => csrf_token()]) }}",
             filebrowserUploadMethod: 'form'
         });
-        
     </script>
 @endsection
 
 @push('script')
     <script>
-        
         let subKategori = document.getElementById('form-blog');
         subKategori.addEventListener('submit', function(e) {
             e.preventDefault()

@@ -10,6 +10,7 @@
                     <div class="card-header pb-0">
                         <h6>Kategori Video</h6>
                         <a href="{{ route('kategori_video.create') }}" class="btn btn-primary">Tambah Data</a>
+                        <hr>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -56,9 +57,8 @@
                                                     $id = Crypt::encrypt($kategori->id_kategori_video);
                                                 @endphp
                                                 <span class="badge badge-sm bg-gradient-success"><a
-                                                        href="{{ route('kategori_video.edit', $id) }}"
-                                                        class="text-white"><i class="bi bi-pencil"
-                                                            style="font-size: 1.5rem"></i></a></span>
+                                                        href="{{ route('kategori_video.edit', $id) }}" class="text-white"><i
+                                                            class="bi bi-pencil" style="font-size: 1.5rem"></i></a></span>
                                                 <form method="POST" id="formHeroDelete">
                                                     @method('delete')
                                                     @csrf

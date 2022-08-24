@@ -16,3 +16,22 @@
 <br>
 3. untuk database boleh digunakan migration
 <br>
+
+## teknikal Push Aplikasi Laravel Ke github
+
+Ketika ingin push aplikasi ke github, isi folder public diusahakan kosong, ikuti tata cara di bawah ini :
+
+<p>
+1. Simpan folder public pada aplikasi laravel ke tempat lain.
+<p>
+2. lalu kosongkan folder public dan push aplikasi ke github
+<p>
+noted : Bertujuan supaya aplikasi laravel yg di push ke github tidak terlalu besar.
+
+## Data Pada Aplikasi
+
+bisa download di link di bawah :
+
+<p>
+
+https://drive.google.com/file/d/1hp46fMP9Oq6YNuOyJTWIDgkaIJCz12DK/view?usp=sharing

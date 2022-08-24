@@ -142,7 +142,9 @@ class SubKategoriController extends Controller
      */
     public function destroy($id)
     {
-        SubKategori::where('id_sub_kategori', $id)->delete();
+        $delete = SubKategori::where('id_sub_kategori', $id)->first();
+        File::delete(public_path() . '/gambar/icon_template/' . $delete->icon);
+        $delete->delete();
 
         return response()->json(["success" => "Data berhasil dihapus"]);
     }

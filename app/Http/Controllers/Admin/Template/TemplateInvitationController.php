@@ -9,6 +9,7 @@ use App\Models\KategoriTemplate;
 use App\Models\TemplateInvitation;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
@@ -76,6 +77,7 @@ class TemplateInvitationController extends Controller
         TemplateInvitation::create([
             'id_kategori' => $request->idKategori,
             'link_hosting' => $request->linkHosting,
+            'file_master' => $uploadFile,
             'gambar_cover' => $image,
         ]);
 
@@ -101,9 +103,14 @@ class TemplateInvitationController extends Controller
      */
     public function edit($id)
     {
-        $edit = TemplateInvitation::all()->where('id_template', $id)
-            ->select('template_invitation.link_hosting', 'template_invitation.id_template', 'template_invitation.gambar_cover')->first();
-        return view('backend.admin.template_invitation.edit', compact('edit'));
+        // $edit = TemplateInvitation::all()->where('id_template', $id)
+        //     ->select('template_invitation.link_hosting', 'template_invitation.id_template', 'template_invitation.gambar_cover')->first();
+        // return view('backend.admin.template_invitation.edit', compact('edit'));
+
+        $edit = TemplateInvitation::where('id_template', $id)->select('template_invitation.link_hosting', 'template_invitation.id_template', 'template_invitation.gambar_cover', 'template_invitation.file_master', 'template_invitation.id_kategori')->first();
+        $kategori = KategoriTemplate::where('id_kategori_template', $edit->id_kategori)->first();
+        $templateKategori = KategoriTemplate::select('kategori_template.kategori', 'kategori_template.id_kategori_template')->get();
+        return view('backend.admin.template_invitation.edit', compact('edit', 'templateKategori', 'kategori'));
     }
 
     /**
@@ -117,9 +124,12 @@ class TemplateInvitationController extends Controller
     {
         // update data template
         TemplateInvitation::where('id_template', $id)->update([
-            'id_sub_kategori' => $request->idSubKategori,
+            'id_kategori' => $request->idKategori,
+            'id_user' => Auth::User()->id,
             'link_hosting' => $request->linkHosting,
+            'harga_template' => $request->harga_template,
         ]);
+
         // update data template jika ada gambar
         if ($request->file('gambarTemplate')) {
 
@@ -136,6 +146,22 @@ class TemplateInvitationController extends Controller
             ]);
         }
 
+        // update data template jika ada PHP
+        if ($request->file('fileMaster')) {
+
+            $NameFile = time();
+            // contoh untuk controllers uploadFile($request->file('file'), 'public/upload/', 'gambar123');
+            $uploadFile = uploadFile($request->file('fileMaster'), 'file/file_master_template/', $NameFile);
+
+            // delete gambar awal ketika di update gambar baru
+            $fileTemplate = TemplateInvitation::findOrFail($id);
+            File::delete(public_path() . '/file/file_master_template/' . $fileTemplate->file_master);
+
+            TemplateInvitation::where('id_template', $id)->update([
+                'file_master' => $uploadFile,
+            ]);
+        }
+
         return response()->json(['success' => 'Template Invitation Berhasil Diupdate']);
     }
 
@@ -147,21 +173,12 @@ class TemplateInvitationController extends Controller
      */
     public function destroy($id)
     {
-        TemplateInvitation::where('id_template', $id)->delete();
+        $delete = TemplateInvitation::where('id_template', $id)->first();
+        File::delete(public_path() . '/gambar/gambar_cover_template/' . $delete->gambar_cover);
+        File::delete(public_path() . '/file/file_master_template/' . $delete->file_master);
+        $delete->delete();
         return response()->json(["success" => "Data berhasil dihapus"]);
     }
-
-    // public function icon_kategori(Request $request)
-    // {
-
-    //     $kategoriIcon = SubKategori::where('sub_kategori.id_sub_kategori', $request->kategoriIcon)
-    //         ->select('sub_kategori.icon')->get();
-    //     foreach ($kategoriIcon as $key => $value) {
-    //         $icon = $value;
-    //     }
-
-    //     return response()->json($icon);
-    // }
 
     public function kategori_template(Request $request)
     {

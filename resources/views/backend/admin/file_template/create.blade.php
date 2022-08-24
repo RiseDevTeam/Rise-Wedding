@@ -9,6 +9,7 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>Tambah File Template</h6>
+                        <hr>
                         <br>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">

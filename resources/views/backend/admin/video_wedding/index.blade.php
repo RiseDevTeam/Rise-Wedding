@@ -12,6 +12,7 @@
                         <a href="{{ route('video_wedding.create') }}" class="btn btn-primary">
                             Tambah Video
                         </a>
+                        <hr>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -66,7 +67,10 @@
                                             </td>
 
                                             <td class="text-center">
-                                                <iframe width="360" height="215" src="{{$video->link_youtube}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                <iframe width="360" height="215" src="{{ $video->link_youtube }}"
+                                                    title="YouTube video player" frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen></iframe>
                                             </td>
 
                                             <td class="align-middle text-center">
@@ -74,9 +78,8 @@
                                                     $id = Crypt::encrypt($video->id_video);
                                                 @endphp
                                                 <span class="badge badge bg-gradient-success"><a
-                                                        href="{{ route('video_wedding.edit', $id) }}"
-                                                        class="text-white"><i class="bi bi-pencil"
-                                                            style="font-size: 1.5rem"></i></a></span>
+                                                        href="{{ route('video_wedding.edit', $id) }}" class="text-white"><i
+                                                            class="bi bi-pencil" style="font-size: 1.5rem"></i></a></span>
 
                                                 <form method="POST" id="formHeroDelete">
                                                     @method('delete')

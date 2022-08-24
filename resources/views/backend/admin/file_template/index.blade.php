@@ -12,10 +12,10 @@
                         <a href="{{ route('template.index') }}" class="btn btn bg-gradient-danger">
                             <i class="bi bi-arrow-90deg-left" style="color: white;"></i>
                         </a>
-
                         <a href=" {{ route('file_template.create', $id_template) }}" class="btn btn bg-gradient-warning">
                             <i class="bi bi-plus-lg" style="color: white;"></i>
                         </a>
+                        <hr>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         </a>
@@ -99,8 +99,7 @@
                                                 <span class="badge badge bg-gradient-success">
                                                     <a
                                                         href="{{ route('file_template.edit', $template->id_file_template) }}">
-                                                        <i class="bi bi-pencil"
-                                                            style="font-size: 1.5rem; color:white"></i>
+                                                        <i class="bi bi-pencil" style="font-size: 1.5rem; color:white"></i>
                                                     </a>
                                                 </span>
 
@@ -162,7 +161,8 @@
                                     response.data.success,
                                     'success'
                                 ).then(function() {
-                                    window.location.href = "{{ route('file_template.show', $id) }}"
+                                    window.location.href =
+                                        "{{ route('file_template.show', $id_template) }}"
                                 })
                             }
                         })

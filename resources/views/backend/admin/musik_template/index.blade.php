@@ -10,6 +10,7 @@
                     <div class="card-header pb-0">
                         <h6>Musik Template</h6>
                         <a href="{{ route('musik.create') }}" class="btn btn-primary">Tambah Data</a>
+                        <hr>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">

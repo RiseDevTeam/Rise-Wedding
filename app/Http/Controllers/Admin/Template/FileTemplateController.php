@@ -7,6 +7,7 @@ use App\Models\FileTemplate;
 use Illuminate\Http\Request;
 use App\Models\TemplateInvitation;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Crypt;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -45,7 +46,7 @@ class FileTemplateController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'idSubKategori' => 'required',
-            'fileTemplate' => 'required|mimes:html,sql,php',
+            'fileTemplate' => 'required',
             'gambarTemplate' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
@@ -56,7 +57,7 @@ class FileTemplateController extends Controller
         if ($request->file('fileTemplate')) {
             $fileTemplate = time();
             // Upload file dengan Helpers Laravel
-            $file = uploadFile($request->file('fileTemplate'), 'file/file_template/', $fileTemplate);
+            $file = uploadImage($request->file('fileTemplate'), 'file/file_template/', $fileTemplate);
         }
 
         if ($request->file('gambarTemplate')) {
@@ -84,8 +85,8 @@ class FileTemplateController extends Controller
      */
     public function show($id)
     {
-        $id_template = $id;
-        Session::put('id_template', $id);
+        $id_template = Crypt::decrypt($id);
+        Session::put('id_template', $id_template);
         $TemplateIndex = FileTemplate::leftjoin('sub_kategori', 'file_template.id_sub_kategori', '=', 'sub_kategori.id_sub_kategori')->leftjoin('kategori_template', 'sub_kategori.id_kategori', '=', 'kategori_template.id_kategori_template')
             ->leftjoin('template_invitation', 'file_template.id_template', '=', 'template_invitation.id_template')
             ->select('file_template.id_file_template', 'file_template.file', 'file_template.gambar_template', 'sub_kategori.icon', 'kategori_template.kategori', 'template_invitation.id_template')->where('template_invitation.id_template', $id_template)->paginate(10);
@@ -168,8 +169,10 @@ class FileTemplateController extends Controller
      */
     public function destroy($id)
     {
-        FileTemplate::where('id_file_template', $id)->delete();
-
+        $delete = FileTemplate::where('id_file_template', $id)->first();
+        File::delete(public_path() . '/file/file_template/' . $delete->file);
+        File::delete(public_path() . '/gambar/gambar_template/' . $delete->gambar_template);
+        $delete->delete();
         return response()->json(['success' => 'File Template Berhasil Dihapus']);
     }
 

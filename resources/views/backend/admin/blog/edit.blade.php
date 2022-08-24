@@ -9,6 +9,7 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>Edit Blog</h6>
+                        <hr>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="container-fluid">
@@ -19,8 +20,8 @@
 
                                 <div class="form-group">
                                     <label for="judul" class="form-label">Judul</label>
-                                    <input type="text" class="form-control" id="judul"
-                                        value="{{ $blog->judul }}" placeholder="Judul">
+                                    <input type="text" class="form-control" id="judul" value="{{ $blog->judul }}"
+                                        placeholder="Judul">
                                     <div id="validationJudul" class="invalid-feedback"></div>
                                 </div>
 
@@ -40,8 +41,8 @@
 
                                 <div class="form-group">
                                     <label for="tanggal" class="form-label">Tanggal</label>
-                                    <input type="date" class="form-control" id="tanggal"
-                                        value="{{ $blog->tanggal }}" placeholder="tanggal">
+                                    <input type="date" class="form-control" id="tanggal" value="{{ $blog->tanggal }}"
+                                        placeholder="tanggal">
                                     <div id="validationTanggal" class="invalid-feedback"></div>
                                 </div>
 
@@ -49,7 +50,7 @@
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Isi Blog
                                             Template</label>
-                                        <textarea class="isi" id="isi" placeholder="Isi Blog" onchange="setIsiBlog()">{{$blog->isi_blog}}</textarea>
+                                        <textarea class="isi" id="isi" placeholder="Isi Blog" onchange="setIsiBlog()">{{ $blog->isi_blog }}</textarea>
                                     </div>
                                     <div id="validationIsi" class="invalid-feedback"></div>
                                 </div>
@@ -70,10 +71,9 @@
 
 @push('script')
     <script>
-
         CKEDITOR.replace('isi', {
             height: 600,
-            filebrowserUploadUrl: "{{route('blog.upload', ['_token' => csrf_token()])}}",
+            filebrowserUploadUrl: "{{ route('blog.upload', ['_token' => csrf_token()]) }}",
             filebrowserUploadMethod: 'form'
         });
 

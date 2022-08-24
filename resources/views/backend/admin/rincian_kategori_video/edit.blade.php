@@ -9,6 +9,7 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>Edit Rincian Kategori Video</h6>
+                        <hr>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="container-fluid">
@@ -49,7 +50,7 @@
         </div>
     </div>
     @php
-        $id = Crypt::encrypt($edit->id_rincian_kategori_video);
+    $id = Crypt::encrypt($edit->id_rincian_kategori_video);
     @endphp
 @endsection
 
@@ -61,7 +62,7 @@
                 console.error(error);
             });
     </script>
-    
+
 @endsection
 
 @push('script')
