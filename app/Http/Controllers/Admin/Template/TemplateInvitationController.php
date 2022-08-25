@@ -23,7 +23,7 @@ class TemplateInvitationController extends Controller
     public function index()
     {
         $TemplateInvitation = TemplateInvitation::leftjoin('kategori_template', 'template_invitation.id_kategori', '=', 'kategori_template.id_kategori_template')
-            ->select('kategori_template.kategori', 'template_invitation.id_template', 'template_invitation.harga_template', 'template_invitation.gambar_cover', 'template_invitation.file_master')
+            ->select('kategori_template.kategori', 'template_invitation.id_template', 'template_invitation.gambar_cover', 'template_invitation.file_master')
             ->where('template_invitation.id_user', Auth::User()->id)->get();
 
         $FileTemplate = FileTemplate::select(DB::raw('count(id_file_template) as file_template'))

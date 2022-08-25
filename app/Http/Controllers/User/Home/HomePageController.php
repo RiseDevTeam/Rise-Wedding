@@ -14,7 +14,7 @@ class HomePageController extends Controller
 {
     public function home_page()
     {
-                $TemplateInvitation = TemplateInvitation::leftjoin('kategori_template', 'template_invitation.id_kategori', '=', 'kategori_template.id_kategori_template')
+        $TemplateInvitation = TemplateInvitation::leftjoin('kategori_template', 'template_invitation.id_kategori', '=', 'kategori_template.id_kategori_template')
             ->select('template_invitation.id_kategori', 'template_invitation.id_template', 'template_invitation.link_hosting', 'gambar_cover', 'kategori_template.harga', 'kategori_template.kategori')->get();
 
         $data =  PemesananInvitation::leftjoin('biodata_pelanggan', 'pemesanan_invitation.id_biodata_pelanggan', '=', 'biodata_pelanggan.id_biodata_pelanggan')
@@ -23,8 +23,8 @@ class HomePageController extends Controller
             ->select(
                 'pemesanan_invitation.kategori_template',
                 'pemesanan_invitation.link_hosting',
-                'biodata_pasangan_pria.nama_lengkap as nama_pria',
-                'biodata_pasangan_wanita.nama_lengkap as nama_wanita',
+                'biodata_pasangan_pria.nama_lengkap_pria as nama_pria',
+                'biodata_pasangan_wanita.nama_lengkap_wanita as nama_wanita',
                 'biodata_pelanggan.id_user',
             );
         if (isset(Auth::User()->id)) {
