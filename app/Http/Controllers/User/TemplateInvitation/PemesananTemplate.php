@@ -65,7 +65,7 @@ class PemesananTemplate extends Controller
         // input detail preview template
         foreach ($request->file_template as $key => $value) {
             DB::table('detail_preview_template')->insert([
-                'id_preview_template_pemesanan'   => $id_preview_template,
+                'id_preview_template_pemesanan' => $id_preview_template,
                 'file_template' => $value
             ]);
         }

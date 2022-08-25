@@ -32,6 +32,9 @@
                                             Link Hosting</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            File Master</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             File Template</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -78,6 +81,16 @@
                                                 <p class="text-xs font-weight-bold mb-0">
                                                     <a href="{{ $template->link_hosting }}"
                                                         target="_blank">{{ $template->link_hosting }}</a>
+                                                </p>
+                                            </td>
+
+
+                                            <td class="text-center">
+                                                <p class="text-xs font-weight-bold mb-0">
+                                                    <a href="{{ asset("file/file_master_template/$template->file_master") }}"
+                                                        target="_blank">Menampilkan
+                                                        file
+                                                    </a>
                                                 </p>
                                             </td>
 

@@ -23,7 +23,8 @@ class TemplateInvitationController extends Controller
     public function index()
     {
         $TemplateInvitation = TemplateInvitation::leftjoin('kategori_template', 'template_invitation.id_kategori', '=', 'kategori_template.id_kategori_template')
-            ->select('kategori_template.kategori', 'template_invitation.id_template', 'template_invitation.link_hosting', 'template_invitation.gambar_cover')->get();
+            ->select('kategori_template.kategori', 'template_invitation.id_template', 'template_invitation.harga_template', 'template_invitation.gambar_cover', 'template_invitation.file_master')
+            ->where('template_invitation.id_user', Auth::User()->id)->get();
 
         $FileTemplate = FileTemplate::select(DB::raw('count(id_file_template) as file_template'))
             ->first();
@@ -103,10 +104,6 @@ class TemplateInvitationController extends Controller
      */
     public function edit($id)
     {
-        // $edit = TemplateInvitation::all()->where('id_template', $id)
-        //     ->select('template_invitation.link_hosting', 'template_invitation.id_template', 'template_invitation.gambar_cover')->first();
-        // return view('backend.admin.template_invitation.edit', compact('edit'));
-
         $edit = TemplateInvitation::where('id_template', $id)->select('template_invitation.link_hosting', 'template_invitation.id_template', 'template_invitation.gambar_cover', 'template_invitation.file_master', 'template_invitation.id_kategori')->first();
         $kategori = KategoriTemplate::where('id_kategori_template', $edit->id_kategori)->first();
         $templateKategori = KategoriTemplate::select('kategori_template.kategori', 'kategori_template.id_kategori_template')->get();
@@ -127,7 +124,6 @@ class TemplateInvitationController extends Controller
             'id_kategori' => $request->idKategori,
             'id_user' => Auth::User()->id,
             'link_hosting' => $request->linkHosting,
-            'harga_template' => $request->harga_template,
         ]);
 
         // update data template jika ada gambar

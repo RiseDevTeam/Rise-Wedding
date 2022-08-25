@@ -14,7 +14,9 @@
 <br>
 2. push branch baru tersebut, jikalau mau edit kembali maka harus di buatkan new branch lagii..
 <br>
-3. untuk database boleh digunakan migration
+3. untuk database boleh digunakan migration atau php artisan migrate:fresh --seed
+<br>
+4. atau bisa cek di folder DB ada database terbaru dengan data kosong
 <br>
 
 ## teknikal Push Aplikasi Laravel Ke github
