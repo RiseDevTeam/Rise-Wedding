@@ -17,7 +17,7 @@ class CreateBiodataJadwalResepsi2Table extends Migration
             $table->bigIncrements('id_jadwal_resepsi_2')->nullable();
             $table->time('jam_mulai_resepsi_2')->nullable();
             $table->date('tanggal_resepsi_2')->nullable();
-            $table->time('waktu_wilayah_resepsi_2')->nullable();
+            $table->string('waktu_wilayah_resepsi_2', '20')->nullable();
             $table->text('lokasi_resepsi_2')->nullable();
             $table->timestamps();
         });

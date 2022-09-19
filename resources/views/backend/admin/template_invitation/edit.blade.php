@@ -45,13 +45,6 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Harga Template</label>
-                                    <input class="form-control" id="harga_template" type="text"
-                                        value="{{ $edit->harga_template }}" placeholder="Harga">
-                                    <div id="validationHarga" class="invalid-feedback"></div>
-                                </div>
-
-                                <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Gambar Template</label>
                                     <input class="form-control" id="gambarTemplate" type="file"
                                         onchange="gambarSlide();">
@@ -59,7 +52,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="gambar" class="form-label">Gambar Template</label>
+                                    <label for="gambar" class="form-label">Preview Gambar Template</label>
                                     <br>
                                     @if ($edit->gambar_cover)
                                         <img id="slide-image" class="my-3" width="300"
@@ -103,13 +96,11 @@
             let idKategori = document.getElementById('idKategori');
             let linkHosting = document.getElementById('linkHosting');
             let fileMaster = document.getElementById('fileMaster');
-            let harga_template = document.getElementById('harga_template');
             let gambarTemplate = document.getElementById('gambarTemplate');
 
             const formData = new FormData()
             formData.append("idKategori", idKategori.value)
             formData.append("linkHosting", linkHosting.value)
-            formData.append("harga_template", harga_template.value)
             formData.append("fileMaster", fileMaster.files[0])
             formData.append("gambarTemplate", gambarTemplate.files[0])
             formData.append("_method", "put");

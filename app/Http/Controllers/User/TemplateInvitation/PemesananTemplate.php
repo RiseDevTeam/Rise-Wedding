@@ -2,30 +2,33 @@
 
 namespace App\Http\Controllers\User\TemplateInvitation;
 
+use App\Models\BiodataMusik;
+use App\Models\FileTemplate;
 use Illuminate\Http\Request;
+use App\Models\MusikTemplate;
+use App\Models\BiodataHomePage;
+use App\Models\PreviewTemplate;
+use App\Models\BiodataPelanggan;
+use App\Models\KategoriTemplate;
+use App\Models\BiodataGaleriFoto;
+use App\Models\BiodataJadwalAkad;
+use App\Models\BiodataKutipanAyat;
 use App\Models\TemplateInvitation;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use App\Models\BiodataGaleriFoto;
-use App\Models\BiodataHomePage;
-use App\Models\BiodataJadwalAkad;
-use App\Models\BiodataJadwalResepsi;
-use App\Models\BiodataJadwalResepsi2;
-use App\Models\BiodataKeluargaBesarPria;
-use App\Models\BiodataKeluargaBesarWanita;
-use App\Models\BiodataKutipanAyat;
-use App\Models\BiodataMusik;
 use App\Models\BiodataPasanganPria;
-use App\Models\BiodataPasanganWanita;
-use App\Models\BiodataPelanggan;
-use App\Models\DetailPemesananInvitation;
-use App\Models\KategoriTemplate;
-use App\Models\MusikTemplate;
 use App\Models\PemesananInvitation;
-use App\Models\PreviewTemplate;
+use App\Http\Controllers\Controller;
+use App\Models\BiodataJadwalResepsi;
 use Illuminate\Support\Facades\Auth;
+use App\Models\BiodataJadwalResepsi2;
+use App\Models\BiodataPasanganWanita;
+use App\Models\DetailPreviewTemplate;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Session;
+use App\Models\BiodataKeluargaBesarPria;
+use App\Models\DetailPemesananInvitation;
 use Illuminate\Support\Facades\Validator;
+use App\Models\BiodataKeluargaBesarWanita;
 
 class PemesananTemplate extends Controller
 {
@@ -35,7 +38,7 @@ class PemesananTemplate extends Controller
         $kategori_template = Crypt::decrypt($id_kategori_template);
 
         $templateInvitation = TemplateInvitation::leftjoin('kategori_template', 'template_invitation.id_kategori', '=', 'kategori_template.id_kategori_template')
-            ->select('kategori_template.kategori', 'template_invitation.link_hosting', 'template_invitation.harga_template', 'template_invitation.id_user', 'template_invitation.id_kategori', 'template_invitation.gambar_cover', 'template_invitation.id_template')
+            ->select('kategori_template.kategori', 'template_invitation.link_hosting', 'kategori_template.harga', 'template_invitation.id_user', 'template_invitation.id_kategori', 'template_invitation.gambar_cover', 'template_invitation.id_template')
             ->where('template_invitation.id_kategori', $kategori_template)->get();
 
         $kategori =  KategoriTemplate::where('id_kategori_template', $kategori_template)->select('kategori')->first();
@@ -54,6 +57,7 @@ class PemesananTemplate extends Controller
         $kategori_template = Crypt::decrypt($id_template);
         $kategoriTemplate = DB::table('kategori_template')->where('id_kategori_template', $kategori_template)->select('kategori')->first();
 
+
         // input preview template pemesanan
         $data = new PreviewTemplate;
         $data->id_user = $request->id_user;
@@ -62,11 +66,17 @@ class PemesananTemplate extends Controller
         // mencari last id pada table preview template pemesanan
         $id_preview_template =  $data->id_preview_template_pemesanan;
 
+        date_default_timezone_set('Asia/Jakarta');
+        date('Y-m-d H:i:s');
         // input detail preview template
         foreach ($request->file_template as $key => $value) {
-            DB::table('detail_preview_template')->insert([
+            DetailPreviewTemplate::create([
                 'id_preview_template_pemesanan' => $id_preview_template,
-                'file_template' => $value
+                'file_template' => $value,
+                'isActive' => $request->keterangan_aktif[$key],
+                'keterangan_file' => $request->keterangan_file[$key],
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ]);
         }
         return redirect()->route('data_undangan', $id_template);
@@ -85,28 +95,25 @@ class PemesananTemplate extends Controller
         $kategori = $templateInvitation->kategori;
 
         // menampilkan preview template di dalam form data
-        $previewTemplate = PreviewTemplate::where('id_user', Auth::user()->id)->orderBy('id_preview_template_pemesanan', 'desc')
-            ->select('preview_template_pemesanan.id_preview_template_pemesanan')->first();
-        $IdpreviewTemplate = $previewTemplate->id_preview_template_pemesanan;
-
-        return view('frontend.template_invitation.form_data_undangan', compact('kategori', 'musikTemplate', 'IdpreviewTemplate', 'id_template'));
-    }
-
-    public function preview_template($id_kategori)
-    {
-        // menampilkan preview pada halaman input biodata pelanggan
-        $IdPreviewTemplate = PreviewTemplate::orderBy('id_preview_template_pemesanan', 'desc')->where('id_user', Auth::User()->id)->first();
-        // decrypt id yang kita encripsi sebelumnya
-        $id_kategori_template = Crypt::decrypt($id_kategori);
-        // menampilkan kategori pada halaman input biodata pelanggan
-        $kategori = KategoriTemplate::where('id_kategori_template', $id_kategori_template)->select('id_kategori_template', 'kategori')->first();
-        // menampilkan preview template pada halaman input biodata pelanggan
-        $PreviewTemplate = PreviewTemplate::leftjoin('detail_preview_template', 'preview_template_pemesanan.id_preview_template_pemesanan', '=', 'detail_preview_template.id_preview_template_pemesanan')
-            ->select('preview_template_pemesanan.id_user', 'detail_preview_template.file_template')->where('preview_template_pemesanan.id_user', Auth::user()->id)
-            ->orderByDesc('preview_template_pemesanan.id_preview_template_pemesanan')
-            ->where('preview_template_pemesanan.id_preview_template_pemesanan', $IdPreviewTemplate->id_preview_template_pemesanan)
+        $FilePreview = DetailPreviewTemplate::orderBy('detail_preview_template.created_at', 'desc')->select('detail_preview_template.id_preview_template_pemesanan')->first();
+        $data = PreviewTemplate::leftjoin('template_invitation', 'preview_template_pemesanan.id_template', '=', 'template_invitation.id_template')
+            ->leftjoin('detail_preview_template', 'preview_template_pemesanan.id_preview_template_pemesanan', '=', 'detail_preview_template.id_preview_template_pemesanan')
+            ->where('detail_preview_template.id_preview_template_pemesanan', $FilePreview->id_preview_template_pemesanan)
+            ->where('preview_template_pemesanan.id_user', Auth::user()->id)
+            ->select(
+                'preview_template_pemesanan.id_preview_template_pemesanan',
+                'template_invitation.link_hosting',
+                'detail_preview_template.isActive',
+                'detail_preview_template.keterangan_file'
+            )
             ->get();
-        return view('frontend.template_invitation.preview_template', compact('PreviewTemplate', 'id_kategori'));
+        $previewTemplate = [];
+        foreach ($data as $datas) {
+            if ($datas->isActive == '1') {
+                array_push($previewTemplate, $datas->keterangan_file);
+            }
+        }
+        return view('frontend.template_invitation.form_data_undangan', compact('kategori', 'musikTemplate', 'previewTemplate', 'id_template', 'datas'));
     }
 
     public function data_undangan_store_basic(Request $request, $kategori)
@@ -117,86 +124,25 @@ class PemesananTemplate extends Controller
             'nomor_telepon' => 'required',
             'nama_panggilan_pria' => 'required',
             'nama_panggilan_wanita' => 'required',
-            'foto_mempelai' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'kata_pembuka' => 'required',
             'kutipan_ayat' => 'required',
             'nama_lengkap_pria' => 'required',
             'putra_dari' => 'required',
             'nama_bapak_pria' => 'required',
             'nama_ibu_pria' => 'required',
-            'gambar_mempelai_pria' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'nama_lengkap_wanita' => 'required',
             'putri_dari' => 'required',
             'nama_bapak_wanita' => 'required',
             'nama_ibu_wanita' => 'required',
-            'gambar_mempelai_wanita' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'galeri_foto1' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'galeri_foto2' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'galeri_foto3' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'galeri_foto4' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'galeri_foto5' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'tanggal_akad' => 'required',
-            'jam_mulai_akad' => 'required',
-            'waktu_wilayah_akad' => 'required',
-            'lokasi_akad' => 'required',
-            'tanggal_resepsi' => 'required',
-            'jam_mulai_resepsi' => 'required',
-            'waktu_wilayah_resepsi' => 'required',
-            'lokasi_resepsi' => 'required',
-            'nama_link' => 'required',
+            'link_hosting' => 'required|unique:pemesanan_invitation,link_hosting',
         ]);
 
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->getMessageBag()->toArray()]);
-        }
-
-        if ($request->file('foto_mempelai')) {
-            // Upload file dengan Helpers Laravel
-            $fotoMempelai = uploadImage($request->file('foto_mempelai'), 'user_page/template/public/biodata_pelanggan/foto_mempelai/');
-        }
-
-        if ($request->file('gambar_mempelai_pria')) {
-            // Upload file dengan Helpers Laravel
-            $gambarMempelaiPria = uploadImage($request->file('gambar_mempelai_pria'), 'user_page/template/public/biodata_pelanggan/gambar_mempelai_pria/');
-        }
-
-        if ($request->file('gambar_mempelai_wanita')) {
-            // Upload file dengan Helpers Laravel
-            $gambarMempelaiWanita = uploadImage($request->file('gambar_mempelai_wanita'), 'user_page/template/public/biodata_pelanggan/gambar_mempelai_wanita/');
-        }
-
-        if ($request->file('galeri_foto1')) {
-            // Upload file dengan Helpers Laravel
-            $gambarFoto1 = uploadImage($request->file('galeri_foto1'), 'user_page/template/public/biodata_pelanggan/gambar_galeri/');
-        }
-
-        if ($request->file('galeri_foto2')) {
-            // Upload file dengan Helpers Laravel
-            $gambarFoto2 = uploadImage($request->file('galeri_foto2'), 'user_page/template/public/biodata_pelanggan/gambar_galeri/');
-        }
-
-        if ($request->file('galeri_foto3')) {
-            // Upload file dengan Helpers Laravel
-            $gambarFoto3 = uploadImage($request->file('galeri_foto3'), 'user_page/template/public/biodata_pelanggan/gambar_galeri/');
-        }
-
-        if ($request->file('galeri_foto4')) {
-            // Upload file dengan Helpers Laravel
-            $gambarFoto4 = uploadImage($request->file('galeri_foto4'), 'user_page/template/public/biodata_pelanggan/gambar_galeri/');
-        }
-
-        if ($request->file('galeri_foto5')) {
-            // Upload file dengan Helpers Laravel
-            $gambarFoto5 = uploadImage($request->file('galeri_foto5'), 'user_page/template/public/biodata_pelanggan/gambar_galeri/');
-        }
 
         $BiodataHomePage = BiodataHomePage::create([
             'title' => $request->title,
             'nama_panggilan_pria' => $request->nama_panggilan_pria,
             'nama_panggilan_wanita' => $request->nama_panggilan_wanita,
             'kata_pembuka' => $request->kata_pembuka,
-            'foto_mempelai' => $fotoMempelai,
         ]);
         // mengambil id home page
         $IdhomePage = $BiodataHomePage->id_biodata_home_page;
@@ -212,7 +158,6 @@ class PemesananTemplate extends Controller
             'putra_dari' => $request->putra_dari,
             'nama_bapak_pria' => $request->nama_bapak_pria,
             'nama_ibu_pria' => $request->nama_ibu_pria,
-            'gambar_mempelai_pria' => $gambarMempelaiPria,
         ]);
         // mengambil id biodata pasangan pria
         $IdPasanganPria = $BiodataPasanganPria->id_pasangan_pria;
@@ -222,20 +167,9 @@ class PemesananTemplate extends Controller
             'putri_dari' => $request->putri_dari,
             'nama_bapak_wanita' => $request->nama_bapak_wanita,
             'nama_ibu_wanita' => $request->nama_ibu_wanita,
-            'gambar_mempelai_wanita' => $gambarMempelaiWanita,
         ]);
         // mengambil id pasangan wanita
         $IdPasanganWanita = $BiodataPasanganWanita->id_pasangan_wanita;
-
-        $BiodataGaleriFoto = new BiodataGaleriFoto;
-        $BiodataGaleriFoto->galeri_foto1 = $gambarFoto1;
-        $BiodataGaleriFoto->galeri_foto2 = $gambarFoto2;
-        $BiodataGaleriFoto->galeri_foto3 = $gambarFoto3;
-        $BiodataGaleriFoto->galeri_foto4 = $gambarFoto4;
-        $BiodataGaleriFoto->galeri_foto5 = $gambarFoto5;
-        $BiodataGaleriFoto->save();
-        // mengambil id Galeri Foto
-        $IdGaleriFoto = $BiodataGaleriFoto->id_galeri_foto;
 
         $BiodataJadwalAkad = BiodataJadwalAkad::create([
             'tanggal_akad' => $request->tanggal_akad,
@@ -282,7 +216,6 @@ class PemesananTemplate extends Controller
             'id_kutipan_ayat' => $IdKutipanAyat,
             'id_pasangan_pria' => $IdPasanganPria,
             'id_pasangan_wanita' => $IdPasanganWanita,
-            'id_galeri_foto' => $IdGaleriFoto,
             'id_jadwal_akad' => $IdJadwalAkad,
             'id_jadwal_resepsi' => $IdJadwalResepsi,
             'id_jadwal_resepsi_2' => $IdJadwalResepsi2,
@@ -300,7 +233,7 @@ class PemesananTemplate extends Controller
             'id_biodata_pelanggan' => $IdBiodataPelanggan,
             'kategori_template' => $kategori,
             'email' => Auth::User()->email,
-            'link_hosting' => $request->nama_link,
+            'link_hosting' => $request->link_hosting,
             'tanggal_pemesanan' => $tgl,
         ]);
         // mengambil id Biodata Pemesanan
@@ -318,11 +251,14 @@ class PemesananTemplate extends Controller
         DB::table('detail_preview_template')->where('id_preview_template_pemesanan', $request->IdpreviewTemplate)->delete();
 
 
-        return response()->json(["success" => "Data berhasil Disimpan"]);
+        return response()->json([
+            "success" => "Data berhasil Disimpan",
+        ]);
     }
 
     public function data_undangan_store_premium(Request $request, $kategori)
     {
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'nomor_telepon' => 'required',
@@ -349,19 +285,11 @@ class PemesananTemplate extends Controller
             'galeri_foto6' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'galeri_foto7' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'galeri_foto8' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'tanggal_akad' => 'required',
-            'jam_mulai_akad' => 'required',
-            'waktu_wilayah_akad' => 'required',
-            'lokasi_akad' => 'required',
-            'tanggal_resepsi' => 'required',
-            'jam_mulai_resepsi' => 'required',
-            'waktu_wilayah_resepsi' => 'required',
-            'lokasi_resepsi' => 'required',
             'mengundang_pria' => 'required',
             'nama_keluarga_pria' => 'required',
             'mengundang_wanita' => 'required',
             'nama_keluarga_wanita' => 'required',
-            'nama_link' => 'required',
+            'link_hosting' => 'required',
         ]);
 
 
@@ -587,7 +515,7 @@ class PemesananTemplate extends Controller
             'id_biodata_pelanggan' => $IdBiodataPelanggan,
             'kategori_template' => $kategori,
             'email' => Auth::User()->email,
-            'link_hosting' => $request->nama_link,
+            'link_hosting' => $request->link_hosting,
             'tanggal_pemesanan' => $tgl,
         ]);
         // mengambil id Biodata Pemesanan

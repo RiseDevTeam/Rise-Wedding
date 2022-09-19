@@ -30,8 +30,19 @@
 
                                 <div class="form-group">
                                     <label for="gambar" class="form-label">Keterangan Icon</label>
-                                    <input type="text" class="form-control" id="keterangan"
-                                        placeholder="keterangan Icon">
+                                    <select class="form-control" id="keterangan" aria-label="Default select example">
+                                        <option selected>Keterangan Icon</option>
+                                        <option value="cover">cover</option>
+                                        <option value="ayat">ayat</option>
+                                        <option value="profile mempelai">profile mempelai</option>
+                                        <option value="galeri">galeri</option>
+                                        <option value="waktu_mundur">waktu mundur</option>
+                                        <option value="akad">akad</option>
+                                        <option value="resepsi1">resepsi 1</option>
+                                        <option value="resepsi2">resepsi 2</option>
+                                        <option value="keluarga_besar_mempelai">keluarga besar mempelai</option>
+                                        <option value="kirim_pesan">kirim pesan</option>
+                                    </select>
                                     <div id="validationKeterangan" class="invalid-feedback"></div>
                                 </div>
 

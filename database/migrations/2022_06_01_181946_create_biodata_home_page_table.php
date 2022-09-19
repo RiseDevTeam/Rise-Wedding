@@ -19,7 +19,6 @@ class CreateBiodataHomePageTable extends Migration
             $table->string('nama_panggilan_pria', '30');
             $table->string('nama_panggilan_wanita', '30');
             $table->string('kata_pembuka')->nullable();
-            $table->string('foto_mempelai', '100');
             $table->timestamps();
         });
     }

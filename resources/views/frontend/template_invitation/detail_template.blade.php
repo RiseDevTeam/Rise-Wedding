@@ -66,28 +66,55 @@
                 })
                 .then((response) => {
                     let data = response.data
-
+                    console.log(data);
                     data.forEach(element => {
-                        document.querySelector('.data').innerHTML += `
-                    <ul>
-                        <li>
-                            <a href="#"><img src="{{ asset('gambar/icon_template/${element.id_sub_kategori.icon}') }}" alt=""></a>
-                        </li>
-                        <li class="field-button-tambah-${element.id_file_template}">
+                        if (element.isActive == '1') {
+                            document.querySelector('.data').innerHTML += `
+            <ul>
+                <li>
+                    <a href="#"><img src="{{ asset('gambar/icon_template/${element.id_sub_kategori.icon}') }}" alt=""></a>
+                </li>
+                <li class="field-button-tambah-${element.id_file_template}">
 
-                        </li>
-                    </ul>
-                    
-                    <section class="isi_${element.id_file_template}">
-                        <div class="container" id="template_${element.id_file_template}">
-                            <input type="hidden" name="id_template" class="form-control" id="id_template" width="100" value="${element.id_template}">
-                            <input type="hidden" name="file_template[]" class="form-control" id="file_template" width="100" value="${element.file}">
-                            <input type="hidden" name="id_user" class="form-control" id="file_template" width="100" value="${id_user}">
-                            <button type="button" onclick="hapusTemplate(this)" id="${element.id_file_template}" class="badge badge-sm bg-danger mt-2"><i class="bi bi-trash"></i></button>
-                            <img src="{{ asset('gambar/gambar_template/${element.gambar_template}') }}" alt="Gambar Template">
-                        </div>
-                    </section>
-                    `
+                </li>
+            </ul>
+            
+            <section class="isi_${element.id_file_template}">
+                <div class="container" id="template_${element.id_file_template}">
+                    <input type="hidden" name="id_template" class="form-control" id="id_template" width="100" value="${element.id_template}">
+                    <input type="hidden" name="file_template[]" class="form-control" id="file_template" width="100" value="${element.file}">
+                    <input type="hidden" name="id_user" class="form-control" id="file_template" width="100" value="${id_user}">
+                    <input type="hidden" name="keterangan_aktif[]" class="form-control" id="keterangan_aktif" width="100" value="${element.isActive}">
+                    <input type="hidden" name="keterangan_file[]" class="form-control" id="keterangan_file" width="100" value="${element.keterangan}">
+                    <button type="button" onclick="hapusTemplate(this)" id="${element.id_file_template}" class="badge badge-sm bg-danger mt-2"><i class="bi bi-trash"></i></button>
+                    <img src="{{ asset('gambar/gambar_template/${element.gambar_template}') }}" alt="Gambar Template">
+                </div>
+            </section>
+            `
+
+                        } else {
+                            document.querySelector('.data').innerHTML += `
+            <ul>
+                <li>
+                    <a href="#"><img src="{{ asset('gambar/icon_template/${element.id_sub_kategori.icon}') }}" alt=""></a>
+                </li>
+                <li class="field-button-tambah-${element.id_file_template}">
+
+                </li>
+            </ul>
+            
+            <section class="isi_${element.id_file_template}">
+                <div class="container" id="template_${element.id_file_template}">
+                    <input type="hidden" name="id_template" class="form-control" id="id_template" width="100" value="${element.id_template}">
+                    <input type="hidden" name="file_template[]" class="form-control" id="file_template" width="100" value="${element.file}">
+                    <input type="hidden" name="id_user" class="form-control" id="file_template" width="100" value="${id_user}">
+                    <input type="hidden" name="keterangan_aktif[]" class="form-control" id="keterangan_aktif" width="100" value="${element.isActive}">
+                    <input type="hidden" name="keterangan_file[]" class="form-control" id="keterangan_file" width="100" value="${element.keterangan}">
+                    <img src="{{ asset('gambar/gambar_template/${element.gambar_template}') }}" alt="Gambar Template">
+                </div>
+            </section>
+            `
+                        }
                     });
 
                 })
@@ -112,12 +139,13 @@
                 })
                 .then((response) => {
                     let data = response.data
-
                     document.querySelector(`.isi_${e.id}`).innerHTML = `
                     <div class="container" id="template_${data.id_file_template}">
                         <input type="hidden" name="id_template" class="form-control" id="id_template" value="${data.id_template}">
                         <input type="hidden" name="file_template[]" class="form-control" id="file_template" value="${data.file}">
                         <input type="hidden" name="id_user" class="form-control" id="file_template" width="100" value="${id_user}">
+                        <input type="text" name="keterangan_aktif[]" class="form-control" id="keterangan_aktif" width="100" value="${data.isActive}">
+                        <input type="text" name="keterangan_file[]" class="form-control" id="keterangan_file" width="100" value="${data.keterangan}">
                         <button type="button" onclick="hapusTemplate(this)" id="${data.id_file_template}" class="badge badge-sm bg-danger mt-2"><i class="bi bi-trash"></i></button>
                         <img src="{{ asset('gambar/gambar_template/${data.gambar_template}') }}" alt="Gambar Template">
                     </div>

@@ -79,8 +79,8 @@
 
                                             <td class="align-middle text-center text-sm">
                                                 <p class="text-xs font-weight-bold mb-0">
-                                                    <a href="{{ $template->link_hosting }}"
-                                                        target="_blank">{{ $template->link_hosting }}</a>
+                                                    <a href="{{ $template->link_hosting }}" target="_blank"
+                                                        style="color: blue">{{ $template->link_hosting }}</a>
                                                 </p>
                                             </td>
 
@@ -88,7 +88,7 @@
                                             <td class="text-center">
                                                 <p class="text-xs font-weight-bold mb-0">
                                                     <a href="{{ asset("file/file_master_template/$template->file_master") }}"
-                                                        target="_blank">Menampilkan
+                                                        target="_blank" style="color: blue">Menampilkan
                                                         file
                                                     </a>
                                                 </p>

@@ -53,7 +53,7 @@
 
 
                                 <div class="mb-3">
-                                    <label for="gambar" class="form-label">Gambar Cover Template</label>
+                                    <label for="gambar" class="form-label">Preview Cover Template</label>
                                     <br>
                                     <img id="slide-image" class="my-3" width="300"
                                         src="{{ asset('gambar/default_image.png') }}" />

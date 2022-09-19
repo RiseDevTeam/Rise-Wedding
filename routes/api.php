@@ -25,9 +25,19 @@ Route::get('/risedev-wedding-users/template-invitation/detail-template/{id_kateg
     // return $id_kategori;
     $id_kategori = Crypt::decrypt($id_kategori);
     $gambar_template = TemplateInvitation::leftjoin('file_template', 'template_invitation.id_template', '=', 'file_template.id_template')
+        ->leftjoin('sub_kategori', 'file_template.id_sub_kategori', '=', 'sub_kategori.id_sub_kategori')
         ->where('template_invitation.id_kategori', $id_kategori)
         ->groupby('file_template.id_sub_kategori')
-        ->select('template_invitation.id_template', 'file_template.file', 'file_template.gambar_template', 'file_template.id_file_template', 'file_template.id_sub_kategori', 'template_invitation.id_template')
+        ->select(
+            'template_invitation.id_template',
+            'file_template.isActive',
+            'file_template.file',
+            'file_template.gambar_template',
+            'file_template.id_file_template',
+            'file_template.id_sub_kategori',
+            'template_invitation.id_template',
+            'sub_kategori.keterangan'
+        )
         ->get();
 
     foreach ($gambar_template as $key => $value) {
@@ -46,10 +56,20 @@ Route::get('/detail-template/ambil_satu/{id}/{id_kategori}', function ($id, $id_
 
     $id_kategori = Crypt::decrypt($id_kategori);
     $gambar_template = TemplateInvitation::leftjoin('file_template', 'template_invitation.id_template', '=', 'file_template.id_template')
+        ->leftjoin('sub_kategori', 'file_template.id_sub_kategori', '=', 'sub_kategori.id_sub_kategori')
         ->where('template_invitation.id_kategori', $id_kategori)
         ->where('file_template.id_file_template', $id)
         ->groupby('file_template.id_sub_kategori')
-        ->select('template_invitation.id_template', 'file_template.file', 'file_template.gambar_template', 'file_template.id_file_template', 'file_template.id_sub_kategori', 'template_invitation.id_template')
+        ->select(
+            'template_invitation.id_template',
+            'file_template.isActive',
+            'file_template.file',
+            'file_template.gambar_template',
+            'file_template.id_file_template',
+            'file_template.id_sub_kategori',
+            'template_invitation.id_template',
+            'sub_kategori.keterangan'
+        )
         ->first();
 
     return response()->json($gambar_template);

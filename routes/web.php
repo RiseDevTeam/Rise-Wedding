@@ -7,18 +7,18 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\User\Home\HomePageController;
 use App\Http\Controllers\User\Users\UserPageController;
-use App\Http\Controllers\Admin\KelolaAkun\PelangganController;
 use App\Http\Controllers\Admin\KelolaAkun\PimpinanController;
+use App\Http\Controllers\Admin\KelolaAkun\PelangganController;
 use App\Http\Controllers\User\Pembayaran\PembayaranController;
 use App\Http\Controllers\Admin\Template\FileTemplateController;
+use App\Http\Controllers\User\LinkHosting\LinkHostingController;
 use App\Http\Controllers\Admin\Pemesanan\PemesananAdminController;
-use App\Http\Controllers\User\TemplateInvitation\PemesananTemplate;
 
+use App\Http\Controllers\User\TemplateInvitation\PemesananTemplate;
 use App\Http\Controllers\Admin\Pembayaran\PembayaranAdminController;
 use App\Http\Controllers\User\PemesananSaya\PemesananSayaController;
 use App\Http\Controllers\Admin\Template\TemplateInvitationController;
-
-
+use App\Http\Controllers\User\TemplateInvitation\PemesananGambarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +37,8 @@ use App\Http\Controllers\Admin\Template\TemplateInvitationController;
 
 
 Route::get('/', [HomePageController::class, 'home_page'])->name('/');
+Route::get('rise-wedding/{link_hosting}', [LinkHostingController::class, 'hostingan_user'])->name('hostingan_user');
+// Route::get('rise-wedding/{link_hosting}', [LinkHostingController::class, 'hostingan_pesanan_saya'])->name('hostingan_pesanan_saya');
 
 Route::get('preview-blog', function () {
     return view('backend.admin.blog.preview');
@@ -69,12 +71,17 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('template_invitation')->group(function () {
             Route::get('detail-template/{id_template}', [PemesananTemplate::class, 'detail_template'])->name('detail-template');
             Route::POST('simpan-template/{id_template}', [PemesananTemplate::class, 'pemesanan_template'])->name('pemesanan_template');
-            Route::get('preview-template/{id_template}', [PemesananTemplate::class, 'preview_template'])->name('preview_template');
+            // Route::get('preview-template/{id_template}', [PemesananTemplate::class, 'preview_template'])->name('preview_template');
             Route::get('data-undangan/{id_template}', [PemesananTemplate::class, 'data_undangan'])->name('data_undangan');
             Route::POST('data-undangan-store_basic/{kategori}', [PemesananTemplate::class, 'data_undangan_store_basic'])->name('data_undangan_store_basic');
             Route::POST('data_undangan_store_premium/{kategori}', [PemesananTemplate::class, 'data_undangan_store_premium'])->name('data_undangan_store_premium');
         });
-
+        Route::prefix('template_invitation_gambar')->group(function () {
+            Route::get('data-gambar/{id_template}', [PemesananGambarController::class, 'data_gambar'])->name('data_gambar');
+            // Route::POST('form-data-gambar/{idTemplate}', [PemesananGambarController::class, 'form_data_gambar'])->name('form_data_gambar');
+            Route::POST('data-gambar', [PemesananGambarController::class, 'data_gambar_basic'])->name('data_gambar_basic');
+            Route::POST('data_gambar_premium', [PemesananGambarController::class, 'data_gambar_premium'])->name('data_gambar_premium');
+        });
         Route::prefix('pembayaran')->group(function () {
             Route::get('pembayaran_template/{id_template}', [PembayaranController::class, 'pembayaran_template'])->name('pembayaran_template');
             Route::POST('pembayaran_template_store', [PembayaranController::class, 'pembayaran_template_store'])->name('pembayaran_template_store');
@@ -107,7 +114,7 @@ Route::middleware(['auth'])->group(function () {
 
 
         // route File Template
-        Route::get('file_template/index/{id}', [FileTemplateController::class, 'show'])->name('file_template.show');
+        Route::get('file_template/{id}', [FileTemplateController::class, 'show'])->name('file_template.show');
         Route::get('file_template/create/{id}', [FileTemplateController::class, 'create'])->name('file_template.create');
         Route::POST('kategori_template',  [FileTemplateController::class, 'kategori_template'])->name('kategori_template');
         Route::POST('file_template/store/{id}', [FileTemplateController::class, 'store'])->name('file_template.store');

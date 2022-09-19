@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Agu 2022 pada 09.34
+-- Waktu pembuatan: 15 Sep 2022 pada 10.14
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.3
 
@@ -44,6 +44,14 @@ CREATE TABLE `biodata_galeri_foto` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `biodata_galeri_foto`
+--
+
+INSERT INTO `biodata_galeri_foto` (`id_galeri_foto`, `galeri_foto1`, `galeri_foto2`, `galeri_foto3`, `galeri_foto4`, `galeri_foto5`, `galeri_foto6`, `galeri_foto7`, `galeri_foto8`, `galeri_foto9`, `galeri_foto10`, `created_at`, `updated_at`) VALUES
+(1, '166201175623.jpeg', '166201175677.jpeg', '166201175619.png', '166201175690.JPG', '166201175659.jpeg', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, '16620151423.jpeg', '166201514264.jpeg', '166201514257.png', '166201514269.JPG', '166201514264.jpeg', '166201514270.jpeg', '16620151428.png', '166201514263.jpeg', NULL, NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -61,6 +69,14 @@ CREATE TABLE `biodata_home_page` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `biodata_home_page`
+--
+
+INSERT INTO `biodata_home_page` (`id_biodata_home_page`, `title`, `nama_panggilan_pria`, `nama_panggilan_wanita`, `kata_pembuka`, `foto_mempelai`, `created_at`, `updated_at`) VALUES
+(1, 'Undangan Pernikahan', 'zainul', 'ani', 'Atas karunia Allah SWT izinkan Kami mengundang sekaligus mengharapkan doa restu dari bapak/ibu dalam acara pernikahan putra & putri kami.', '166201175620.jpg', NULL, NULL),
+(2, 'Undangan Pernikahan', 'Zaky', 'sri', 'Atas karunia Allah SWT izinkan Kami mengundang sekaligus mengharapkan doa restu dari bapak/ibu dalam acara pernikahan putra & putri kami.', '166201514229.jpg', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -76,6 +92,14 @@ CREATE TABLE `biodata_jadwal_akad` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `biodata_jadwal_akad`
+--
+
+INSERT INTO `biodata_jadwal_akad` (`id_jadwal_akad`, `jam_mulai_akad`, `tanggal_akad`, `waktu_wilayah_akad`, `lokasi_akad`, `created_at`, `updated_at`) VALUES
+(1, '12:51:00', '2022-09-01', '00:00:00', 'Kota Padang', NULL, NULL),
+(2, '13:47:00', '2022-09-02', '00:00:00', 'Kota Padang', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -93,6 +117,14 @@ CREATE TABLE `biodata_jadwal_resepsi` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `biodata_jadwal_resepsi`
+--
+
+INSERT INTO `biodata_jadwal_resepsi` (`id_jadwal_resepsi`, `jam_mulai_resepsi`, `tanggal_resepsi`, `waktu_wilayah_resepsi`, `lokasi_resepsi`, `created_at`, `updated_at`) VALUES
+(1, '12:52:00', '2022-09-01', '00:00:00', 'Kota Padang', NULL, NULL),
+(2, '13:47:00', '2022-09-02', '00:00:00', 'Kota Padang', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -109,6 +141,14 @@ CREATE TABLE `biodata_jadwal_resepsi_2` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `biodata_jadwal_resepsi_2`
+--
+
+INSERT INTO `biodata_jadwal_resepsi_2` (`id_jadwal_resepsi_2`, `jam_mulai_resepsi_2`, `tanggal_resepsi_2`, `waktu_wilayah_resepsi_2`, `lokasi_resepsi_2`, `created_at`, `updated_at`) VALUES
+(1, '12:52:00', '2022-09-03', '00:00:00', 'Kota Padang', NULL, NULL),
+(2, '13:48:00', '2022-09-03', '00:00:00', 'Kota Padang', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -122,6 +162,13 @@ CREATE TABLE `biodata_keluarga_besar_pria` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `biodata_keluarga_besar_pria`
+--
+
+INSERT INTO `biodata_keluarga_besar_pria` (`id_keluarga_besar_pria`, `mengundang_pria`, `nama_keluarga_pria`, `created_at`, `updated_at`) VALUES
+(1, 'Keluarga Besar Mempelai Pria', 'Kakek\r\nNenek', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -137,6 +184,13 @@ CREATE TABLE `biodata_keluarga_besar_wanita` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `biodata_keluarga_besar_wanita`
+--
+
+INSERT INTO `biodata_keluarga_besar_wanita` (`id_keluarga_besar_wanita`, `mengundang_wanita`, `nama_keluarga_wanita`, `created_at`, `updated_at`) VALUES
+(1, 'Keluarga Besar Mempelai Pria', 'Ayah\r\nIbu', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -150,6 +204,14 @@ CREATE TABLE `biodata_kutipan_ayat` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `biodata_kutipan_ayat`
+--
+
+INSERT INTO `biodata_kutipan_ayat` (`id_kutipan_ayat`, `kutipan_ayat`, `created_at`, `updated_at`) VALUES
+(1, '“Dan Allah menjadikan bagimu pasangan (suami atau istri) dari jenis kamu sendiri, menjadikan anak dan cucu bagimu dari pasanganmu, serta memberimu rezeki dari yang baik-baik. Mengapa mereka beriman kepada yang batil dan mengingkari nikmat Allah?”\r\n\r\n     ', NULL, NULL),
+(2, '“Dan Allah menjadikan bagimu pasangan (suami atau istri) dari jenis kamu sendiri, menjadikan anak dan cucu bagimu dari pasanganmu, serta memberimu rezeki dari yang baik-baik. Mengapa mereka beriman kepada yang batil dan mengingkari nikmat Allah?”\r\n\r\n     ', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -162,6 +224,14 @@ CREATE TABLE `biodata_musik` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `biodata_musik`
+--
+
+INSERT INTO `biodata_musik` (`id_musik`, `musik`, `created_at`, `updated_at`) VALUES
+(1, '166201175774.mp3', NULL, NULL),
+(2, '166143758587.mp3', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -180,6 +250,14 @@ CREATE TABLE `biodata_pasangan_pria` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `biodata_pasangan_pria`
+--
+
+INSERT INTO `biodata_pasangan_pria` (`id_pasangan_pria`, `nama_lengkap_pria`, `putra_dari`, `gambar_mempelai_pria`, `nama_bapak_pria`, `nama_ibu_pria`, `created_at`, `updated_at`) VALUES
+(1, 'Zainul Abidin', 'Putra Ketiga Dari', '166201175683.jpg', 'Khairul Nasri', 'Mursyida', NULL, NULL),
+(2, 'Zaky Marni', 'Putra Ketiga Dari', '166201514269.jpg', 'Khairul Nasri', 'Mursyida', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -196,6 +274,14 @@ CREATE TABLE `biodata_pasangan_wanita` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `biodata_pasangan_wanita`
+--
+
+INSERT INTO `biodata_pasangan_wanita` (`id_pasangan_wanita`, `nama_lengkap_wanita`, `putri_dari`, `gambar_mempelai_wanita`, `nama_bapak_wanita`, `nama_ibu_wanita`, `created_at`, `updated_at`) VALUES
+(1, 'Ainun Nurhayati', 'Putri Pertama Dari', '166201175699.jpg', 'Etra Daswar', 'Irmalinda', NULL, NULL),
+(2, 'Sri Ratu Ningsih', 'Putri Pertama Dari', '166201514214.jpg', 'Etra Daswar', 'Irmalinda', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -221,6 +307,14 @@ CREATE TABLE `biodata_pelanggan` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `biodata_pelanggan`
+--
+
+INSERT INTO `biodata_pelanggan` (`id_biodata_pelanggan`, `id_user`, `id_biodata_home_page`, `id_kutipan_ayat`, `id_pasangan_pria`, `id_pasangan_wanita`, `id_galeri_foto`, `id_jadwal_akad`, `id_jadwal_resepsi`, `id_jadwal_resepsi_2`, `id_keluarga_besar_pria`, `id_keluarga_besar_wanita`, `id_musik`, `nomor_telepon`, `created_at`, `updated_at`) VALUES
+(1, 2, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, 1, 8123456789, NULL, NULL),
+(2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 2, 85272621908, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -283,8 +377,25 @@ CREATE TABLE `detail_pemesanan_invitation` (
 CREATE TABLE `detail_preview_template` (
   `id_detail_preview` bigint(20) UNSIGNED NOT NULL,
   `id_preview_template_pemesanan` bigint(20) NOT NULL,
-  `file_template` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `file_template` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `isActive` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `keterangan_file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `detail_preview_template`
+--
+
+INSERT INTO `detail_preview_template` (`id_detail_preview`, `id_preview_template_pemesanan`, `file_template`, `isActive`, `keterangan_file`, `created_at`, `updated_at`) VALUES
+(1, 1, '166144369057.php', '0', 'cover', '2022-09-15 07:50:58', '2022-09-15 07:50:58'),
+(2, 1, '166144372765.php', '0', 'ayat', '2022-09-15 07:50:58', '2022-09-15 07:50:58'),
+(3, 1, '166144674540.php', '0', 'profile mempelai', '2022-09-15 07:50:58', '2022-09-15 07:50:58'),
+(4, 1, '166144678063.php', '0', 'galeri', '2022-09-15 07:50:58', '2022-09-15 07:50:58'),
+(5, 1, '166144682642.php', '0', 'waktu mundur', '2022-09-15 07:50:58', '2022-09-15 07:50:58'),
+(6, 1, '166144687798.php', '1', 'akad', '2022-09-15 07:50:58', '2022-09-15 07:50:58'),
+(7, 1, '166144698661.php', '0', 'keluarga besar mempelai', '2022-09-15 07:50:58', '2022-09-15 07:50:58');
 
 -- --------------------------------------------------------
 
@@ -314,9 +425,34 @@ CREATE TABLE `file_template` (
   `id_sub_kategori` bigint(20) NOT NULL,
   `file` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `gambar_template` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `isActive` int(5) NOT NULL,
+  `keterangan_file` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `file_template`
+--
+
+INSERT INTO `file_template` (`id_file_template`, `id_template`, `id_sub_kategori`, `file`, `gambar_template`, `isActive`, `keterangan_file`, `created_at`, `updated_at`) VALUES
+(1, 1, 2, '166144260089.php', '166144260029.png', 0, 'Tidak Aktif', '2022-08-25 08:50:00', '2022-09-12 09:17:21'),
+(3, 1, 4, '166144290635.php', '166144290638.png', 0, 'Tidak Aktif', '2022-08-25 08:55:06', '2022-09-12 09:18:51'),
+(4, 1, 5, '16614429321.php', '166144293287.png', 1, 'Aktif', '2022-08-25 08:55:32', '2022-09-12 09:19:50'),
+(5, 1, 6, '166144296469.php', '166144296436.png', 1, 'Aktif', '2022-08-25 08:56:04', '2022-09-12 09:20:31'),
+(6, 1, 7, '166144299846.php', '16614429981.png', 1, 'Aktif', '2022-08-25 08:56:38', '2022-09-12 09:21:48'),
+(7, 1, 8, '166144303081.php', '166144303062.png', 0, 'Tidak Aktif', '2022-08-25 08:57:10', '2022-09-12 09:22:27'),
+(8, 1, 9, '166144305863.php', '166144305848.png', 0, 'Tidak Aktif', '2022-08-25 08:57:38', '2022-09-12 09:23:08'),
+(9, 2, 10, '166144369057.php', '166144369022.PNG', 0, '', '2022-08-25 09:08:10', '2022-09-02 00:24:55'),
+(10, 2, 11, '166144372765.php', '166144372795.PNG', 0, '', '2022-08-25 09:08:47', '2022-08-25 09:08:47'),
+(14, 2, 12, '166144674540.php', '166144674592.png', 0, '', '2022-08-25 09:59:05', '2022-08-25 09:59:05'),
+(15, 2, 14, '166144678063.php', '166144678069.PNG', 0, '', '2022-08-25 09:59:40', '2022-08-25 09:59:40'),
+(16, 2, 15, '166144682642.php', '166144682647.PNG', 0, '', '2022-08-25 10:00:26', '2022-08-25 10:00:26'),
+(17, 2, 16, '166144687798.php', '166144687735.PNG', 1, '', '2022-08-25 10:01:17', '2022-09-02 00:25:13'),
+(18, 2, 17, '166144691967.php', '166144691984.PNG', 1, '', '2022-08-25 10:01:59', '2022-09-02 00:25:31'),
+(19, 2, 18, '166144695455.php', '166144695489.PNG', 1, '', '2022-08-25 10:02:34', '2022-09-02 00:25:46'),
+(20, 2, 19, '166144698661.php', '166144698619.PNG', 0, '', '2022-08-25 10:03:06', '2022-08-25 10:03:06'),
+(21, 2, 19, '166144702019.php', '166144702056.png', 0, '', '2022-08-25 10:03:40', '2022-08-25 10:03:40');
 
 -- --------------------------------------------------------
 
@@ -331,6 +467,14 @@ CREATE TABLE `kategori_template` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `kategori_template`
+--
+
+INSERT INTO `kategori_template` (`id_kategori_template`, `kategori`, `harga`, `created_at`, `updated_at`) VALUES
+(1, 'Basic', 20000, '2022-08-25 07:07:27', '2022-08-25 07:07:27'),
+(2, 'Premium', 30000, '2022-08-25 07:07:37', '2022-08-25 07:07:37');
 
 -- --------------------------------------------------------
 
@@ -390,12 +534,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (25, '2022_06_01_183650_create_biodata_musik_table', 1),
 (26, '2022_06_01_183734_create_biodata_pelanggan_table', 1),
 (27, '2022_06_06_073432_create_musik_template_table', 1),
-(28, '2022_06_08_043758_create_detail_preview_template_table', 1),
-(29, '2022_06_20_062459_create_pemesanan_invitation_table', 1),
-(30, '2022_06_20_062626_create_detail_pemesanan_invitation_table', 1),
-(31, '2022_06_22_152938_create_pembayaran_invitation_table', 1),
-(32, '2022_06_22_153254_create_detail_pembayaran_invitation_table', 1),
-(33, '2022_08_22_230227_create_staff_table', 1);
+(34, '2022_06_08_043758_create_detail_preview_template_table', 2),
+(35, '2022_06_20_062459_create_pemesanan_invitation_table', 2),
+(36, '2022_06_20_062626_create_detail_pemesanan_invitation_table', 2),
+(37, '2022_06_22_152938_create_pembayaran_invitation_table', 2),
+(38, '2022_06_22_153254_create_detail_pembayaran_invitation_table', 2),
+(39, '2022_08_22_230227_create_staff_table', 2);
 
 -- --------------------------------------------------------
 
@@ -410,6 +554,14 @@ CREATE TABLE `musik_template` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `musik_template`
+--
+
+INSERT INTO `musik_template` (`id_musik_template`, `judul_musik`, `musik`, `created_at`, `updated_at`) VALUES
+(1, 'Sezairi Sezali - It\'s You', '166143758587.mp3', NULL, NULL),
+(2, 'Rey Mbayang \"Di Sepertiga Malam\"', '16614376834.mp3', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -487,6 +639,13 @@ CREATE TABLE `preview_template_pemesanan` (
   `id_template` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `preview_template_pemesanan`
+--
+
+INSERT INTO `preview_template_pemesanan` (`id_preview_template_pemesanan`, `id_user`, `id_template`) VALUES
+(1, 2, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -500,6 +659,14 @@ CREATE TABLE `rincian_kategori_template` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `rincian_kategori_template`
+--
+
+INSERT INTO `rincian_kategori_template` (`id_rincian_kategori`, `id_kategori`, `rincian_kategori_template`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Preset/Design standar</p><p>Quotes</p><p>Detail Info Acara</p><p>Profil Pasangan</p><p>Protokol Kesehatan</p><p>Navigasi Lokasi</p><p>Ucapan dan Doa</p><p>Love Stories</p><p>Tampilan Gallery (Max 10)', '2022-08-25 07:08:16', '2022-08-25 07:08:16'),
+(2, 2, 'Semua yang ada di Paket Free</p><p>Tampilkan Gallery (Max 20)</p><p>Tampilkan tombol Live sreaming</p><p>Share Personal - Nama Tamu (Unlimited)</p><p>Background Music List Custom</p><p>Costum Text</p><p>Tampilkan Rekening Amplop Digital</p><p>Bebas Memilih Tema Premium</p><p>Protokol Kesehatan</p><p>Masa aktif 1 tahun', '2022-08-25 07:08:36', '2022-08-25 07:08:36');
 
 -- --------------------------------------------------------
 
@@ -546,6 +713,30 @@ CREATE TABLE `sub_kategori` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `sub_kategori`
+--
+
+INSERT INTO `sub_kategori` (`id_sub_kategori`, `id_kategori`, `icon`, `keterangan`, `created_at`, `updated_at`) VALUES
+(2, 1, '166143742921.png', 'cover', '2022-08-25 07:23:49', '2022-09-14 08:18:10'),
+(3, 1, '166143744446.png', 'profile mempelai', '2022-08-25 07:24:04', '2022-09-14 08:18:29'),
+(4, 1, '166143745764.png', 'waktu mundur', '2022-08-25 07:24:17', '2022-09-14 08:18:47'),
+(5, 1, '166143747015.png', 'akad', '2022-08-25 07:24:30', '2022-09-14 08:19:05'),
+(6, 1, '166143748552.png', 'resepsi1', '2022-08-25 07:24:45', '2022-09-14 08:19:36'),
+(7, 1, '166143750673.png', 'resepsi2', '2022-08-25 07:25:06', '2022-09-14 08:19:56'),
+(8, 1, '166143753273.png', 'ayat', '2022-08-25 07:25:32', '2022-09-14 08:20:56'),
+(9, 1, '166143755497.png', 'galeri', '2022-08-25 07:25:54', '2022-09-14 08:21:14'),
+(10, 2, '166144334298.png', 'cover', '2022-08-25 09:02:22', '2022-09-14 08:27:21'),
+(11, 2, '166144336355.png', 'ayat', '2022-08-25 09:02:43', '2022-09-14 08:27:43'),
+(12, 2, '166144340073.png', 'profile mempelai', '2022-08-25 09:03:20', '2022-09-14 08:32:49'),
+(14, 2, '166144344630.png', 'galeri', '2022-08-25 09:04:06', '2022-09-14 08:34:09'),
+(15, 2, '166144346575.png', 'waktu mundur', '2022-08-25 09:04:25', '2022-09-14 08:34:37'),
+(16, 2, '166144348475.png', 'akad', '2022-08-25 09:04:44', '2022-09-14 08:35:01'),
+(17, 2, '166144350964.png', 'resepsi1', '2022-08-25 09:05:09', '2022-09-14 08:35:26'),
+(18, 2, '166144352932.png', 'resepsi2', '2022-08-25 09:05:29', '2022-09-14 08:36:38'),
+(19, 2, '166144354977.png', 'keluarga besar mempelai', '2022-08-25 09:05:49', '2022-09-14 08:37:11'),
+(20, 2, '166317479320.png', 'kirim pesan', '2022-09-14 09:59:53', '2022-09-14 09:59:53');
+
 -- --------------------------------------------------------
 
 --
@@ -562,6 +753,14 @@ CREATE TABLE `template_invitation` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `template_invitation`
+--
+
+INSERT INTO `template_invitation` (`id_template`, `id_kategori`, `id_user`, `link_hosting`, `file_master`, `gambar_cover`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'http://risedevteam.com/template-basic-2/', '166193544737.php', '166143812054.png', '2022-08-25 07:35:20', '2022-08-31 01:44:07'),
+(2, 2, 1, 'http://risedevteam.com/template-undangan-4/', '166193197673.php', '166144326058.png', '2022-08-25 09:01:00', '2022-08-31 00:46:16');
 
 -- --------------------------------------------------------
 
@@ -587,7 +786,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `foto`, `status`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Rise Development', 'risedevelopmentteam@gmail.com', NULL, 'pimpinan', NULL, '$2y$10$bc0b1u6si9mPurG9e0sPq.re9x6brC2DRP44d58ngCQgsgMFtwomy', NULL, NULL, NULL);
+(1, 'Rise Development', 'risedevelopmentteam@gmail.com', NULL, 'pimpinan', NULL, '$2y$10$bc0b1u6si9mPurG9e0sPq.re9x6brC2DRP44d58ngCQgsgMFtwomy', NULL, NULL, NULL),
+(2, 'Yoga Wahyudi', 'yogawahyudi22@gmail.com', 'https://lh3.googleusercontent.com/a-/AFdZucr75__CcwojqgCAGjsRwAcrkQUrWSqtv0bBlM7c2Q=s96-c', 'pelanggan', NULL, '$2y$10$XUa/8Qdyz38StG7Ncdx8TOYV3PUG6aCTbQtQz9txT2tXMLs3SOcPe', NULL, '2022-08-26 07:53:19', '2022-08-26 07:53:19');
 
 -- --------------------------------------------------------
 
@@ -823,73 +1023,73 @@ ALTER TABLE `video`
 -- AUTO_INCREMENT untuk tabel `biodata_galeri_foto`
 --
 ALTER TABLE `biodata_galeri_foto`
-  MODIFY `id_galeri_foto` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_galeri_foto` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `biodata_home_page`
 --
 ALTER TABLE `biodata_home_page`
-  MODIFY `id_biodata_home_page` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_biodata_home_page` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `biodata_jadwal_akad`
 --
 ALTER TABLE `biodata_jadwal_akad`
-  MODIFY `id_jadwal_akad` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jadwal_akad` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `biodata_jadwal_resepsi`
 --
 ALTER TABLE `biodata_jadwal_resepsi`
-  MODIFY `id_jadwal_resepsi` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jadwal_resepsi` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `biodata_jadwal_resepsi_2`
 --
 ALTER TABLE `biodata_jadwal_resepsi_2`
-  MODIFY `id_jadwal_resepsi_2` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jadwal_resepsi_2` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `biodata_keluarga_besar_pria`
 --
 ALTER TABLE `biodata_keluarga_besar_pria`
-  MODIFY `id_keluarga_besar_pria` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_keluarga_besar_pria` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `biodata_keluarga_besar_wanita`
 --
 ALTER TABLE `biodata_keluarga_besar_wanita`
-  MODIFY `id_keluarga_besar_wanita` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_keluarga_besar_wanita` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `biodata_kutipan_ayat`
 --
 ALTER TABLE `biodata_kutipan_ayat`
-  MODIFY `id_kutipan_ayat` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kutipan_ayat` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `biodata_musik`
 --
 ALTER TABLE `biodata_musik`
-  MODIFY `id_musik` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_musik` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `biodata_pasangan_pria`
 --
 ALTER TABLE `biodata_pasangan_pria`
-  MODIFY `id_pasangan_pria` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pasangan_pria` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `biodata_pasangan_wanita`
 --
 ALTER TABLE `biodata_pasangan_wanita`
-  MODIFY `id_pasangan_wanita` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pasangan_wanita` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `biodata_pelanggan`
 --
 ALTER TABLE `biodata_pelanggan`
-  MODIFY `id_biodata_pelanggan` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_biodata_pelanggan` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `blog`
@@ -913,7 +1113,7 @@ ALTER TABLE `detail_pemesanan_invitation`
 -- AUTO_INCREMENT untuk tabel `detail_preview_template`
 --
 ALTER TABLE `detail_preview_template`
-  MODIFY `id_detail_preview` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detail_preview` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `failed_jobs`
@@ -925,13 +1125,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT untuk tabel `file_template`
 --
 ALTER TABLE `file_template`
-  MODIFY `id_file_template` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_file_template` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori_template`
 --
 ALTER TABLE `kategori_template`
-  MODIFY `id_kategori_template` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kategori_template` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori_video`
@@ -943,13 +1143,13 @@ ALTER TABLE `kategori_video`
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT untuk tabel `musik_template`
 --
 ALTER TABLE `musik_template`
-  MODIFY `id_musik_template` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_musik_template` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `pembayaran_invitation`
@@ -973,13 +1173,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT untuk tabel `preview_template_pemesanan`
 --
 ALTER TABLE `preview_template_pemesanan`
-  MODIFY `id_preview_template_pemesanan` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_preview_template_pemesanan` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `rincian_kategori_template`
 --
 ALTER TABLE `rincian_kategori_template`
-  MODIFY `id_rincian_kategori` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_rincian_kategori` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `rincian_kategori_video`
@@ -997,19 +1197,19 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT untuk tabel `sub_kategori`
 --
 ALTER TABLE `sub_kategori`
-  MODIFY `id_sub_kategori` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sub_kategori` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `template_invitation`
 --
 ALTER TABLE `template_invitation`
-  MODIFY `id_template` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_template` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `video`

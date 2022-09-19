@@ -15,6 +15,9 @@ class CreateBiodataGaleriFotoTable extends Migration
     {
         Schema::create('biodata_galeri_foto', function (Blueprint $table) {
             $table->bigIncrements('id_galeri_foto');
+            $table->string('foto_mempelai', '100')->nullable();
+            $table->string('gambar_mempelai_pria', '100')->nullable();
+            $table->string('gambar_mempelai_wanita', '100')->nullable();
             $table->string('galeri_foto1', '100')->nullable();
             $table->string('galeri_foto2', '100')->nullable();
             $table->string('galeri_foto3', '100')->nullable();

@@ -61,7 +61,7 @@ section.harga-undangan .card a.btn:focus {
   box-shadow: none;
 }
 
-section.harga-undangan .card ul li {
+/* section.harga-undangan .card ul li {
   display: flex;
   align-items: flex-start;
   flex-direction: column
@@ -71,14 +71,19 @@ section.harga-undangan .card ul li i {
   color: var(--warna1);
   margin-right: 0.5rem;
   font-weight: bold;
-}
+} */
 
 section.harga-undangan .card ul li p {
   color: var(--warna2);
   margin-bottom: 0;
   font-size: 0.95rem;
+}
 
-  
+section.harga-undangan .card ul li p::before {
+  display: inline-block;
+  content: url("https://api.iconify.design/fa/check.svg?color=%23f58b54");
+  vertical-align: -0.125rem;
+  margin-right: 2.5%;
 }
 /* End Harga Undangan */
 

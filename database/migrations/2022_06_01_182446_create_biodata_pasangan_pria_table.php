@@ -17,7 +17,6 @@ class CreateBiodataPasanganPriaTable extends Migration
             $table->bigIncrements('id_pasangan_pria');
             $table->string('nama_lengkap_pria', '100');
             $table->string('putra_dari');
-            $table->string('gambar_mempelai_pria', '100');
             $table->string('nama_bapak_pria', '100');
             $table->string('nama_ibu_pria', '100');
             $table->timestamps();

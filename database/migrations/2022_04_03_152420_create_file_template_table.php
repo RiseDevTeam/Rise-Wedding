@@ -19,6 +19,8 @@ class CreateFileTemplateTable extends Migration
             $table->bigInteger('id_sub_kategori');
             $table->string('file', '50');
             $table->string('gambar_template', '50');
+            $table->bigInteger('isActive', '5');
+            $table->string('keterangan_file', '20');
             $table->timestamps();
         });
     }
