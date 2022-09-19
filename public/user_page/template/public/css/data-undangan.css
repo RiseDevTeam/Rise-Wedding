@@ -1,4 +1,39 @@
-/* Isi Data Undangan */
+.jm {
+  align-items: flex-end;
+}
+
+input[type="checkbox"]
+{
+	position: relative;
+  top: 5px;
+	width: 20px;
+	height: 20px;
+	/* -webkit-appearance: none; */
+	outline: none;
+	transition: .5s;
+}
+
+/* input[type="checkbox"]:before
+{
+	content: '';
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	border: 1px solid #222666;
+	box-sizing: border-box;
+	transition: .5s;
+}
+input:checked[type="checkbox"]:before
+{
+	border-left: none;
+	border-top: none;
+	width: 20px;
+	border-color:#f00;
+	transform: rotate(45deg) translate(5px);
+} */
+
 section.isi-data-undangan {
   margin-top: 1rem;
   margin-bottom: 3rem;
@@ -12,6 +47,57 @@ section.isi-data-undangan h3 {
 section.isi-data-undangan h3 span {
   font-weight: bold;
   color: var(--warna1);
+  
+}
+
+section.isi-data-undangan .isi {
+  /* border: 2px solid var(--warna1); */
+  padding: 1rem 2rem;
+  border-radius: var(--lengkung);
+  -webkit-border-radius: var(--lengkung);
+  -moz-border-radius: var(--lengkung);
+  -ms-border-radius: var(--lengkung);
+  -o-border-radius: var(--lengkung);
+}
+
+section.isi-data-undangan .isi ::-webkit-scrollbar {
+  display: none;
+  /* width: 12px;
+  background-color: aqua; */
+}
+
+section.isi-data-undangan .isi .kanan {
+  z-index: 2;
+  border: 2px solid var(--warna1);
+  padding: 1rem;
+  max-height: 100vh;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+  overflow-y: scroll;
+}
+
+section.isi-data-undangan .isi .kanan .daftar-gambar {
+  z-index: 1;
+  overflow: hidden;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: var(--warna2) !important;
+  background-color: var(--warna1) !important;
+}
+
+.nav-pills .nav-link {
+  color: var(--warna1);
+  border: 2px solid var(--warna1) !important;
+}
+
+.nav-link:focus,
+.nav-link:hover {
+  color: var(--warna1) !important;
 }
 
 section.isi-data-undangan .accordion-flush .accordion-item {
@@ -53,6 +139,11 @@ section.isi-data-undangan .accordion-button:not(.collapsed) {
   border: 2px solid var(--warna1);
 }
 
+.form-control:focus {
+  border-color: var(--warna5) !important;
+  box-shadow: none !important;
+}
+
 section.isi-data-undangan .accordion-item button {
   color: var(--warna1);
 }
@@ -84,13 +175,24 @@ section.isi-data-undangan .accordion-body h5 {
   border-bottom: 2px solid var(--warna1);
 }
 
-section.isi-data-undangan .accordion-body input {
-  border: 1px solid var(--warna6);
+section.isi-data-undangan .accordion-body input,
+section.isi-data-undangan .accordion-body textarea {
+  border: 1px solid var(--warna5);
 }
 
-section.isi-data-undangan .accordion-body input:focus {
+section.isi-data-undangan .accordion-body input:focus,
+section.isi-data-undangan .accordion-body textarea:focus {
   box-shadow: none;
-  border: 2px dashed var(--warna6);
+  border: 2px solid var(--warna1) !important;
+}
+
+.form-floating textarea {
+  width: 100%;
+  height: 80px !important;
+}
+
+.form-floating label {
+  color: var(--warna5);
 }
 
 /* Button Modal */
@@ -102,12 +204,7 @@ section.isi-data-undangan button.pesan-undangan {
 /* Modal Content */
 
 section.isi-data-undangan .modal .modal-content {
-  background: rgb(255, 206, 115);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 206, 115, 1) 41%,
-    rgba(245, 139, 84, 1) 72%
-  );
+  border: 2px solid var(--warna1);
   border-radius: var(--lengkung);
   -webkit-border-radius: var(--lengkung);
   -moz-border-radius: var(--lengkung);
@@ -119,13 +216,13 @@ section.isi-data-undangan .modal .modal-content h5.modal-title {
   /* color: var(--warna2); */
   border-bottom: none;
 }
-/* 
+
 section.isi-data-undangan .modal .modal-content .modal-body label {
   color: var(--warna2);
-} */
+}
 
 section.isi-data-undangan .modal .modal-content .modal-body input.form-control {
-  border: none;
+  border: 1px solid var(--warna1);
 }
 
 section.isi-data-undangan .modal .modal-content .modal-header,
@@ -134,8 +231,18 @@ section.isi-data-undangan .modal .modal-content .modal-footer {
 }
 
 section.isi-data-undangan .modal .modal-content .modal-footer button.btn {
-  background-color: var(--warna2);
-  color: var(--warna1);
+  background-color: var(--warna1);
+  color: var(--warna2);
+}
+
+.google-map {
+  height: 300px;
+  width: 100%;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
 }
 
 /* End Isi Data Undangan */
@@ -143,5 +250,9 @@ section.isi-data-undangan .modal .modal-content .modal-footer button.btn {
 @media (max-width: 576px) {
   section.isi-data-undangan .img-du .card .card-img-overlay span {
     font-size: 1rem;
+  }
+  .form-floating textarea {
+    width: 100%;
+    height: 100px !important;
   }
 }

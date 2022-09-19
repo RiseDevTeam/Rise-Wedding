@@ -106,7 +106,9 @@
                     {{ set_active('rincian_kategori.index') }} {{ set_active('rincian_kategori.create') }} {{ set_active('rincian_kategori.edit') }} 
                     {{ set_active('sub_kategori.index') }} {{ set_active('sub_kategori.create') }} {{ set_active('sub_kategori.edit') }} 
                     {{ set_active('musik.index') }} {{ set_active('musik.create') }} {{ set_active('musik.edit') }} 
-                    {{ set_active('template.index') }} {{ set_active('template.create') }} {{ set_active('template.edit') }} "
+                    {{ set_active('template.index') }} {{ set_active('template.create') }} {{ set_active('template.edit') }} 
+                    {{ set_active('file_template.show') }} {{ set_active('file_template.create') }} {{ set_active('file_template.edit') }} 
+                    "
                     aria-controls="pagesExamples" role="button" aria-expanded="false">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center me-2">

@@ -2,7 +2,6 @@
 @section('title', 'Template File')
 
 @section('content')
-
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
@@ -12,10 +11,10 @@
                         <a href="{{ route('template.index') }}" class="btn btn bg-gradient-danger">
                             <i class="bi bi-arrow-90deg-left" style="color: white;"></i>
                         </a>
+
                         <a href=" {{ route('file_template.create', $id_template) }}" class="btn btn bg-gradient-warning">
                             <i class="bi bi-plus-lg" style="color: white;"></i>
                         </a>
-                        <hr>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         </a>
@@ -39,18 +38,15 @@
                                             File</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Keterangan Aktif Icon</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Action</th>
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                        $id = 0;
-                                    @endphp
                                     @forelse ($TemplateIndex as $template)
-                                        @php
-                                            $id = $template->id_file_template;
-                                        @endphp
                                         <tr>
                                             <td>
                                                 <div class="d-flex px-2 py-1">
@@ -91,6 +87,18 @@
                                                     <iframe src='{{ asset("file/file_template/$template->file") }}'
                                                         title="W3Schools Free Online Web Tutorials">
                                                     </iframe>
+                                                </p>
+                                            </td>
+
+                                            <td class="text-center">
+                                                <p class="text-xs font-weight-bold mb-0">
+                                                    {{ $template->isActive == '1' ? 'Aktif' : 'Tidak Aktif' }}
+                                                    <br>
+                                                    @if ($template->isActive == '0')
+                                                        {{ 'Button Hapus Pada Pemesanan Tidak Muncul' }}
+                                                    @else
+                                                        {{ 'Button Hapus Pada Pemesanan Muncul' }}
+                                                    @endif
                                                 </p>
                                             </td>
 
@@ -153,7 +161,7 @@
                 cancelButtonText: 'Nggak jadi deh'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    axios.delete("{{ route('file_template.destroy', $id) }}")
+                    axios.delete(`delete/${id}`)
                         .then(function(response) {
                             if (response.status == 200) {
                                 Swal.fire(
@@ -161,13 +169,12 @@
                                     response.data.success,
                                     'success'
                                 ).then(function() {
-                                    window.location.href =
-                                        "{{ route('file_template.show', $id_template) }}"
+                                    window.location.href = "{{ route('file_template.show', $id) }}"
                                 })
                             }
                         })
                         .catch(function(error) {
-                            console.log(error);
+
                         });
                 }
             })

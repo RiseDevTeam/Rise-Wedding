@@ -2,21 +2,19 @@
 @section('title', 'File Template')
 
 @section('content')
-
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>Tambah File Template</h6>
-                        <hr>
                         <br>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="container-fluid">
                             <form method="POST" id="formTemplate-invitation">
                                 @csrf
-                                <input type="hidden" value="{{ $id_template_session }}" id="idTemplate">
+                                <input type="hidden" value="{{ Crypt::decrypt($id_template_session) }}" id="idTemplate">
                                 <div class="form-group">
                                     <label for="gambar" class="form-label">Keterangan Template Icon</label>
                                     <select class="form-control" id="idSubKategori" onchange="kategoriTemplate(this.value)"
@@ -36,6 +34,17 @@
                                     <br>
                                     <img id="slide-image" class="my-3" width="300"
                                         src="{{ asset('gambar/default_image.png') }}" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="gambar" class="form-label">Keterangan Aktif (bisa dihapus component jika
+                                        pelanggan tidak mau pesan)</label>
+                                    <select class="form-control" id="keterangan_aktif" aria-label="Default select example">
+                                        <option value="">Keterangan Aktif</option>
+                                        <option value="1">Aktif</option>
+                                        <option value="0">Tidak Aktif</option>
+                                    </select>
+                                    <div id="validationKeterangan" class="invalid-feedback"></div>
                                 </div>
 
                                 <div class="form-group">
@@ -93,11 +102,13 @@
 
             let idTemplate = document.getElementById('idTemplate');
             let idSubKategori = document.getElementById('idSubKategori');
+            let keterangan_aktif = document.getElementById('keterangan_aktif');
             let fileTemplate = document.getElementById('fileTemplate');
             let gambarTemplate = document.getElementById('gambarTemplate');
 
             const formData = new FormData()
             formData.append("idTemplate", idTemplate.value)
+            formData.append("keterangan_aktif", keterangan_aktif.value)
             formData.append("idSubKategori", idSubKategori.value)
             formData.append("fileTemplate", fileTemplate.files[0])
             formData.append("gambarTemplate", gambarTemplate.files[0])
@@ -107,16 +118,48 @@
                 .then(function(response) {
                     if (response.status == 200) {
                         const data = response.data
-                        Swal.fire({
-                            position: 'center',
-                            icon: 'success',
-                            title: data.success,
-                            showConfirmButton: false,
-                            timer: 1000
-                        }).then(function() {
-                            window.location.href =
-                                "{{ route('file_template.show', $id_template_session) }}"
-                        })
+                        const dataError = response.data.errors
+                        if (dataError) {
+                            if (dataError.idSubKategori) {
+                                let validationKategori = document.getElementById('validationKategori')
+                                idSubKategori.classList.add("is-invalid")
+                                validationKategori.innerText = dataError.idSubKategori[0]
+                                validationKategori.style.display = "block"
+                            }
+
+                            if (dataError.fileTemplate) {
+                                let validationKeterangan = document.getElementById('validationKeterangan')
+                                fileTemplate.classList.add("is-invalid")
+                                validationKeterangan.innerText = dataError.fileTemplate[0]
+                                validationKeterangan.style.display = "block"
+                            }
+
+                            if (dataError.keterangan_aktif) {
+                                let validationFile = document.getElementById('validationFile')
+                                keterangan_aktif.classList.add("is-invalid")
+                                validationKeterangan.innerText = dataError.keterangan_aktif[0]
+                                validationKeterangan.style.display = "block"
+                            }
+
+                            if (dataError.gambarTemplate) {
+                                let validationGambar = document.getElementById('validationGambar')
+                                gambarTemplate.classList.add("is-invalid")
+                                validationGambar.innerText = dataError.gambarTemplate[0]
+                                validationGambar.style.display = "block"
+                            }
+
+                        } else {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: data.success,
+                                showConfirmButton: false,
+                                timer: 1000
+                            }).then(function() {
+                                window.location.href =
+                                    "{{ route('file_template.show', $id_template_session) }}"
+                            })
+                        }
                     }
                 })
                 .catch(function(error) {

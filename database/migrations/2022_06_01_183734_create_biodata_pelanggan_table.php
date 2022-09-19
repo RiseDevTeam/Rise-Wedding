@@ -20,7 +20,7 @@ class CreateBiodataPelangganTable extends Migration
             $table->bigInteger('id_kutipan_ayat');
             $table->bigInteger('id_pasangan_pria');
             $table->bigInteger('id_pasangan_wanita');
-            $table->bigInteger('id_galeri_foto');
+            $table->bigInteger('id_galeri_foto')->nullable();;
             $table->bigInteger('id_jadwal_akad')->nullable();
             $table->bigInteger('id_jadwal_resepsi')->nullable();
             $table->bigInteger('id_jadwal_resepsi_2')->nullable();

@@ -58,7 +58,9 @@
                                             <h3 class="my-4">{{ $pesananSaya->nama_pria }} &
                                                 {{ $pesananSaya->nama_wanita }}
                                             </h3>
-                                            <a href="#">{{ $pesananSaya->link_hosting }}</a>
+                                            {{-- <a href="#">{{ $pesananSaya->link_hosting }}</a> --}}
+                                            <a href="{{ route('hostingan_user', $pesananSaya->link_hosting) }}"
+                                                target="_blank">{{ $pesananSaya->link_hosting }} </a>
                                         </div>
                                         <div class="bagikan">
                                             <span>
@@ -70,7 +72,7 @@
                                                 @if ($pesananSaya->status_pemesanan == 'sudah bayar')
                                                     Harga : <b>{{ number_format($pesananSaya->total) }}</b>
                                                 @else
-                                                    Harga : <b>{{ number_format($pesananSaya->harga_template) }}</b>
+                                                    Harga : <b>{{ number_format($pesananSaya->harga) }}</b>
                                                 @endif
                                             </h4>
                                         </div>
@@ -142,7 +144,7 @@
                                                     <a class="bi bi-telegram" href="#"></a>
                                                 </span>
                                                 <h4 class="harga">Harga : <b>Rp.
-                                                        {{ number_format($pembagianPesanan->harga_template) }}</b></h4>
+                                                        {{ number_format($pembagianPesanan->harga) }}</b></h4>
                                             </div>
                                             <!-- Daftar Button -->
                                             <div class="daftar-button">
@@ -215,7 +217,7 @@
                                                     <a class="bi bi-telegram" href="#"></a>
                                                 </span>
                                                 <h4 class="harga">Harga : <b>Rp.
-                                                        {{ number_format($pembagianPesanan->harga_template) }}</b></h4>
+                                                        {{ number_format($pembagianPesanan->harga) }}</b></h4>
                                             </div>
                                             <!-- Daftar Button -->
                                             <div class="daftar-button">

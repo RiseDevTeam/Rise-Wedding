@@ -17,6 +17,9 @@ class CreateDetailPreviewTemplateTable extends Migration
             $table->bigIncrements('id_detail_preview');
             $table->bigInteger('id_preview_template_pemesanan');
             $table->string('file_template');
+            $table->string('isActive');
+            $table->string('keterangan_file');
+            $table->timestamps();
         });
     }
 

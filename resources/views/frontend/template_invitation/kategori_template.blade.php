@@ -8,7 +8,7 @@
     <section class="harga-undangan">
         <div class="container">
             <h3>Harga Undangan</h3>
-            <div class="row">
+            <div class="row pt-3 justify-content-center align-items-start">
                 @foreach ($KategoriTemplate as $kategori)
                     <div class="undangan-gratis col-lg-4 col-md-6">
                         <div class="card">
@@ -22,15 +22,14 @@
                                         $kategori_template = Crypt::encrypt($kategori->id_kategori_template);
                                     @endphp
                                     <li>
-                                        <i class="bi bi-check-lg"></i> {!! $kategori->rincian_kategori_template !!}
+                                        {{-- <i class="bi bi-check-lg"></i> --}}
+                                        <p>{!! $kategori->rincian_kategori_template !!}</p>
                                     </li>
-
                                 </ul>
                                 <a href="{{ route('template_invitation', $kategori_template) }}"
                                     class="btn text-center w-100 fw-bold">
                                     Lihat
                                 </a>
-
                                 {{-- <button class="btn btn-primary text-center w-100 fw-bold"
                                     onclick="detailTemplate({{ $kategori_template }})">Lihat</button> --}}
                             </div>

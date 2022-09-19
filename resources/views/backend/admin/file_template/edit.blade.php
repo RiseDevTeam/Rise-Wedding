@@ -2,14 +2,16 @@
 @section('title', 'File Template')
 
 @section('content')
-
+    @php
+    // pengambilan session id template yg sudah di encripsi
+    $id_template_session = Crypt::encrypt(Session::get('id_template'));
+    @endphp
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>Tambah File Template</h6>
-                        <hr>
                         <br>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -44,6 +46,18 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="gambar" class="form-label">Keterangan Aktif (bisa dihapus component jika
+                                        pelanggan tidak mau pesan)</label>
+                                    <select class="form-control" id="keterangan_aktif" aria-label="Default select example">
+                                        <option value="{{ $edit->keterangan_aktif }}">
+                                            {{ $edit->keterangan_aktif == '1' ? 'Aktif' : 'Tidak Aktif' }}</option>
+                                        <option value="1">Aktif</option>
+                                        <option value="0">Tidak Aktif</option>
+                                    </select>
+                                    <div id="validationKeterangan" class="invalid-feedback"></div>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Upload File Template</label>
                                     <input class="form-control" id="fileTemplate" value="{{ $edit->file }}"
                                         type="file">
@@ -71,7 +85,7 @@
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a href="{{ route('file_template.show', $edit->id_template) }}"
+                                <a href="{{ route('file_template.show', $id_template_session) }}"
                                     class="btn btn-danger">Back</a>
                             </form>
 
@@ -102,11 +116,13 @@
             e.preventDefault()
 
             let idSubKategori = document.getElementById('idSubKategori');
+            let keterangan_aktif = document.getElementById('keterangan_aktif');
             let fileTemplate = document.getElementById('fileTemplate');
             let gambarTemplate = document.getElementById('gambarTemplate');
 
             const formData = new FormData()
             formData.append("idSubKategori", idSubKategori.value)
+            formData.append("keterangan_aktif", keterangan_aktif.value)
             formData.append("fileTemplate", fileTemplate.files[0])
             formData.append("gambarTemplate", gambarTemplate.files[0])
             formData.append("_method", "put");
@@ -123,7 +139,7 @@
                             timer: 1000
                         }).then(function() {
                             window.location.href =
-                                "{{ route('file_template.show', $edit->id_template) }}"
+                                "{{ route('file_template.show', $id_template_session) }}"
                         })
                     }
                 })

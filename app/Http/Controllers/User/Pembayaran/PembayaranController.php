@@ -21,7 +21,7 @@ class PembayaranController extends Controller
         $idTemplate = Crypt::decrypt($id_template);
         // menampilkan kategori template pada halaman utama
         $TemplateInvitation = TemplateInvitation::leftjoin('kategori_template', 'template_invitation.id_kategori', '=', 'kategori_template.id_kategori_template')->leftjoin('rincian_kategori_template', 'kategori_template.id_kategori_template', '=', 'rincian_kategori_template.id_kategori')
-            ->where('id_template', $idTemplate)->select('template_invitation.id_template', 'kategori_template.id_kategori_template', 'kategori_template.kategori', 'template_invitation.harga_template', 'rincian_kategori_template.rincian_kategori_template')->first();
+            ->where('id_template', $idTemplate)->select('template_invitation.id_template', 'kategori_template.id_kategori_template', 'kategori_template.kategori', 'kategori_template.harga', 'rincian_kategori_template.rincian_kategori_template')->first();
         $RincianKetegoriTemplate =  RincianKetegoriTemplate::where('id_kategori', $TemplateInvitation->id_kategori_template)->get();
 
         return view('frontend.pembayaran.pembayaran_template', compact('TemplateInvitation', 'RincianKetegoriTemplate'));
