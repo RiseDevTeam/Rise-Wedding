@@ -15,7 +15,8 @@ class CreatePemesananInvitationTable extends Migration
     {
         Schema::create('pemesanan_invitation', function (Blueprint $table) {
             $table->bigIncrements('id_pemesanan');
-            $table->bigInteger('id_template');
+            $table->bigInteger('id_template')->nullable();
+            $table->bigInteger('id_video')->nullable();
             $table->bigInteger('id_biodata_pelanggan');
             $table->string('kategori_template', '30');
             $table->string('email', '100');

@@ -7,7 +7,11 @@
     <!-- Card's Price -->
     <section class="harga-undangan">
         <div class="container">
-            <h3>Harga Undangan</h3>
+            <h3>Harga Undangan dan
+                <a href="#benefit">Benefit
+                    <i class="bi bi-chevron-double-down"></i>
+                </a>
+            </h3>
             <div class="row pt-3 justify-content-center align-items-start">
                 @foreach ($KategoriTemplate as $kategori)
                     <div class="undangan-gratis col-lg-4 col-md-6">
@@ -45,7 +49,7 @@
     <section class="section-benefit">
         <div class="container">
             <div class="row">
-                <div class="col-12 title-section mb-0">
+                <div class="col-12 title-section mb-0" id="benefit">
                     <h2><span>Benefit</span> Yang Kamu Dapatkan</h2>
                     <p>Yuk segera Lihat undangan digital impian kamu dari sekarang</p>
                 </div>
@@ -82,17 +86,8 @@
                 </div>
                 <div class="col-sm-12 col-lg-6 d-none d-md-block align-self-center">
                     <div class="image-mobbile">
-                        <img class="image-hand" src="{{ asset('user_page/template/public/img/mobile.png') }}"
+                        <img class="image-hand" src="{{ asset('user_page/template/public/img/phone.png') }}"
                             alt="mobile image" />
-                        <!--  -->
-                        <div class="img-iner">
-                            <div class="mobile-carousel">
-                                <div class="slider-item"
-                                    style="background-image: url({{ asset('user_page/template/public/img/slider-mobile-2.png') }});">
-                                </div>
-                            </div>
-                        </div>
-                        <!--  -->
                     </div>
                 </div>
             </div>

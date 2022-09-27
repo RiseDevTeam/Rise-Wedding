@@ -4,7 +4,6 @@
 @section('title', 'Template Invitation')
 
 @section('content_user')
-
     <form method="POST" id="form-biodata-pelanggan" enctype="multipart/form-data">
         @csrf
         <!-- Invitation Card -->
@@ -62,17 +61,17 @@
                                                                     <input type="text" id="title"
                                                                         class="form-control"
                                                                         placeholder="ex: Undangan Pernikahan"
-                                                                        value="{{ old('title') }}" autofocus />
+                                                                        value="{{ old('title') }}" />
                                                                     <div id="validationTitle" class="invalid-feedback">
                                                                     </div>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="wa" class="form-label">Nomor What's
                                                                         App</label>
-                                                                    <input type="number" id="nomor_telepon"
+                                                                    <input type="text" id="nomor_telepon"
                                                                         value="{{ old('nomor_telepon') ?? '' }}"
-                                                                        class="form-control" placeholder="Nomor What's App"
-                                                                        autofocus />
+                                                                        class="form-control"
+                                                                        placeholder="Nomor What's App" />
                                                                     <div id="validationNomorTelepon"
                                                                         class="invalid-feedback"></div>
                                                                 </div>
@@ -84,8 +83,7 @@
                                                                     <input type="text" id="nama_panggilan_pria"
                                                                         class="form-control"
                                                                         placeholder="Nama Panggilan Pria"
-                                                                        value="{{ old('nama_panggilan_pria') ?? '' }}"
-                                                                        autofocus />
+                                                                        value="{{ old('nama_panggilan_pria') ?? '' }}" />
                                                                     <div id="validationPanggilanPria"
                                                                         class="invalid-feedback"></div>
                                                                 </div>
@@ -95,8 +93,7 @@
                                                                     <input type="text" id="nama_panggilan_wanita"
                                                                         class="form-control"
                                                                         placeholder="Nama Panggilan Wanita"
-                                                                        value="{{ old('nama_panggilan_wanita') ?? '' }}"
-                                                                        autofocus />
+                                                                        value="{{ old('nama_panggilan_wanita') ?? '' }}" />
                                                                     <div id="validationPanggilanWanita"
                                                                         class="invalid-feedback"></div>
                                                                 </div>
@@ -171,8 +168,7 @@
                                                                     Pria</label>
                                                                 <input type="text" id="nama_lengkap_pria"
                                                                     class="form-control" placeholder="Nama Lengkap Pria"
-                                                                    value="{{ old('nama_lengkap_pria') ?? '' }}"
-                                                                    autofocus />
+                                                                    value="{{ old('nama_lengkap_pria') ?? '' }}" />
                                                                 <div id="validationNamaLengkapPria"
                                                                     class="invalid-feedback"></div>
                                                             </div>
@@ -182,7 +178,7 @@
                                                                 <input type="text" id="putra_dari"
                                                                     class="form-control"
                                                                     placeholder="ex : Putra Pertama Dari"
-                                                                    value="{{ old('putra_dari') ?? '' }}" autofocus />
+                                                                    value="{{ old('putra_dari') ?? '' }}" />
                                                                 <div id="validationKeteranganPasanganPria"
                                                                     class="invalid-feedback"></div>
                                                             </div>
@@ -191,7 +187,7 @@
                                                                     (Mempelai Pria)</label>
                                                                 <input type="text" id="nama_bapak_pria"
                                                                     class="form-control" placeholder="Nama Ayah"
-                                                                    value="{{ old('nama_bapak_pria') ?? '' }}" autofocus />
+                                                                    value="{{ old('nama_bapak_pria') ?? '' }}" />
                                                                 <div id="validationNamaAyahPria" class="invalid-feedback">
                                                                 </div>
                                                             </div>
@@ -200,7 +196,7 @@
                                                                     (Mempelai Pria)</label>
                                                                 <input type="text" id="nama_ibu_pria"
                                                                     class="form-control" placeholder="Nama Ibu"
-                                                                    value="{{ old('nama_ibu_pria') ?? '' }}" autofocus />
+                                                                    value="{{ old('nama_ibu_pria') ?? '' }}" />
                                                                 <div id="validationNamaIbuPria" class="invalid-feedback">
                                                                 </div>
                                                             </div>
@@ -211,8 +207,7 @@
                                                                     Wanita</label>
                                                                 <input type="text" id="nama_lengkap_wanita"
                                                                     class="form-control" placeholder="Nama Lengkap Wanita"
-                                                                    value="{{ old('nama_lengkap_wanita') ?? '' }}"
-                                                                    autofocus />
+                                                                    value="{{ old('nama_lengkap_wanita') ?? '' }}" />
                                                                 <div id="validationNamaLengkapWanita"
                                                                     class="invalid-feedback"></div>
                                                             </div>
@@ -223,7 +218,7 @@
                                                                 <input type="text" id="putri_dari"
                                                                     class="form-control"
                                                                     placeholder="ex : Putri Pertama Dari"
-                                                                    value="{{ old('putri_dari') ?? '' }}" autofocus />
+                                                                    value="{{ old('putri_dari') ?? '' }}" />
                                                                 <div id="validationKeteranganPasanganWanita"
                                                                     class="invalid-feedback">
                                                                 </div>
@@ -233,8 +228,7 @@
                                                                     (Mempelai Wanita)</label>
                                                                 <input type="text" id="nama_bapak_wanita"
                                                                     class="form-control" placeholder="Nama Ayah"
-                                                                    value="{{ old('nama_bapak_wanita') ?? '' }}"
-                                                                    autofocus />
+                                                                    value="{{ old('nama_bapak_wanita') ?? '' }}" />
                                                                 <div id="validationNamaAyahWanita"
                                                                     class="invalid-feedback"></div>
                                                             </div>
@@ -243,8 +237,7 @@
                                                                     (Mempelai Wanita)</label>
                                                                 <input type="text" id="nama_ibu_wanita"
                                                                     class="form-control" placeholder="Nama Ibu"
-                                                                    value="{{ old('nama_ibu_wanita') ?? '' }}"
-                                                                    autofocus />
+                                                                    value="{{ old('nama_ibu_wanita') ?? '' }}" />
                                                                 <div id="validationNamaIbuWanita"
                                                                     class="invalid-feedback"></div>
 
@@ -275,7 +268,7 @@
                                                                 <label for="tanggal" class="form-label">Tanggal</label>
                                                                 <input type="date" id="tanggal_akad"
                                                                     class="form-control"
-                                                                    value="{{ old('tanggal_akad') ?? '' }}" autofocus />
+                                                                    value="{{ old('tanggal_akad') ?? '' }}" required />
                                                                 <div id="validationTanggalAkad" class="invalid-feedback">
                                                                 </div>
                                                             </div>
@@ -288,7 +281,7 @@
                                                                     <input type="time" id="jam_mulai_akad"
                                                                         class="form-control"
                                                                         value="{{ old('jam_mulai_akad') ?? '' }}"
-                                                                        autofocus />
+                                                                        required />
                                                                     <div id="validationJamMulaiAkad"
                                                                         class="invalid-feedback">
                                                                     </div>
@@ -308,7 +301,7 @@
                                                                 <label for="tanggal" class="form-label">Waktu
                                                                     Wilayah</label>
                                                                 <select class="form-control" id="waktu_wilayah_akad"
-                                                                    aria-label="Default select example">
+                                                                    aria-label="Default select example" required>
                                                                     <option selected>Open this select menu</option>
                                                                     <option value="WIB">WIB</option>
                                                                     <option value="WIT">WIT</option>
@@ -328,7 +321,7 @@
                                                                     Undangan
                                                                     Online)</label>
                                                                 <div class="form-floating">
-                                                                    <textarea class="form-control" id="lokasi_akad"></textarea>
+                                                                    <textarea class="form-control" id="lokasi_akad" required></textarea>
                                                                     <label for="floatingTextarea">ex : Jl. Khatib Sulaiman
                                                                         Kel
                                                                         No.1,Lolong
@@ -363,8 +356,8 @@
                                                                 <label for="tanggal" class="form-label">Tanggal</label>
                                                                 <input type="date" id="tanggal_resepsi"
                                                                     class="form-control"
-                                                                    value="{{ old('tanggal_resepsi') ?? '' }}"
-                                                                    autofocus />
+                                                                    value="{{ old('tanggal_resepsi') ?? '' }}" autofocus
+                                                                    required />
                                                                 <div id="validationTanggalResepsi"
                                                                     class="invalid-feedback">
                                                                 </div>
@@ -378,7 +371,7 @@
                                                                     <input type="time" id="jam_mulai_resepsi"
                                                                         class="form-control"
                                                                         value="{{ old('jam_mulai_resepsi') ?? '' }}"
-                                                                        autofocus />
+                                                                        autofocus required />
                                                                     <div id="validationJamMulaiResepsi"
                                                                         class="invalid-feedback"></div>
                                                                 </div>
@@ -397,7 +390,7 @@
                                                                 <label for="tanggal" class="form-label">Waktu
                                                                     Wilayah</label>
                                                                 <select class="form-control" id="waktu_wilayah_resepsi"
-                                                                    aria-label="Default select example">
+                                                                    aria-label="Default select example" required>
                                                                     <option selected>Open this select menu</option>
                                                                     <option value="WIB">WIB</option>
                                                                     <option value="WIT">WIT</option>
@@ -415,7 +408,8 @@
                                                                 Undangan
                                                                 Online)</label>
                                                             <div class="form-floating">
-                                                                <textarea class="form-control" id="lokasi_resepsi" id="floatingTextarea" style="height: 80px; width: 100%"></textarea>
+                                                                <textarea class="form-control" id="lokasi_resepsi" id="floatingTextarea" style="height: 80px; width: 100%" required>
+                                                                </textarea>
                                                                 <label for="floatingTextarea">ex : Jl. Khatib Sulaiman Kel
                                                                     No.1,Lolong
                                                                     Belanti,
@@ -451,7 +445,7 @@
                                                                 <input type="date" id="tanggal_resepsi_2"
                                                                     class="form-control"
                                                                     value="{{ old('tanggal_resepsi_2') ?? '' }}"
-                                                                    autofocus />
+                                                                    required />
                                                                 <div id="validationTanggalResepsi2"
                                                                     class="invalid-feedback">
                                                                 </div>
@@ -465,7 +459,7 @@
                                                                     <input type="time" id="jam_mulai_resepsi_2"
                                                                         class="form-control"
                                                                         value="{{ old('jam_mulai_resepsi_2') ?? '' }}"
-                                                                        autofocus />
+                                                                        required />
                                                                     <div id="validationJamMulaiResepsi2"
                                                                         class="invalid-feedback"></div>
                                                                 </div>
@@ -484,7 +478,7 @@
                                                                 <label for="tanggal" class="form-label">Waktu
                                                                     Wilayah</label>
                                                                 <select class="form-control" id="waktu_wilayah_resepsi_2"
-                                                                    aria-label="Default select example">
+                                                                    aria-label="Default select example" required>
                                                                     <option selected>Open this select menu</option>
                                                                     <option value="WIB">WIB</option>
                                                                     <option value="WIT">WIT</option>
@@ -502,7 +496,9 @@
                                                                 Undangan
                                                                 Online)</label>
                                                             <div class="form-floating">
-                                                                <textarea class="form-control" id="lokasi_resepsi_2" id="floatingTextarea" style="height: 80px; width: 100%"></textarea>
+                                                                <textarea class="form-control" id="lokasi_resepsi_2" id="floatingTextarea" style="height: 80px; width: 100%"
+                                                                    required>
+                                                                </textarea>
                                                                 <label for="floatingTextarea">ex : Jl. Khatib Sulaiman Kel
                                                                     No.1,Lolong
                                                                     Belanti,
@@ -516,6 +512,80 @@
                                                 </div>
                                             </div>
                                         @endif
+
+                                        <!-- Undangan Keluarga Besar Mempelai Pria -->
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingEight">
+                                                <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseEight"
+                                                    aria-expanded="false" aria-controls="flush-collapseEight">
+                                                    <p>
+                                                        <i class="bi bi-envelope pr-2"></i>
+                                                        Undangan Keluarga Besar Mempelai Pria
+                                                    </p>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseEight" class="accordion-collapse collapse"
+                                                aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlush">
+                                                <div class="accordion-body">
+                                                    <div class="mb-3">
+                                                        <label for="kpm" class="form-label">Turut Menundang</label>
+                                                        <input type="text" id="mengundang_pria" class="form-control"
+                                                            value="Keluarga Besar Mempelai Pria" />
+                                                        <div id="validationMengundangPria" class="invalid-feedback"></div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <div class="form-floating">
+                                                            <label for="dnkbp"></label>
+                                                            <textarea class="form-control" placeholder="Daftar Nama Keluarga Besar Mempelai Pria" id="nama_keluarga_pria"
+                                                                style="height: 200px; width: 100%"></textarea>
+                                                            <label for="floatingTextarea">Daftar Nama Keluarga Besar
+                                                                Mempelai Pria</label>
+                                                        </div>
+                                                        <div id="validationNamaKeluargaPria" class="invalid-feedback">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Undangan Keluarga Besar Mempelai Wanita -->
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingNine">
+                                                <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseNine"
+                                                    aria-expanded="false" aria-controls="flush-collapseNine">
+                                                    <p>
+                                                        <i class="bi bi-envelope pr-2"></i>
+                                                        Undangan Keluarga Besar Mempelai Wanita
+                                                    </p>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseNine" class="accordion-collapse collapse"
+                                                aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlush">
+                                                <div class="accordion-body">
+                                                    <div class="mb-3">
+                                                        <label for="kpm" class="form-label">Turut Mengundang</label>
+                                                        <input type="text" id="mengundang_wanita" class="form-control"
+                                                            value="Keluarga Besar Mempelai Wanita" />
+                                                        <div id="validationMengundangWanita" class="invalid-feedback">
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <div class="form-floating">
+                                                            <label for="dnkbw"></label>
+                                                            <textarea class="form-control" id="nama_keluarga_wanita" placeholder="Daftar Nama Keluarga Besar Mempelai Wanita"
+                                                                id="floatingTextarea" style="height: 200px; width: 100%"></textarea>
+                                                            <label for="floatingTextarea">Daftar Nama Keluarga Besar
+                                                                Mempelai
+                                                                Wanita</label>
+                                                        </div>
+                                                        <div id="validationNamaKeluargaWanita" class="invalid-feedback">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <!-- Masukkan Lagu Pernikahan -->
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="flush-headingTen">
@@ -523,7 +593,7 @@
                                                     data-bs-toggle="collapse" data-bs-target="#flush-collapseTen"
                                                     aria-expanded="false" aria-controls="flush-collapseTen">
                                                     <p>
-                                                        <i class="bi bi-envelope pr-2"></i>
+                                                        <i class="bi bi-file-music pr-2"></i>
                                                         Masukkan Lagu Pernikahan
                                                     </p>
                                                 </button>
@@ -532,6 +602,35 @@
                                             <div id="flush-collapseTen" class="accordion-collapse collapse"
                                                 aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlush">
                                                 <div class="accordion-body">
+                                                    <div class="mb-3">
+                                                        <label for="kpm" class="form-label">Pilih Lagu :</label>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <div class="form-floating">
+                                                            <label for="dnkbw"></label>
+                                                            @forelse ($musikTemplate as $musik)
+                                                                <ul class="list-group">
+                                                                    <li class="list-group-item">{{ $musik->judul_musik }}
+                                                                    </li>
+                                                                    <li class="list-group-item">
+                                                                        <audio controls>
+                                                                            <source
+                                                                                src="{{ asset("file/audio_template/$musik->musik") }}"
+                                                                                type="audio/mpeg">
+                                                                        </audio>
+
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio"
+                                                                                name="flexRadioDefault" id="musik"
+                                                                                value="{{ $musik->musik }}">
+                                                                        </div>
+                                                                </ul>
+                                                                <li class="list-group-item">
+                                                                @empty
+                                                                    <p>Musik Tidak Tersedia</p>
+                                                            @endforelse
+                                                        </div>
+                                                    </div>
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <div class="mb-3">
@@ -539,15 +638,11 @@
                                                                     Pernikahan (Upload Lagu Mu Sendiri)</label>
                                                                 <input type="file" id="musik1"
                                                                     class="form-control" />
-
-                                                                <div id="validationMusik" class="invalid-feedback">
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
 
                                         <!-- Alamat URL Website -->
@@ -566,15 +661,6 @@
                                             <div id="flush-collapseEleven" class="accordion-collapse collapse"
                                                 aria-labelledby="flush-headingEleven" data-bs-parent="#accordionFlush">
                                                 <div class="accordion-body">
-
-                                                    <div class="mb-3">
-                                                        <label for="kpm" class="form-label">Nama Instagram :</label>
-                                                        <input type="text" id="nama_instagram" class="form-control"
-                                                            placeholder="ex : Nama Instagram" />
-
-                                                        <div id="validationNamaInstagram" class="invalid-feedback"></div>
-                                                    </div>
-
                                                     <div class="mb-3">
                                                         <label for="kpm" class="form-label">Nama Link :</label>
                                                         <input type="text" id="link_hosting" class="form-control"
@@ -582,8 +668,7 @@
 
                                                         <input type="hidden" id="IdpreviewTemplate"
                                                             value="{{ $datas->id_preview_template_pemesanan }}"
-                                                            class="form-control" />
-
+                                                            class="form-control" placeholder="ex : AkuDanKamu" />
                                                         <div id="validationNamaLink" class="invalid-feedback"></div>
                                                     </div>
 
@@ -599,11 +684,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
-
-
-
                                     </div>
                                 </div>
                                 <!-- End Kiri -->
@@ -613,7 +694,6 @@
                                     <div class="daftar-gambar">
                                         <iframe src="{{ $datas->link_hosting }}" frameborder="0" width="100%"
                                             height="100%"></iframe>
-                                        {{-- <iframe src="" frameborder="0" width="100%" height="100%"></iframe> --}}
                                     </div>
                                 </div>
                                 <!-- End Kanan -->
@@ -626,10 +706,9 @@
         </section>
         <!-- End Invitation Card -->
 
-
+        {{-- @dd($previewTemplate); --}}
 
     </form>
-
     <script>
         function insertData() {
             swal({
@@ -639,6 +718,9 @@
                 text: 'tunggu yaa, Data mu sedang diproses',
             })
         }
+    </script>
+
+    <script>
         // deklarasi kan variable array dari Laravel Ke JS
         var previewTemplate = <?php echo json_encode($previewTemplate); ?>;
 
@@ -677,8 +759,12 @@
                 let waktu_wilayah_resepsi2 = document.getElementById('waktu_wilayah_resepsi2');
                 let lokasi_resepsi_2 = document.getElementById('lokasi_resepsi_2');
             }
+            let mengundang_pria = document.getElementById('mengundang_pria');
+            let nama_keluarga_pria = document.getElementById('nama_keluarga_pria');
+            let mengundang_wanita = document.getElementById('mengundang_wanita');
+            let nama_keluarga_wanita = document.getElementById('nama_keluarga_wanita');
+            let musik = document.getElementById('musik');
             let musik1 = document.getElementById('musik1');
-            let nama_instagram = document.getElementById('nama_instagram');
             let link_hosting = document.getElementById('link_hosting');
             let IdpreviewTemplate = document.getElementById('IdpreviewTemplate');
 
@@ -715,11 +801,15 @@
                 formData.append("waktu_wilayah_resepsi_2", waktu_wilayah_resepsi_2.value)
                 formData.append("lokasi_resepsi_2", lokasi_resepsi_2.value)
             }
+            formData.append("mengundang_pria", mengundang_pria.value)
+            formData.append("nama_keluarga_pria", nama_keluarga_pria.value)
+            formData.append("mengundang_wanita", mengundang_wanita.value)
+            formData.append("nama_keluarga_wanita", nama_keluarga_wanita.value)
+            formData.append("musik", musik.value)
             formData.append("musik1", musik1.files[0])
-            formData.append("nama_instagram", nama_instagram.value)
             formData.append("link_hosting", link_hosting.value)
             formData.append("IdpreviewTemplate", IdpreviewTemplate.value)
-            axios.post("{{ route('data_undangan_store_basic', $kategori) }}", formData)
+            axios.post("{{ route('data_undangan_store_premium', $kategori) }}", formData)
                 .then(function(response) {
                     if (response.status == 200) {
                         const data = response.data
@@ -745,6 +835,7 @@
                                 validationNomorTelepon.innerText = dataError.nomor_telepon[0]
                                 validationNomorTelepon.style.display = "block"
                             }
+
                             if (dataError.nama_panggilan_pria) {
                                 let validationPanggilanPria = document.getElementById('validationPanggilanPria')
                                 nama_panggilan_pria.classList.add("is-invalid")
@@ -829,27 +920,39 @@
                                 validationNamaIbuWanita.style.display = "block"
                             }
 
-                            if (dataError.musik1) {
-                                let validationMusik = document.getElementById(
-                                    'validationMusik')
-                                musik1.classList.add("is-invalid")
-                                validationMusik.innerText = dataError.musik1[0]
-                                validationMusik.style.display = "block"
+                            if (dataError.mengundang_pria) {
+                                let validationMengundangPria = document.getElementById(
+                                    'validationMengundangPria')
+                                mengundang_pria.classList.add("is-invalid")
+                                validationMengundangPria.innerText = dataError.mengundang_pria[0]
+                                validationMengundangPria.style.display = "block"
                             }
-
-                            if (dataError.nama_instagram) {
-                                let validationNamaInstagram = document.getElementById(
-                                    'validationNamaInstagram')
-                                nama_instagram.classList.add("is-invalid")
-                                validationNamaInstagram.innerText = dataError.nama_instagram[0]
-                                validationNamaInstagram.style.display = "block"
+                            if (dataError.nama_keluarga_pria) {
+                                let validationNamaKeluargaPria = document.getElementById(
+                                    'validationNamaKeluargaPria')
+                                nama_keluarga_pria.classList.add("is-invalid")
+                                validationNamaKeluargaPria.innerText = dataError.nama_keluarga_pria[0]
+                                validationNamaKeluargaPria.style.display = "block"
                             }
-
-                            if (dataError.link_hosting) {
+                            if (dataError.mengundang_wanita) {
+                                let validationMengundangWanita = document.getElementById(
+                                    'validationMengundangWanita')
+                                mengundang_wanita.classList.add("is-invalid")
+                                validationMengundangWanita.innerText = dataError.mengundang_wanita[0]
+                                validationMengundangWanita.style.display = "block"
+                            }
+                            if (dataError.nama_keluarga_wanita) {
+                                let validationNamaKeluargaWanita = document.getElementById(
+                                    'validationNamaKeluargaWanita')
+                                nama_keluarga_wanita.classList.add("is-invalid")
+                                validationNamaKeluargaWanita.innerText = dataError.nama_keluarga_wanita[0]
+                                validationNamaKeluargaWanita.style.display = "block"
+                            }
+                            if (dataError.nama_link) {
                                 let validationNamaLink = document.getElementById(
                                     'validationNamaLink')
-                                link_hosting.classList.add("is-invalid")
-                                validationNamaLink.innerText = dataError.link_hosting[0]
+                                nama_link.classList.add("is-invalid")
+                                validationNamaLink.innerText = dataError.nama_link[0]
                                 validationNamaLink.style.display = "block"
                             }
                         } else {

@@ -34,7 +34,6 @@
                 <!-- Semua -->
                 <div class="tab-pane fade show active" id="semua" role="tabpanel" aria-labelledby="semua-tab">
                     @forelse ($semua_pesanan as $pesananSaya)
-                        {{-- @dd($pesananSaya) --}}
                         <div class="tab-pane show active" id="semua">
                             <div class="card" id="tSelesai">
                                 <div class="row">
@@ -58,9 +57,14 @@
                                             <h3 class="my-4">{{ $pesananSaya->nama_pria }} &
                                                 {{ $pesananSaya->nama_wanita }}
                                             </h3>
-                                            {{-- <a href="#">{{ $pesananSaya->link_hosting }}</a> --}}
-                                            <a href="{{ route('hostingan_user', $pesananSaya->link_hosting) }}"
-                                                target="_blank">{{ $pesananSaya->link_hosting }} </a>
+                                            @if ($pesananSaya->status_pemesanan == 'pending')
+                                                {{ 'Silahkan Melakukan Pembayaran paling lambat 1 X 24 jam' }} <br>
+                                                {{ 'Dalam Kolom Belum Bayar' }}
+                                            @else
+                                                <a href="{{ route('hostingan_user', $pesananSaya->link_hosting) }}"
+                                                    target="_blank" class="text-primary">Link Hosting :
+                                                    {{ $pesananSaya->link_hosting }} </a>
+                                            @endif
                                         </div>
                                         <div class="bagikan">
                                             <span>
@@ -76,14 +80,21 @@
                                                 @endif
                                             </h4>
                                         </div>
+
+                                        {{-- @dd(Crypt::encrypt($pesananSaya->id_pemesanan)) --}}
                                         <div class="daftar-button">
                                             <div class="bpas">
-                                                <button class="btn">
+                                                {{-- <button class="btn">
                                                     Preview
-                                                </button>
-                                                <button class="btn">
+                                                </button> --}}
+                                                <a href="{{ route('hostingan_user', $pesananSaya->link_hosting) }}"
+                                                    class="btn" target="_blank">Preview</a>
+                                                <a href="{{ route('edit_form_pemesanan', Crypt::encrypt($pesananSaya->id_pemesanan)) }}"
+                                                    class="btn">Sunting</a>
+                                                {{-- <button class="btn">
                                                     Sunting
-                                                </button>
+                                                </button> --}}
+
                                             </div>
                                             @if ($pesananSaya->total)
                                                 <button class="btn uab">
@@ -134,14 +145,12 @@
                                                 <h3 class="my-4">{{ $pembagianPesanan->nama_pria }} &
                                                     {{ $pembagianPesanan->nama_wanita }}
                                                 </h3>
-                                                <p>Silahkan Melakukan Pembayaran paling lambat 1 X 24 jam</p>
+                                                {{ 'Silahkan Melakukan Pembayaran paling lambat 1 X 24 jam' }}
                                             </div>
                                             <!-- Bagikan -->
                                             <div class="bagikan">
                                                 <span>
-                                                    Bagikan : &nbsp;
-                                                    <a class="bi bi-whatsapp" href="#"></a>
-                                                    <a class="bi bi-telegram" href="#"></a>
+
                                                 </span>
                                                 <h4 class="harga">Harga : <b>Rp.
                                                         {{ number_format($pembagianPesanan->harga) }}</b></h4>
@@ -149,15 +158,10 @@
                                             <!-- Daftar Button -->
                                             <div class="daftar-button">
                                                 <div class="bpas">
-                                                    <button class="btn">
-                                                        Preview
-                                                    </button>
-                                                    <button class="btn">
-                                                        Sunting
-                                                    </button>
                                                 </div>
                                                 <!-- Ulasan and Bayar -->
-                                                <a href="pembayaran.html" class="btn uab">
+                                                <a href="{{ route('pembayaran_template', Crypt::encrypt($pembagianPesanan->id_pemesanan)) }}"
+                                                    class="btn uab mt-2">
                                                     Bayar
                                                 </a>
                                             </div>
@@ -176,17 +180,14 @@
                     </div>
                 </div>
                 <!-- End Template Belum Bayar -->
-                {{-- <!-- Template Sedang Diproses -->
-                <div class="tab-pane fade" id="diProses" role="tabpanel" aria-labelledby="diProses-tab">kamvert</div>
-                <!-- End Template Sedang Diproses --> --}}
 
                 <!-- Selesai -->
                 <div class="tab-pane fade" id="selesai" role="tabpanel" aria-labelledby="selesai-tab">
-                    <div class="tab-pane" id="selesai">
-                        <!-- Template Wedding Selesai -->
-                        <div class="card" id="tSelesai">
-                            @forelse ($pembagian_pesanan as $pembagianPesanan)
-                                @if ($pembagianPesanan->status_pemesanan == 'selesai')
+                    @forelse ($pembagian_pesanan as $pembagianPesanan)
+                        <div class="tab-pane" id="selesai">
+                            @if ($pembagianPesanan->status_pemesanan == 'selesai')
+                                <!-- Template Wedding Selesai -->
+                                <div class="card" id="tSelesai">
                                     <div class="row">
                                         <!-- Template Wedding -->
 
@@ -207,7 +208,13 @@
                                                 <h3 class="my-4">{{ $pembagianPesanan->nama_pria }} &
                                                     {{ $pembagianPesanan->nama_wanita }}
                                                 </h3>
-                                                <p>Silahkan Melakukan Pembayaran paling lambat 1 X 24 jam</p>
+                                                @if ($pembagianPesanan->status_pemesanan == 'pending')
+                                                    {{ 'Silahkan Melakukan Pembayaran paling lambat 1 X 24 jam' }}
+                                                @else
+                                                    <a href="{{ route('hostingan_user', $pembagianPesanan->link_hosting) }}"
+                                                        target="_blank" class="text-primary">Link Hosting :
+                                                        {{ $pembagianPesanan->link_hosting }} </a>
+                                                @endif
                                             </div>
                                             <!-- Bagikan -->
                                             <div class="bagikan">
@@ -222,35 +229,34 @@
                                             <!-- Daftar Button -->
                                             <div class="daftar-button">
                                                 <div class="bpas">
-                                                    <button class="btn">
-                                                        Preview
-                                                    </button>
+                                                    <a href="{{ route('hostingan_user', $pesananSaya->link_hosting) }}"
+                                                        class="btn">Preview</a>
                                                     <button class="btn">
                                                         Sunting
                                                     </button>
                                                 </div>
                                                 <!-- Ulasan and Bayar -->
                                                 <a href="pembayaran.html" class="btn uab">
-                                                    Bayar
+                                                    Ulasan
                                                 </a>
                                             </div>
                                         </div>
                                         <!-- End isi Card -->
                                     </div>
-                                @endif
-                            @empty
-                                <div class="tab-pane show active" id="semua">
-                                    <div class="alert alert-warning" role="alert">
-                                        <center> Yukk Pesan Templatemu Sekarang </center>
-                                    </div>
                                 </div>
-                            @endforelse
-                        </div>
-                    </div>
+                            @endif
+                        @empty
+                            <div class="tab-pane show active" id="semua">
+                                <div class="alert alert-warning" role="alert">
+                                    <center> Yukk Pesan Templatemu Sekarang </center>
+                                </div>
+                            </div>
+                    @endforelse
                 </div>
-                <!-- EndSelesai -->
-
             </div>
+            <!-- EndSelesai -->
+
+        </div>
         </div>
     </section>
 @endsection

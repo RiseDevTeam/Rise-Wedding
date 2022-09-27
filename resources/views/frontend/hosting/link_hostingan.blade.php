@@ -33,11 +33,12 @@
         die('Gagal terhubung dengan database: ' . mysqli_connect_error());
     }
     $id_pemesanan = $hostingan->id_pemesanan;
-    $pemesanan_invitation = mysqli_query($koneksi, "SELECT * FROM  pemesanan_invitation 
+
+    $pemesanan_invitation = mysqli_query($koneksi, "SELECT pemesanan_invitation.id_pemesanan,pemesanan_invitation.id_biodata_pelanggan, detail_pemesanan_invitation.file_template FROM  pemesanan_invitation 
     LEFT JOIN detail_pemesanan_invitation ON pemesanan_invitation.id_pemesanan = detail_pemesanan_invitation.id_pemesanan 
     WHERE pemesanan_invitation.id_pemesanan = $id_pemesanan ");
+    $data_pemesanan = mysqli_fetch_assoc($pemesanan_invitation);
 
-    $data_pemesanan = mysqli_fetch_array($pemesanan_invitation);
     $id_biodata_pelanggan = $data_pemesanan['id_biodata_pelanggan'];
 
     $sql = mysqli_query($koneksi, "SELECT * FROM  biodata_pelanggan master LEFT JOIN biodata_home_page homeP ON master.id_biodata_home_page = homeP.id_biodata_home_page LEFT JOIN biodata_kutipan_ayat ayat ON master.id_kutipan_ayat = ayat.id_kutipan_ayat 
@@ -55,10 +56,15 @@
     
     $akad = $data['tanggal_akad'] . " " . $data['jam_mulai_akad'];
     $tgl = strtotime($data['tanggal_akad']);
+   
+    $file_invitation = mysqli_query($koneksi, "SELECT pemesanan_invitation.id_pemesanan,pemesanan_invitation.id_biodata_pelanggan, detail_pemesanan_invitation.file_template FROM  pemesanan_invitation 
+    LEFT JOIN detail_pemesanan_invitation ON pemesanan_invitation.id_pemesanan = detail_pemesanan_invitation.id_pemesanan 
+    WHERE pemesanan_invitation.id_pemesanan = $id_pemesanan ");
 
-    while ($pemesanan = mysqli_fetch_array($pemesanan_invitation)) {
-
+    while ($pemesanan = mysqli_fetch_array($file_invitation)) {
+        // var_dump($pemesanan);
         include (public_path('file/file_template/'. $pemesanan['file_template']))
+        
         ?>
     <?php
         }

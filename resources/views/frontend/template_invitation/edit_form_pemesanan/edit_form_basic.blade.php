@@ -10,26 +10,10 @@
         <!-- Invitation Card -->
         <section class="isi-data-undangan">
             <div class="container">
-                <h3>Dapatkan <span>Kartu Undangan</span> Kamu Sekarang Juga</h3>
+                <h3>Edit <span>Kartu Undangan</span> Kamu Sekarang Juga</h3>
                 <!-- Nav Tab -->
                 <!-- Kepala Undangan -->
                 <div class="col-lg-12 col-md-12 mx-auto kepala">
-                    {{-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <li class="nav-item col-md-3 mx-auto" role="presentation">
-                            <button class="nav-link active mx-auto" id="pills-data-undangan" data-bs-toggle="pill"
-                                data-bs-target="#pills-du" type="button" role="tab" aria-controls="pills-du"
-                                aria-selected="true">
-                                Data Undangan
-                            </button>
-                        </li>
-                        <li class="nav-item col-md-3 mx-auto" role="presentation">
-                            <button class="nav-link mx-auto" id="pills-upload-gambar" data-bs-toggle="pill"
-                                data-bs-target="#pills-ug" type="button" role="tab" aria-controls="pills-ug"
-                                aria-selected="false">
-                                Upload Gambar
-                            </button>
-                        </li>
-                    </ul> --}}
                     <!-- Isi Undangan -->
                     <div class="tab-content isi" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-du" role="tabpanel"
@@ -50,6 +34,7 @@
                                                     </p>
                                                 </button>
                                             </h2>
+
                                             <div id="flush-collapseOne" class="accordion-collapse collapse show"
                                                 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
                                                 <div class="accordion-body">
@@ -62,7 +47,7 @@
                                                                     <input type="text" id="title"
                                                                         class="form-control"
                                                                         placeholder="ex: Undangan Pernikahan"
-                                                                        value="{{ old('title') }}" autofocus />
+                                                                        value="{{ $edit_form_pemesanan->title }}" />
                                                                     <div id="validationTitle" class="invalid-feedback">
                                                                     </div>
                                                                 </div>
@@ -70,9 +55,9 @@
                                                                     <label for="wa" class="form-label">Nomor What's
                                                                         App</label>
                                                                     <input type="number" id="nomor_telepon"
-                                                                        value="{{ old('nomor_telepon') ?? '' }}"
-                                                                        class="form-control" placeholder="Nomor What's App"
-                                                                        autofocus />
+                                                                        value="{{ $edit_form_pemesanan->nomor_telepon }}"
+                                                                        class="form-control"
+                                                                        placeholder="Nomor What's App" />
                                                                     <div id="validationNomorTelepon"
                                                                         class="invalid-feedback"></div>
                                                                 </div>
@@ -84,8 +69,7 @@
                                                                     <input type="text" id="nama_panggilan_pria"
                                                                         class="form-control"
                                                                         placeholder="Nama Panggilan Pria"
-                                                                        value="{{ old('nama_panggilan_pria') ?? '' }}"
-                                                                        autofocus />
+                                                                        value="{{ $edit_form_pemesanan->nama_panggilan_pria }}" />
                                                                     <div id="validationPanggilanPria"
                                                                         class="invalid-feedback"></div>
                                                                 </div>
@@ -95,7 +79,7 @@
                                                                     <input type="text" id="nama_panggilan_wanita"
                                                                         class="form-control"
                                                                         placeholder="Nama Panggilan Wanita"
-                                                                        value="{{ old('nama_panggilan_wanita') ?? '' }}"
+                                                                        value="{{ $edit_form_pemesanan->nama_panggilan_wanita }}"
                                                                         autofocus />
                                                                     <div id="validationPanggilanWanita"
                                                                         class="invalid-feedback"></div>
@@ -107,7 +91,9 @@
                                                                 <label for="kp" class="form-label">Kata
                                                                     Pembuka</label>
                                                                 <div class="form-floating">
-                                                                    <textarea class="form-control" id="kata_pembuka" style="height: 200px; width: 100%"> Atas karunia Allah SWT izinkan Kami mengundang sekaligus mengharapkan doa restu dari bapak/ibu dalam acara pernikahan putra & putri kami. </textarea>
+                                                                    <textarea class="form-control" id="kata_pembuka" style="height: 200px; width: 100%"> 
+                                                                        {{ $edit_form_pemesanan->kata_pembuka }} 
+                                                                    </textarea>
                                                                     <div id="validationKataPembuka"
                                                                         class="invalid-feedback"></div>
                                                                 </div>
@@ -137,9 +123,7 @@
                                                             <label for="fm" class="form-label">Kutipan Ayat</label>
                                                             <div class="form-floating">
                                                                 <textarea class="form-control" placeholder="Kutipan Ayat" id="kutipan_ayat" style="height: 200px; width: 100%">
-                                                                    “Dan Allah menjadikan bagimu pasangan (suami atau istri) dari jenis kamu sendiri, menjadikan anak dan cucu bagimu dari pasanganmu, serta memberimu rezeki dari yang baik-baik. Mengapa mereka beriman kepada yang batil dan mengingkari nikmat Allah?”
-
-                                                                    QS. An Nahl Ayat 72
+                                                                    {{ $edit_form_pemesanan->kutipan_ayat }}
                                                                 </textarea>
                                                                 <div id="validationKutipanAyat" class="invalid-feedback">
                                                                 </div>
@@ -171,8 +155,7 @@
                                                                     Pria</label>
                                                                 <input type="text" id="nama_lengkap_pria"
                                                                     class="form-control" placeholder="Nama Lengkap Pria"
-                                                                    value="{{ old('nama_lengkap_pria') ?? '' }}"
-                                                                    autofocus />
+                                                                    value="{{ $edit_form_pemesanan->nama_lengkap_pria }}" />
                                                                 <div id="validationNamaLengkapPria"
                                                                     class="invalid-feedback"></div>
                                                             </div>
@@ -182,7 +165,7 @@
                                                                 <input type="text" id="putra_dari"
                                                                     class="form-control"
                                                                     placeholder="ex : Putra Pertama Dari"
-                                                                    value="{{ old('putra_dari') ?? '' }}" autofocus />
+                                                                    value="{{ $edit_form_pemesanan->putra_dari }}" />
                                                                 <div id="validationKeteranganPasanganPria"
                                                                     class="invalid-feedback"></div>
                                                             </div>
@@ -191,7 +174,7 @@
                                                                     (Mempelai Pria)</label>
                                                                 <input type="text" id="nama_bapak_pria"
                                                                     class="form-control" placeholder="Nama Ayah"
-                                                                    value="{{ old('nama_bapak_pria') ?? '' }}" autofocus />
+                                                                    value="{{ $edit_form_pemesanan->nama_bapak_pria }}" />
                                                                 <div id="validationNamaAyahPria" class="invalid-feedback">
                                                                 </div>
                                                             </div>
@@ -200,7 +183,7 @@
                                                                     (Mempelai Pria)</label>
                                                                 <input type="text" id="nama_ibu_pria"
                                                                     class="form-control" placeholder="Nama Ibu"
-                                                                    value="{{ old('nama_ibu_pria') ?? '' }}" autofocus />
+                                                                    value="{{ $edit_form_pemesanan->nama_ibu_pria }}" />
                                                                 <div id="validationNamaIbuPria" class="invalid-feedback">
                                                                 </div>
                                                             </div>
@@ -211,8 +194,7 @@
                                                                     Wanita</label>
                                                                 <input type="text" id="nama_lengkap_wanita"
                                                                     class="form-control" placeholder="Nama Lengkap Wanita"
-                                                                    value="{{ old('nama_lengkap_wanita') ?? '' }}"
-                                                                    autofocus />
+                                                                    value="{{ $edit_form_pemesanan->nama_lengkap_wanita }}" />
                                                                 <div id="validationNamaLengkapWanita"
                                                                     class="invalid-feedback"></div>
                                                             </div>
@@ -223,7 +205,7 @@
                                                                 <input type="text" id="putri_dari"
                                                                     class="form-control"
                                                                     placeholder="ex : Putri Pertama Dari"
-                                                                    value="{{ old('putri_dari') ?? '' }}" autofocus />
+                                                                    value="{{ $edit_form_pemesanan->putri_dari }}" />
                                                                 <div id="validationKeteranganPasanganWanita"
                                                                     class="invalid-feedback">
                                                                 </div>
@@ -233,8 +215,7 @@
                                                                     (Mempelai Wanita)</label>
                                                                 <input type="text" id="nama_bapak_wanita"
                                                                     class="form-control" placeholder="Nama Ayah"
-                                                                    value="{{ old('nama_bapak_wanita') ?? '' }}"
-                                                                    autofocus />
+                                                                    value="{{ $edit_form_pemesanan->nama_bapak_wanita }}" />
                                                                 <div id="validationNamaAyahWanita"
                                                                     class="invalid-feedback"></div>
                                                             </div>
@@ -243,8 +224,7 @@
                                                                     (Mempelai Wanita)</label>
                                                                 <input type="text" id="nama_ibu_wanita"
                                                                     class="form-control" placeholder="Nama Ibu"
-                                                                    value="{{ old('nama_ibu_wanita') ?? '' }}"
-                                                                    autofocus />
+                                                                    value="{{ $edit_form_pemesanan->nama_ibu_wanita }}" />
                                                                 <div id="validationNamaIbuWanita"
                                                                     class="invalid-feedback"></div>
 
@@ -275,7 +255,7 @@
                                                                 <label for="tanggal" class="form-label">Tanggal</label>
                                                                 <input type="date" id="tanggal_akad"
                                                                     class="form-control"
-                                                                    value="{{ old('tanggal_akad') ?? '' }}" autofocus />
+                                                                    value="{{ $edit_form_pemesanan->tanggal_akad }}" />
                                                                 <div id="validationTanggalAkad" class="invalid-feedback">
                                                                 </div>
                                                             </div>
@@ -287,8 +267,7 @@
                                                                         Mulai</label>
                                                                     <input type="time" id="jam_mulai_akad"
                                                                         class="form-control"
-                                                                        value="{{ old('jam_mulai_akad') ?? '' }}"
-                                                                        autofocus />
+                                                                        value="{{ $edit_form_pemesanan->jam_mulai_akad }}" />
                                                                     <div id="validationJamMulaiAkad"
                                                                         class="invalid-feedback">
                                                                     </div>
@@ -309,7 +288,10 @@
                                                                     Wilayah</label>
                                                                 <select class="form-control" id="waktu_wilayah_akad"
                                                                     aria-label="Default select example">
-                                                                    <option selected>Open this select menu</option>
+                                                                    <option
+                                                                        value="{{ $edit_form_pemesanan->waktu_wilayah_akad }}">
+                                                                        {{ $edit_form_pemesanan->waktu_wilayah_akad }}
+                                                                    </option>
                                                                     <option value="WIB">WIB</option>
                                                                     <option value="WIT">WIT</option>
                                                                     <option value="WITA">WITA</option>
@@ -328,7 +310,7 @@
                                                                     Undangan
                                                                     Online)</label>
                                                                 <div class="form-floating">
-                                                                    <textarea class="form-control" id="lokasi_akad"></textarea>
+                                                                    <textarea class="form-control" id="lokasi_akad">{{ $edit_form_pemesanan->lokasi_akad }}</textarea>
                                                                     <label for="floatingTextarea">ex : Jl. Khatib Sulaiman
                                                                         Kel
                                                                         No.1,Lolong
@@ -363,8 +345,7 @@
                                                                 <label for="tanggal" class="form-label">Tanggal</label>
                                                                 <input type="date" id="tanggal_resepsi"
                                                                     class="form-control"
-                                                                    value="{{ old('tanggal_resepsi') ?? '' }}"
-                                                                    autofocus />
+                                                                    value="{{ $edit_form_pemesanan->tanggal_resepsi }}" />
                                                                 <div id="validationTanggalResepsi"
                                                                     class="invalid-feedback">
                                                                 </div>
@@ -377,8 +358,7 @@
                                                                         Mulai</label>
                                                                     <input type="time" id="jam_mulai_resepsi"
                                                                         class="form-control"
-                                                                        value="{{ old('jam_mulai_resepsi') ?? '' }}"
-                                                                        autofocus />
+                                                                        value="{{ $edit_form_pemesanan->jam_mulai_resepsi }}" />
                                                                     <div id="validationJamMulaiResepsi"
                                                                         class="invalid-feedback"></div>
                                                                 </div>
@@ -398,7 +378,10 @@
                                                                     Wilayah</label>
                                                                 <select class="form-control" id="waktu_wilayah_resepsi"
                                                                     aria-label="Default select example">
-                                                                    <option selected>Open this select menu</option>
+                                                                    <option
+                                                                        value="{{ $edit_form_pemesanan->waktu_wilayah_resepsi }}">
+                                                                        {{ $edit_form_pemesanan->waktu_wilayah_resepsi }}
+                                                                    </option>
                                                                     <option value="WIB">WIB</option>
                                                                     <option value="WIT">WIT</option>
                                                                     <option value="WITA">WITA</option>
@@ -415,7 +398,9 @@
                                                                 Undangan
                                                                 Online)</label>
                                                             <div class="form-floating">
-                                                                <textarea class="form-control" id="lokasi_resepsi" id="floatingTextarea" style="height: 80px; width: 100%"></textarea>
+                                                                <textarea class="form-control" id="lokasi_resepsi" id="floatingTextarea" style="height: 80px; width: 100%">
+                                                                    {{ $edit_form_pemesanan->lokasi_resepsi }}
+                                                                </textarea>
                                                                 <label for="floatingTextarea">ex : Jl. Khatib Sulaiman Kel
                                                                     No.1,Lolong
                                                                     Belanti,
@@ -450,8 +435,7 @@
                                                                 <label for="tanggal" class="form-label">Tanggal</label>
                                                                 <input type="date" id="tanggal_resepsi_2"
                                                                     class="form-control"
-                                                                    value="{{ old('tanggal_resepsi_2') ?? '' }}"
-                                                                    autofocus />
+                                                                    value="{{ $edit_form_pemesanan->tanggal_resepsi_2 }}" />
                                                                 <div id="validationTanggalResepsi2"
                                                                     class="invalid-feedback">
                                                                 </div>
@@ -464,8 +448,7 @@
                                                                         Mulai</label>
                                                                     <input type="time" id="jam_mulai_resepsi_2"
                                                                         class="form-control"
-                                                                        value="{{ old('jam_mulai_resepsi_2') ?? '' }}"
-                                                                        autofocus />
+                                                                        value="{{ $edit_form_pemesanan->jam_mulai_resepsi_2 }}" />
                                                                     <div id="validationJamMulaiResepsi2"
                                                                         class="invalid-feedback"></div>
                                                                 </div>
@@ -485,7 +468,10 @@
                                                                     Wilayah</label>
                                                                 <select class="form-control" id="waktu_wilayah_resepsi_2"
                                                                     aria-label="Default select example">
-                                                                    <option selected>Open this select menu</option>
+                                                                    <option
+                                                                        value="{{ $edit_form_pemesanan->waktu_wilayah_resepsi2 }}">
+                                                                        {{ $edit_form_pemesanan->waktu_wilayah_resepsi2 }}
+                                                                    </option>
                                                                     <option value="WIB">WIB</option>
                                                                     <option value="WIT">WIT</option>
                                                                     <option value="WITA">WITA</option>
@@ -502,7 +488,9 @@
                                                                 Undangan
                                                                 Online)</label>
                                                             <div class="form-floating">
-                                                                <textarea class="form-control" id="lokasi_resepsi_2" id="floatingTextarea" style="height: 80px; width: 100%"></textarea>
+                                                                <textarea class="form-control" id="lokasi_resepsi_2" id="floatingTextarea" style="height: 80px; width: 100%">
+                                                                    {{ $edit_form_pemesanan->lokasi_resepsi_2 }}
+                                                                </textarea>
                                                                 <label for="floatingTextarea">ex : Jl. Khatib Sulaiman Kel
                                                                     No.1,Lolong
                                                                     Belanti,
@@ -537,11 +525,17 @@
                                                             <div class="mb-3">
                                                                 <label for="lagu" class="form-label">Masukkan Lagu
                                                                     Pernikahan (Upload Lagu Mu Sendiri)</label>
-                                                                <input type="file" id="musik1"
-                                                                    class="form-control" />
-
-                                                                <div id="validationMusik" class="invalid-feedback">
-                                                                </div>
+                                                                <input type="file" id="musik1" class="form-control"
+                                                                    value="{{ $edit_form_pemesanan->musik }}" />
+                                                                <br>
+                                                                <label for="lagu" class="form-label">Lagu Yang Sudah
+                                                                    Kamu Upload</label>
+                                                                <br>
+                                                                <audio controls>
+                                                                    <source
+                                                                        src="{{ asset("user_page/template/public/biodata_pelanggan/musik/$edit_form_pemesanan->musik") }}"
+                                                                        type="audio/mpeg">
+                                                                </audio>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -577,12 +571,9 @@
 
                                                     <div class="mb-3">
                                                         <label for="kpm" class="form-label">Nama Link :</label>
-                                                        <input type="text" id="link_hosting" class="form-control"
-                                                            placeholder="ex : Nama LINK" />
-
-                                                        <input type="hidden" id="IdpreviewTemplate"
-                                                            value="{{ $datas->id_preview_template_pemesanan }}"
-                                                            class="form-control" />
+                                                        <input type="text" id="link_hosting"
+                                                            value="{{ $edit_form_pemesanan->link_hosting }}"
+                                                            class="form-control" placeholder="ex : Nama LINK" />
 
                                                         <div id="validationNamaLink" class="invalid-feedback"></div>
                                                     </div>
@@ -613,7 +604,6 @@
                                     <div class="daftar-gambar">
                                         <iframe src="{{ $datas->link_hosting }}" frameborder="0" width="100%"
                                             height="100%"></iframe>
-                                        {{-- <iframe src="" frameborder="0" width="100%" height="100%"></iframe> --}}
                                     </div>
                                 </div>
                                 <!-- End Kanan -->
@@ -625,8 +615,6 @@
             </div>
         </section>
         <!-- End Invitation Card -->
-
-
 
     </form>
 
@@ -680,7 +668,6 @@
             let musik1 = document.getElementById('musik1');
             let nama_instagram = document.getElementById('nama_instagram');
             let link_hosting = document.getElementById('link_hosting');
-            let IdpreviewTemplate = document.getElementById('IdpreviewTemplate');
 
             const formData = new FormData()
             formData.append("title", title.value)
@@ -718,8 +705,7 @@
             formData.append("musik1", musik1.files[0])
             formData.append("nama_instagram", nama_instagram.value)
             formData.append("link_hosting", link_hosting.value)
-            formData.append("IdpreviewTemplate", IdpreviewTemplate.value)
-            axios.post("{{ route('data_undangan_store_basic', $kategori) }}", formData)
+            axios.post("{{ route('store_form_pemesanan', $edit_form_pemesanan->id_pemesanan) }}", formData)
                 .then(function(response) {
                     if (response.status == 200) {
                         const data = response.data
@@ -837,14 +823,6 @@
                                 validationMusik.style.display = "block"
                             }
 
-                            if (dataError.nama_instagram) {
-                                let validationNamaInstagram = document.getElementById(
-                                    'validationNamaInstagram')
-                                nama_instagram.classList.add("is-invalid")
-                                validationNamaInstagram.innerText = dataError.nama_instagram[0]
-                                validationNamaInstagram.style.display = "block"
-                            }
-
                             if (dataError.link_hosting) {
                                 let validationNamaLink = document.getElementById(
                                     'validationNamaLink')
@@ -861,7 +839,7 @@
                                 timer: 1000
                             }).then(function() {
                                 window.location.href =
-                                    "{{ route('data_gambar', $id_template) }}"
+                                    "{{ route('edit_form_gambar', $id_pemesanan) }}"
                             })
                         }
                     }

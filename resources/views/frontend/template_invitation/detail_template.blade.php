@@ -27,25 +27,27 @@
     <form id="formPemesanan" method="POST" enctype="multipart/form-data"
         action="{{ route('pemesanan_template', $id_template) }}">
         @csrf
-        <section>
-            <div class="container">
-                <!-- Header -->
-                <div class="kepala">
-                    <div class="logo">
-                        <img src="{{ asset('user_page/template/public/img/logo.png') }}" alt="Logo">
-                        <span>Custom Template</span>
-                    </div>
-
-                    <button type="submit" class="btn"
-                        style="background: var(--warna1); color: var(--warna2)">Selesai</button>
+        <div class="container">
+            <!-- Header -->
+            <div class="kepala">
+                <div class="logo">
+                    <img src="{{ asset('user_page/template/public/img/logo.png') }}" alt="Logo">
+                    <span>Custom Template</span>
                 </div>
+
+                <button type="submit" class="btn"
+                    style="background: var(--warna1); color: var(--warna2)">Selesai</button>
             </div>
-        </section>
-
-        <div class="data">
-
         </div>
 
+        <div class="container">
+            <ul class="sidebar">
+                <!-- Isi Sidebar -->
+            </ul>
+            <div class="data">
+                <!-- Isi Data -->
+            </div>
+        </div>
         <!-- End Isi -->
     </form>
 
@@ -66,54 +68,58 @@
                 })
                 .then((response) => {
                     let data = response.data
-                    console.log(data);
                     data.forEach(element => {
                         if (element.isActive == '1') {
+                            document.querySelector('.sidebar').innerHTML += `
+                            
+                            <li class="field-button-tambah-${element.id_file_template}"> </li>
+                            <li class="icon">
+                                <a href="#">
+                                    <img src="{{ asset('gambar/icon_template/${element.id_sub_kategori.icon}') }}" alt="Icon Template">
+                                </a>
+                            </li>
+                            `
                             document.querySelector('.data').innerHTML += `
-            <ul>
-                <li>
-                    <a href="#"><img src="{{ asset('gambar/icon_template/${element.id_sub_kategori.icon}') }}" alt=""></a>
-                </li>
-                <li class="field-button-tambah-${element.id_file_template}">
-
-                </li>
-            </ul>
-            
-            <section class="isi_${element.id_file_template}">
-                <div class="container" id="template_${element.id_file_template}">
-                    <input type="hidden" name="id_template" class="form-control" id="id_template" width="100" value="${element.id_template}">
-                    <input type="hidden" name="file_template[]" class="form-control" id="file_template" width="100" value="${element.file}">
-                    <input type="hidden" name="id_user" class="form-control" id="file_template" width="100" value="${id_user}">
-                    <input type="hidden" name="keterangan_aktif[]" class="form-control" id="keterangan_aktif" width="100" value="${element.isActive}">
-                    <input type="hidden" name="keterangan_file[]" class="form-control" id="keterangan_file" width="100" value="${element.keterangan}">
-                    <button type="button" onclick="hapusTemplate(this)" id="${element.id_file_template}" class="badge badge-sm bg-danger mt-2"><i class="bi bi-trash"></i></button>
-                    <img src="{{ asset('gambar/gambar_template/${element.gambar_template}') }}" alt="Gambar Template">
-                </div>
-            </section>
-            `
-
+                
+                <section class="isi_${element.id_file_template}">
+                    <div class="container" id="template_${element.id_file_template}">
+                        <input type="hidden" name="id_template" class="form-control" id="id_template" width="100" value="${element.id_template}">
+                        <input type="hidden" name="file_template[]" class="form-control" id="file_template" width="100" value="${element.file}">
+                        <input type="hidden" name="id_user" class="form-control" id="file_template" width="100" value="${id_user}">
+                        <input type="hidden" name="keterangan_aktif[]" class="form-control" id="keterangan_aktif" width="100" value="${element.isActive}">
+                        <input type="hidden" name="keterangan_file[]" class="form-control" id="keterangan_file" width="100" value="${element.keterangan}">
+                        <div class="data-template d-flex justify-content-start align-items-start">
+                            <div class="gambar">
+                                <img src="{{ asset('gambar/gambar_template/${element.gambar_template}') }}" alt="Gambar Template" class="gambar-template">
+                            </div>
+                            <div class="tombol">
+                                <button type="button" onclick="hapusTemplate(this)" id="${element.id_file_template}" class="hapus"><i class="bi bi-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                `
                         } else {
+                            document.querySelector('.sidebar').innerHTML += `
+                                <li class="icon">
+                                    <a href="#">
+                                        <img src="{{ asset('gambar/icon_template/${element.id_sub_kategori.icon}') }}" alt="Icon template">
+                                    </a>
+                                </li>
+                                `
                             document.querySelector('.data').innerHTML += `
-            <ul>
-                <li>
-                    <a href="#"><img src="{{ asset('gambar/icon_template/${element.id_sub_kategori.icon}') }}" alt=""></a>
-                </li>
-                <li class="field-button-tambah-${element.id_file_template}">
-
-                </li>
-            </ul>
-            
-            <section class="isi_${element.id_file_template}">
-                <div class="container" id="template_${element.id_file_template}">
-                    <input type="hidden" name="id_template" class="form-control" id="id_template" width="100" value="${element.id_template}">
-                    <input type="hidden" name="file_template[]" class="form-control" id="file_template" width="100" value="${element.file}">
-                    <input type="hidden" name="id_user" class="form-control" id="file_template" width="100" value="${id_user}">
-                    <input type="hidden" name="keterangan_aktif[]" class="form-control" id="keterangan_aktif" width="100" value="${element.isActive}">
-                    <input type="hidden" name="keterangan_file[]" class="form-control" id="keterangan_file" width="100" value="${element.keterangan}">
-                    <img src="{{ asset('gambar/gambar_template/${element.gambar_template}') }}" alt="Gambar Template">
-                </div>
-            </section>
-            `
+                
+                <section class="isi_${element.id_file_template}">
+                    <div class="container" id="template_${element.id_file_template}">
+                        <input type="hidden" name="id_template" class="form-control" id="id_template" width="100" value="${element.id_template}">
+                        <input type="hidden" name="file_template[]" class="form-control" id="file_template" width="100" value="${element.file}">
+                        <input type="hidden" name="id_user" class="form-control" id="file_template" width="100" value="${id_user}">
+                        <input type="hidden" name="keterangan_aktif[]" class="form-control" id="keterangan_aktif" width="100" value="${element.isActive}">
+                        <input type="hidden" name="keterangan_file[]" class="form-control" id="keterangan_file" width="100" value="${element.keterangan}">
+                        <img src="{{ asset('gambar/gambar_template/${element.gambar_template}') }}" alt="Gambar Template">
+                    </div>
+                </section>
+                `
                         }
                     });
 
@@ -127,8 +133,10 @@
             isi.remove();
 
             document.querySelector(`.field-button-tambah-${e.id}`).innerHTML = `
-                <button type="button" class="btn btn-primary btn-tambah_${e.id}" onclick="tambahTemplate(this)" id="${e.id}">Tambah</button>
-            `
+            <div class="test">
+                    <button type="button" class="btn btn-primary btn-tambah_${e.id}" onclick="tambahTemplate(this)" id="${e.id}"><i class="bi bi-plus"></i></button>
+            </div>
+                    `
         }
 
         function tambahTemplate(e) {
@@ -140,16 +148,23 @@
                 .then((response) => {
                     let data = response.data
                     document.querySelector(`.isi_${e.id}`).innerHTML = `
-                    <div class="container" id="template_${data.id_file_template}">
-                        <input type="hidden" name="id_template" class="form-control" id="id_template" value="${data.id_template}">
-                        <input type="hidden" name="file_template[]" class="form-control" id="file_template" value="${data.file}">
-                        <input type="hidden" name="id_user" class="form-control" id="file_template" width="100" value="${id_user}">
-                        <input type="text" name="keterangan_aktif[]" class="form-control" id="keterangan_aktif" width="100" value="${data.isActive}">
-                        <input type="text" name="keterangan_file[]" class="form-control" id="keterangan_file" width="100" value="${data.keterangan}">
-                        <button type="button" onclick="hapusTemplate(this)" id="${data.id_file_template}" class="badge badge-sm bg-danger mt-2"><i class="bi bi-trash"></i></button>
-                        <img src="{{ asset('gambar/gambar_template/${data.gambar_template}') }}" alt="Gambar Template">
-                    </div>
-                `
+                        <div class="container" id="template_${data.id_file_template}">
+                            <input type="hidden" name="id_template" class="form-control" id="id_template" value="${data.id_template}">
+                            <input type="hidden" name="file_template[]" class="form-control" id="file_template" value="${data.file}">
+                            <input type="hidden" name="id_user" class="form-control" id="file_template" width="100" value="${id_user}">
+                            <input type="hidden" name="keterangan_aktif[]" class="form-control" id="keterangan_aktif" width="100" value="${data.isActive}">
+                            <input type="hidden" name="keterangan_file[]" class="form-control" id="keterangan_file" width="100" value="${data.keterangan}">
+                        
+                            <div class="data-template d-flex justify-content-start align-items-start">
+                                <div class="gambar">
+                                    <img src="{{ asset('gambar/gambar_template/${data.gambar_template}') }}" alt="Gambar Template">
+                                </div>
+                                <div class="tombol">
+                                    <button type="button" onclick="hapusTemplate(this)" id="${data.id_file_template}" class="hapus"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    `
                     document.querySelector(`.btn-tambah_${data.id_file_template}`).remove()
 
                 })

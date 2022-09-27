@@ -24,18 +24,26 @@
                     </div>
                     @if (isset($biodata_pelanggan))
                         <div class="col-lg-4 isi">
-                            <p class="mb-4">Selamat Datang,</p>
-                            <h4 class="pengantin my-4">
+                            <p class="mb-3">Selamat Datang,</p>
+                            <h4 class="pengantin my-2">
                                 {{ $biodata_pelanggan->nama_pria }} & {{ $biodata_pelanggan->nama_wanita }}
                             </h4>
                             Link Hosting :
-                            <a href="{{ route('hostingan_user', $biodata_pelanggan->link_hosting) }}"
-                                target="_blank">{{ $biodata_pelanggan->link_hosting }}
-                            </a>
-                            <br />
+                            @if ($biodata_pelanggan->status == 'pending')
+                                <a href="{{ route('pemesanan_saya') }}" class="">Silahkan melakukan Pembayaran
+                                    Disini</a>
+                            @else
+                                <a href="{{ route('hostingan_user', $biodata_pelanggan->link_hosting) }}"
+                                    target="_blank">{{ $biodata_pelanggan->link_hosting }}
+                                </a>
+                            @endif
+                            {{-- <br /> --}}
                             <p class="kategori">Kategori : <b>{{ $biodata_pelanggan->kategori_template }}</b></p>
                             <div class="pas">
-                                <button class="btn preview">Preview</button>
+
+                                <form action="{{ route('pemesanan_saya') }}">
+                                    <button class="btn preview">Lihat Pesanan</button>
+                                </form>
                             </div>
                             <div class="bagikan mt-4">
                                 <p>

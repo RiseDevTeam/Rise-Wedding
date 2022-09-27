@@ -18,6 +18,7 @@ use App\Http\Controllers\User\TemplateInvitation\PemesananTemplate;
 use App\Http\Controllers\Admin\Pembayaran\PembayaranAdminController;
 use App\Http\Controllers\User\PemesananSaya\PemesananSayaController;
 use App\Http\Controllers\Admin\Template\TemplateInvitationController;
+use App\Http\Controllers\User\TemplateInvitation\EditFormPemesananController;
 use App\Http\Controllers\User\TemplateInvitation\PemesananGambarController;
 
 /*
@@ -37,7 +38,7 @@ use App\Http\Controllers\User\TemplateInvitation\PemesananGambarController;
 
 
 Route::get('/', [HomePageController::class, 'home_page'])->name('/');
-Route::get('rise-wedding/{link_hosting}', [LinkHostingController::class, 'hostingan_user'])->name('hostingan_user');
+Route::get('undangan/{link_hosting}', [LinkHostingController::class, 'hostingan_user'])->name('hostingan_user');
 // Route::get('rise-wedding/{link_hosting}', [LinkHostingController::class, 'hostingan_pesanan_saya'])->name('hostingan_pesanan_saya');
 
 Route::get('preview-blog', function () {
@@ -78,17 +79,20 @@ Route::middleware(['auth'])->group(function () {
         });
         Route::prefix('template_invitation_gambar')->group(function () {
             Route::get('data-gambar/{id_template}', [PemesananGambarController::class, 'data_gambar'])->name('data_gambar');
-            // Route::POST('form-data-gambar/{idTemplate}', [PemesananGambarController::class, 'form_data_gambar'])->name('form_data_gambar');
             Route::POST('data-gambar', [PemesananGambarController::class, 'data_gambar_basic'])->name('data_gambar_basic');
             Route::POST('data_gambar_premium', [PemesananGambarController::class, 'data_gambar_premium'])->name('data_gambar_premium');
         });
         Route::prefix('pembayaran')->group(function () {
-            Route::get('pembayaran_template/{id_template}', [PembayaranController::class, 'pembayaran_template'])->name('pembayaran_template');
+            Route::get('pembayaran_template/{idPemesanan}', [PembayaranController::class, 'pembayaran_template'])->name('pembayaran_template');
             Route::POST('pembayaran_template_store', [PembayaranController::class, 'pembayaran_template_store'])->name('pembayaran_template_store');
         });
 
         Route::prefix('pemesanan-saya')->group(function () {
             Route::get('pemesanan_saya', [PemesananSayaController::class, 'pemesanan_saya'])->name('pemesanan_saya');
+            Route::get('edit-form-pemesanan/{id_pemesanan}', [EditFormPemesananController::class, 'edit_form_pemesanan'])->name('edit_form_pemesanan');
+            Route::POST('edit-form-pemesanan/{id_pemesanan}', [EditFormPemesananController::class, 'store_form_pemesanan'])->name('store_form_pemesanan');
+            Route::get('edit-form-gambar/{id_pemesanan}', [EditFormPemesananController::class, 'edit_form_gambar'])->name('edit_form_gambar');
+            Route::POST('edit-form-gambar/{id_pemesanan}', [EditFormPemesananController::class, 'update_form_gambar'])->name('update_form_gambar');
         });
     });
 

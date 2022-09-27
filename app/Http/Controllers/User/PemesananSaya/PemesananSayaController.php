@@ -50,6 +50,7 @@ class PemesananSayaController extends Controller
                 'template_invitation.gambar_cover',
                 'pemesanan_invitation.kategori_template',
                 'pemesanan_invitation.link_hosting',
+                'pemesanan_invitation.id_pemesanan',
                 'pembayaran_invitation.status as status_pembayaran',
                 'pemesanan_invitation.status as status_pemesanan',
                 'biodata_pasangan_pria.nama_lengkap_pria as nama_pria',

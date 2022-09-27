@@ -28,6 +28,7 @@ class CreateBiodataPelangganTable extends Migration
             $table->bigInteger('id_keluarga_besar_wanita')->nullable();
             $table->bigInteger('id_musik')->nullable();
             $table->bigInteger('nomor_telepon');
+            $table->string('nama_instagram', '70');
             $table->timestamps();
         });
     }
