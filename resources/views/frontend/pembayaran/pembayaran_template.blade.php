@@ -25,12 +25,12 @@
     <section class="paket">
         <img src="{{ asset('user_page/template/public/img/daun3.png') }} " class="daun-atas" alt="Daun Atas">
         <div class="container">
-            <h5 class="tpp">Pilih Paket</h5>
+            <h5 class="tpp"></h5>
             <div class="row align-items-center">
                 <!-- Harga -->
                 <div class="col-lg-4 col-md-4 harga">
                     <button class="btn card premium">
-                        <span>{{ $TemplateInvitation->kategori }}</span>
+                        <span> Paket : {{ $TemplateInvitation->kategori }}</span>
                         <h2>Rp. {{ number_format($TemplateInvitation->harga) }}</h1>
                     </button>
                 </div>
@@ -42,18 +42,17 @@
                         <h5>Benefit Premium :</h5>
                         <div class="row">
                             <div class="col-md-12">
-                                @foreach ($RincianKetegoriTemplate as $RincianKetegori)
-                                    {{-- <span> --}}
-                                    <ul>
+                                {{-- <span> --}}
+                                <ul>
+                                    @foreach ($RincianKetegoriTemplate as $RincianKetegori)
                                         <li>
-                                            <span></span>
-                                            {{-- tambahkan button <p> pada css supaya bisa ke bawah --}}
-                                            {{ $RincianKetegori->rincian_kategori_template }}
-                                            {{-- {{ $RincianKetegori->rincian_kategori_template }} --}}
+                                            <span>
+                                                {!! $RincianKetegori->rincian_kategori_template !!}
+                                            </span>
                                         </li>
-                                    </ul>
-                                    {{-- </span> --}}
-                                @endforeach
+                                    @endforeach
+                                </ul>
+                                {{-- </span> --}}
                             </div>
                         </div>
                     </div>
@@ -124,14 +123,16 @@
                     </div>
                 </div>
             </div>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn ubp">Upload Bukti
+            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                class="btn ubp mt-4 mb-4">Upload
+                Bukti
                 Pembayaran</button>
-            <p>
-                <button type="submit" class="btn ubp"> Selesai Pembayaran </button>
+            <br>
+            <button type="submit" class="btn ubp"> Selesai Pembayaran </button>
 
-                <img src="{{ asset('user_page/template/public/img/daun3.png') }}" class="daun-bawah" alt="Daun Bawah">
+            <img src="{{ asset('user_page/template/public/img/daun3.png') }}" class="daun-bawah" alt="Daun Bawah">
 
-                <!-- Modal -->
+            <!-- Modal -->
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                 tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">

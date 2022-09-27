@@ -30,6 +30,7 @@ class HomePageController extends Controller
             ->leftjoin('biodata_pasangan_wanita', 'biodata_pelanggan.id_pasangan_wanita', '=', 'biodata_pasangan_wanita.id_pasangan_wanita')
             ->select(
                 'pemesanan_invitation.kategori_template',
+                'pemesanan_invitation.status',
                 'pemesanan_invitation.link_hosting',
                 'biodata_pasangan_pria.nama_lengkap_pria as nama_pria',
                 'biodata_pasangan_wanita.nama_lengkap_wanita as nama_wanita',

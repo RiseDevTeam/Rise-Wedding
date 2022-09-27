@@ -216,7 +216,31 @@ section.pesanan .card .isi .daftar-button .bpas button {
   -o-border-radius: var(--lengkungO);
 }
 
+section.pesanan .card .isi .daftar-button .bpas a {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  background-color: var(--warna1);
+  color: var(--warna2);
+  padding: 0.5rem 1rem;
+  border-radius: var(--lengkungO);
+  -webkit-border-radius: var(--lengkungO);
+  -moz-border-radius: var(--lengkungO);
+  -ms-border-radius: var(--lengkungO);
+  -o-border-radius: var(--lengkungO);
+}
+
 section.pesanan .card .isi .daftar-button button.uab {
+  background-color: var(--warna1);
+  color: var(--warna2);
+  padding: 0.5rem 1rem;
+  border-radius: var(--lengkungO);
+  -webkit-border-radius: var(--lengkungO);
+  -moz-border-radius: var(--lengkungO);
+  -ms-border-radius: var(--lengkungO);
+  -o-border-radius: var(--lengkungO);
+}
+
+section.pesanan .card .isi .daftar-button a.uab {
   background-color: var(--warna1);
   color: var(--warna2);
   padding: 0.5rem 1rem;

@@ -16,10 +16,10 @@ class CreateDetailPemesananInvitationTable extends Migration
         Schema::create('detail_pemesanan_invitation', function (Blueprint $table) {
             $table->bigIncrements('id_detail_pemesanan');
             $table->bigInteger('id_pemesanan');
-            $table->bigInteger('id_template')->nullable();
-            $table->bigInteger('id_video')->nullable();
             $table->string('file_template', '50')->nullable();
             $table->string('file_vidio')->nullable();
+            $table->integer('isActive');
+            $table->string('keterangan_file', '30');
             $table->timestamps();
         });
     }
