@@ -41,12 +41,16 @@ header .user li.dropdown:hover .dropdown-content {
 /* Sidebar */
 .sidebar {
     z-index: 9999;
-    background: var(--warna1);
     box-shadow: 0 0 3px var(--warna6);
-    padding: 1rem 0;
+    list-style: none;
+    padding-top: 15px;
+    padding-left: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
     position: fixed;
-    left: 17px;
-    top: 150px;
+    left: 25px;
+    top: 80px;
     border-radius: var(--lengkung);
     -webkit-border-radius: var(--lengkung);
     -moz-border-radius: var(--lengkung);
@@ -54,20 +58,69 @@ header .user li.dropdown:hover .dropdown-content {
     -o-border-radius: var(--lengkung);
 }
 
-.sidebar ul {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 0;
+.sidebar li {
+    max-width: 5rem;
 }
 
-.sidebar ul li {
-    text-align: center;
-    padding: 1rem 0;
+.sidebar li a {
+    margin: 0.5rem auto;
+    max-width: 5rem;
+}
+
+.sidebar li a img {
+    max-width: 50%;
+    margin-bottom: 1rem;
+}
+
+/* Data */
+.data .data-template .tombol {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 80px;
+}
+
+.data .data-template .tombol button {
+    /* border-radius: var(--lengkungO);
+    -webkit-border-radius: var(--lengkungO);
+    -moz-border-radius: var(--lengkungO);
+    -ms-border-radius: var(--lengkungO);
+    -o-border-radius: var(--lengkungO); */
+    border: none;
+    /* background-color: var(--warna1); */
+    background-color: red;
     color: var(--warna2);
 }
+.test{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 50px;
+    height:10px;
+}
+.btn-primary{
+    border-radius: var(--lengkungO);
+    -webkit-border-radius: var(--lengkungO);
+    -moz-border-radius: var(--lengkungO);
+    -ms-border-radius: var(--lengkungO);
+    -o-border-radius: var(--lengkungO);
+    border: none;
+    background-color: var(--warna1);
+    color: var(--warna2);
+}
+.data .data-template .tombol i {
+    padding: 0 5px;
+    font-size: 20px;
+}
 
-.sidebar ul li a img {
-    max-width: 40%;
+.data .data-template .tombol .hapus {
+    margin-top: 100px;
+    margin-bottom: 10px;
+}
+
+.data img.gambar-template {
+    max-width: 100%;
+    height: auto;
 }
 
 /* Kepala */
@@ -85,7 +138,7 @@ header .user li.dropdown:hover .dropdown-content {
 }
 
 .kepala .logo img {
-   max-width: 25%; 
+    max-width: 25%;
 }
 
 .kepala .logo span {

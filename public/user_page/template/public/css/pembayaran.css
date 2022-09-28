@@ -21,7 +21,6 @@
 .paket h5.tpp {
   color: var(--warna1);
   margin-top: 3rem;
-  margin-bottom: 1rem;
   font-weight: bold;
 }
 
@@ -97,6 +96,7 @@
 .paket .benefitpre .card {
   box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
   padding: 0.85rem;
+  margin-right: 10rem;
   border: 2px solid var(--warna1);
   border-radius: var(--lengkung);
   -webkit-border-radius: var(--lengkung);
@@ -114,7 +114,7 @@
 
 .paket .benefitbas .card ul,
 .paket .benefitpre .card ul {
-  padding-left: 0;
+  padding-left: 5;
 }
 
 .paket .benefitbas .card ul li, 
@@ -127,16 +127,9 @@
 
 .paket .benefitbas .card ul li span, 
 .paket .benefitpre .card ul li span {
-  width: 20px;
-  height: 20px;
-  padding-right: 1rem;
+  padding-right: 5rem;
   margin-right: 1rem;
-  background-color: var(--warna1);
-  border-radius: var(--lengkungO);
-  -webkit-border-radius: var(--lengkungO);
-  -moz-border-radius: var(--lengkungO);
-  -ms-border-radius: var(--lengkungO);
-  -o-border-radius: var(--lengkungO);
+  
 }
 
 .accordion-header {
@@ -277,7 +270,6 @@
 }
 
 .bayar button.ubp {
-  margin: 2rem auto;
   padding: 0.5rem;
   background-color: var(--warna1);
   color: var(--warna2);
