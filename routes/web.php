@@ -148,6 +148,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('pembayaran', [PembayaranAdminController::class, 'index'])->name('data-pembayaran');
         Route::PUT('pembayaran/setujui/{id}', [PembayaranAdminController::class, 'setujui'])->name('data-pembayaran.setujui');
         Route::PUT('pembayaran/tolak/{id}', [PembayaranAdminController::class, 'tolak'])->name('data-pembayaran.tolak');
+    
+        Route::get('getNewPesanan', [PemesananAdminController::class, 'getNewPesanan'])->name('new-pesanan');
+    
     });
     Route::get('logout', [GoogleController::class, 'logout'])->name('logout');
 });

@@ -164,12 +164,17 @@
             <li class="nav-item">
                 <a class="nav-link {{ set_active('data-pemesanan') }}" href="{{ route('data-pemesanan') }}">
                     <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-bag-check-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
-                        </svg>
+                        class="btn-primary position-relative icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill=""
+                                class="bi bi-bag-check-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+                            </svg>
+                            <span id="angka" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                99+
+                            </span>
+                        
                     </div>
                     <span class="nav-link-text ms-1">Pesanan</span>
                 </a>
@@ -216,4 +221,31 @@
             href="https://www.creative-tim.com/product/soft-ui-dashboard-pro?ref=sidebarfree" type="button">Upgrade
             to pro</a>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+    <script>
+
+    newPesanan();
+
+    function newPesanan(){
+        document.getElementById('angka').innerHTML = '';
+
+        axios.get("{{ route('new-pesanan') }}")
+        .then((response) => {
+            let data = response.data;
+            // console.log(response.data)
+
+            if(data !== 0){
+                document.querySelector('#angka').innerHTML = data
+            }
+
+        }).catch(function (error) {
+        // handle error
+        console.log(error);
+    });
+    }
+
+</script>
 </aside>
+
+
