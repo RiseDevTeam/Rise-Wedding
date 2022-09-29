@@ -64,6 +64,7 @@
                                                 <a href="{{ route('hostingan_user', $pesananSaya->link_hosting) }}"
                                                     target="_blank" class="text-primary">Link Hosting :
                                                     {{ $pesananSaya->link_hosting }} </a>
+                                                <br>
                                             @endif
                                         </div>
                                         <div class="bagikan">
@@ -81,7 +82,6 @@
                                             </h4>
                                         </div>
 
-                                        {{-- @dd(Crypt::encrypt($pesananSaya->id_pemesanan)) --}}
                                         <div class="daftar-button">
                                             <div class="bpas">
                                                 {{-- <button class="btn">
@@ -91,6 +91,9 @@
                                                     class="btn" target="_blank">Preview</a>
                                                 <a href="{{ route('edit_form_pemesanan', Crypt::encrypt($pesananSaya->id_pemesanan)) }}"
                                                     class="btn">Sunting</a>
+                                                <a class="btn"
+                                                    href="{{ route('upload_tamu_undangan', $pesananSaya->link_hosting) }}">
+                                                    Tamu Undangan</a>
                                                 {{-- <button class="btn">
                                                     Sunting
                                                 </button> --}}

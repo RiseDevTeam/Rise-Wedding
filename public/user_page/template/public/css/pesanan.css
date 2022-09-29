@@ -127,6 +127,19 @@ section.pesanan .card .isi .kas span {
 section.pesanan .card .isi .npalw a {
   color: var(--warna3);
 }
+
+/* For Template Wedding */
+section.pesanan .card .isi .npalw a.btn {
+  margin-top: 10px;
+  background-color: var(--warna1);
+  color: var(--warna2);
+  padding: 0.5rem 1rem;
+  border-radius: var(--lengkungO);
+  -webkit-border-radius: var(--lengkungO);
+  -moz-border-radius: var(--lengkungO);
+  -ms-border-radius: var(--lengkungO);
+  -o-border-radius: var(--lengkungO);
+}
 /* End For Template Wedding */
 
 /* For Video Wedding */

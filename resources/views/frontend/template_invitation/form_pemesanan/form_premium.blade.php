@@ -1,8 +1,11 @@
 @extends('layouts.user')
 @section('css_khusus')
     <link rel="stylesheet" href="{{ asset('user_page/template/public/css/data-undangan.css') }}" />
+
 @section('title', 'Template Invitation')
 @section('content_user')
+
+
     <form method="POST" id="form-biodata-pelanggan" enctype="multipart/form-data">
         @csrf
         <!-- Invitation Card -->
@@ -674,8 +677,11 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -688,12 +694,12 @@
                                             height="100%"></iframe>
                                     </div> --}}
                                     {{-- id="nama_keluarga_wanita" --}}
-                                    {{-- <textarea class="ckeditor" id="ckedtor"></textarea> --}}
+                                    <textarea class="editor1" id="editor1"></textarea>
                                     {{-- <textarea name="nama_keluarga_wanita" id="nama_keluarga_wanita" style="height: 200px; width: 100%"></textarea> --}}
-                                    <textarea name="editor1" id="editor1" rows="10" cols="80">
-                                        This is my textarea to be replaced with CKEditor 4.
-                                    </textarea>
+
                                 </div>
+
+
                                 <!-- End Kanan -->
                             </div>
                         </div>
@@ -706,18 +712,26 @@
 
         {{-- @dd($previewTemplate); --}}
 
-        {{-- <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script> --}}
 
     </form>
-    <script src="{{ url('admin/ckeditor/ckeditor.js') }}"></script>
+
     <script>
+        // Replace the <textarea id="editor1"> with a CKEditor 4
+        // instance, using default configuration.
         CKEDITOR.replace('editor1');
-        // ClassicEditor
-        //     .create(document.querySelector('.text-editor'))
-        //     .catch(error => {
-        //         console.error(error);
-        //     });
     </script>
+
+
+
+
+
+
+
+
+
+
+
+
 
     <script>
         function insertData() {
