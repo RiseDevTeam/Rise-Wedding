@@ -42,8 +42,6 @@
     @include('includes.frontend.footer')
     <!-- End Footer -->
 
-    @yield('ck-editor')
-
 
     @stack('script')
 </body>

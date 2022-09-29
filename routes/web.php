@@ -39,6 +39,7 @@ use App\Http\Controllers\User\TemplateInvitation\PemesananGambarController;
 
 Route::get('/', [HomePageController::class, 'home_page'])->name('/');
 Route::get('undangan/{link_hosting}', [LinkHostingController::class, 'hostingan_user'])->name('hostingan_user');
+Route::get('upload_tamu_undangan/{link_hosting}', [LinkHostingController::class, 'upload_tamu_undangan'])->name('upload_tamu_undangan');
 // Route::get('rise-wedding/{link_hosting}', [LinkHostingController::class, 'hostingan_pesanan_saya'])->name('hostingan_pesanan_saya');
 
 Route::get('preview-blog', function () {
