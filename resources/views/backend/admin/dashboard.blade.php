@@ -143,15 +143,15 @@
         <!-- chart JS -->
 
         <!-- CARD KATEGORI -->
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-4">
                 <div class="card">
                     <div class="card-body p-3 position-relative">
                         <div class="row">
                             <div class="col-7 text-start">
-                                <p class="text-sm mb-1 text-capitalize font-weight-bold">Sales</p>
+                                <p class="text-sm mb-1 text-capitalize font-weight-bold">Customers</p>
                                 <h5 class="font-weight-bolder mb-0">
-                                    $230,220
+                                    Banyak Pelanggan
                                 </h5>
                                 <span class="text-sm text-end text-success font-weight-bolder mt-auto mb-0">+55%
                                     <span class="font-weight-normal text-secondary">since last month</span></span>
@@ -181,7 +181,7 @@
                     <div class="card-body p-3 position-relative">
                         <div class="row">
                             <div class="col-7 text-start">
-                                <p class="text-sm mb-1 text-capitalize font-weight-bold">Customers</p>
+                                <p class="text-sm mb-1 text-capitalize font-weight-bold">Pemesanan Pending</p>
                                 <h5 class="font-weight-bolder mb-0">
                                     3.200
                                 </h5>
@@ -214,7 +214,7 @@
                     <div class="card-body p-3 position-relative">
                         <div class="row">
                             <div class="col-7 text-start">
-                                <p class="text-sm mb-1 text-capitalize font-weight-bold">Avg. Revenue</p>
+                                <p class="text-sm mb-1 text-capitalize font-weight-bold">Pemesanan Selesai</p>
                                 <h5 class="font-weight-bolder mb-0">
                                     $1.200
                                 </h5>
@@ -240,8 +240,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- CARD KATEGORI -->
+
+            <!-- CARD DASHBOARD -->
+           @include('includes.backend.card')
+            <!-- END CARD DASHBOARD -->
 
             <!-- STATISTIK TOKO -->
             <div class="row mt-4">
@@ -500,6 +504,8 @@
             </div>
             <!-- STATISTIK TOKO -->
         </div>
+
+      
 
     </div>
 @endsection

@@ -66,7 +66,7 @@ Route::prefix('risedev-wedding-users')->group(function () {
     });
 });
 
-Route::middleware(['auth'])->group(function () {
+// Route::middleware(['auth'])->group(function () {
 
     Route::prefix('risedev-wedding-users')->group(function () {
 
@@ -98,7 +98,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
 
-    Route::prefix('risedev-wedding-administrator')->middleware('checkStatus:pimpinan')->group(function () {
+    // Route::prefix('risedev-wedding-administrator')->middleware('checkStatus:pimpinan')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
         // route kategori
         Route::resource('kategori', '\App\Http\Controllers\Admin\Kategori\KategoriController');
@@ -149,9 +149,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('pembayaran', [PembayaranAdminController::class, 'index'])->name('data-pembayaran');
         Route::PUT('pembayaran/setujui/{id}', [PembayaranAdminController::class, 'setujui'])->name('data-pembayaran.setujui');
         Route::PUT('pembayaran/tolak/{id}', [PembayaranAdminController::class, 'tolak'])->name('data-pembayaran.tolak');
-    
+        //Route badge-Pesanan
         Route::get('getNewPesanan', [PemesananAdminController::class, 'getNewPesanan'])->name('new-pesanan');
+        //Route Badge-Pembayaran
+        Route::get('getNewPembayaran',[PembayaranAdminController::class, 'getNewPembayaran'])->name('new-pembayaran');
+        //Route Notifikasi
+        Route::get('notifikasi',[PembayaranAdminController::class,'notifikasi'])->name('notifikasi');
+        //Route Dashboard
+        Route::get('showDetil',[DashboardController::class,'showDetil'])->name('showDetil');
     
-    });
+    // });
     Route::get('logout', [GoogleController::class, 'logout'])->name('logout');
-});
+// });
