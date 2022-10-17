@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Pembayaran;
 
-use App\Models\PembayaranInvitation;
-use App\Models\PemesananInvitation;
+http://www.w3.org/2000/svg
 use App\Http\Controllers\Controller;
+use Carbon;
 
 class PembayaranAdminController extends Controller
 {
@@ -77,5 +77,53 @@ class PembayaranAdminController extends Controller
         ]);
 
         return response()->json(['success' => 'Pembayaran Ditolak']);
+    }
+
+    public function getNewPembayaran(){
+       
+        $data = PembayaranInvitation::where('status','pending')
+            // ->where('tanggal_pemesanan', date("Y-m-d"))
+            ->count();
+       
+        return response()->json($data);
+    }
+
+
+    public function notifikasi(){
+        $now = date('Y-m-d');
+        // $day = date('Y-m-d',strtotime('-1 days',strtotime($now)));
+        $psn_kemaren = PemesananInvitation::where('tanggal_pemesanan','<',$now)->count();
+        $psn_hariini = PemesananInvitation::where('tanggal_pemesanan',$now)->count();
+        $pbr_kemaren = PembayaranInvitation::where('tanggal_pembayaran','<',$now)->count();
+        $pbr_hariini = PembayaranInvitation::where('tanggal_pembayaran',$now)->count();   
+        $user_kemaren = User::where('created_at','<',$now)->count();
+        $user_hariini = User::where('created_at',$now)->count();   
+       
+
+        if ($psn_hariini > $psn_kemaren) {
+            
+
+
+        }
+       return $pesan = PemesananInvitation::where('status','pending')
+            ->orderBy('tanggal_pemesanan','ASC')->first();
+    
+            $data['pembayaran'] = PembayaranInvitation::where('status','pending')
+            ->orderBy('tanggal_pembayaran','ASC')->first();
+        // return($data);
+ 
+            
+            $data['user'] = User::orderBy('created_at','ASC')->first();
+
+            // $data = ['pesan' => $pesan,
+            //         'bayar' => $bayar,
+            //         'user' => $user];
+                $nama = "rezi";
+            return view('layouts.admin',['pesan' => $pesan]);
+        // return response()->json($data);
+
+
+        
+       
     }
 }

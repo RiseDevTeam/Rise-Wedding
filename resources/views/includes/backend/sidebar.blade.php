@@ -172,7 +172,7 @@
                                     d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
                             </svg>
                             <span id="angka" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                99+
+                                
                             </span>
                         
                     </div>
@@ -190,6 +190,8 @@
                             <path
                                 d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V5zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2H3z" />
                         </svg>
+
+                        <span id="badge_pembayaran" class="position-absolute start-60 translate-middle badge rounded-pill bg-danger" style = "margin-top:-18px; margin-left:50px"></span>
                     </div>
                     <span class="nav-link-text ms-1">Pembayaran
                     </span>
@@ -237,6 +239,28 @@
 
             if(data !== 0){
                 document.querySelector('#angka').innerHTML = data
+            }
+            // else{
+            //     document.querySelector('#angka').innerHTML = 5 
+            // }
+
+        }).catch(function (error) {
+        // handle error
+        console.log(error);
+    });
+    }
+
+    newPembayaran();
+    function newPembayaran(){
+        document.getElementById('badge_pembayaran').innerHTML = '';
+
+        axios.get("{{ route('new-pembayaran') }}")
+        .then((response) => {
+            let data = response.data;
+            // console.log(response.data)
+
+            if(data !== 0){
+                document.querySelector('#badge_pembayaran').innerHTML = data
             }
 
         }).catch(function (error) {

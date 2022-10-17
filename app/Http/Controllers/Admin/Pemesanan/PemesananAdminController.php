@@ -70,7 +70,9 @@ class PemesananAdminController extends Controller
     }
 
     public function getNewPesanan(){
-        $data = PemesananInvitation::where('tanggal_pemesanan', date("Y-m-d"))->count();
+        $data = PemesananInvitation::where('status','pending')
+        // ->where('tanggal_pemesanan', date("Y-m-d"))
+        ->count();
         return response()->json($data);
     }
         
