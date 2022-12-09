@@ -8,8 +8,8 @@
     <!-- Search News -->
     <section class="pencarian-news">
         <div class="container h-10 mb-4 mt-2">
-            <h3 class="text-center mb-4">Portfolio</h3>
-            <div class="seleksi mb-3 d-flex justify-content-center align-items-center">
+            <h3 class="text-center mb-4">Portofolio</h3>
+            {{-- <div class="seleksi mb-3 d-flex justify-content-center align-items-center">
                 <div class="col-lg-3 me-2">
                     <div class="input-group">
                         <select class="form-select py-2" id="inputGroupSelect">
@@ -26,7 +26,7 @@
                         Search
                     </button>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
     <!-- End Search News -->
@@ -34,9 +34,28 @@
     <!-- Card's Price -->
     <section class="paket">
         <div class="container">
-            <h3>Templates Invitation</h3>
+            <h3></h3>
             <div class="row">
-                <div class="col-lg-3 col-md-6">
+                @forelse ($portofolio as $port)
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="kategori">
+                                <span>{{ $port->kategori_template }}</span>
+                            </div>
+                            <img src="{{ asset("gambar/gambar_cover_template/$port->gambar_cover") }}" class="img-fluid"
+                                alt="gambar_template" />
+                            <div class="pemesanan carousel-caption my-0 d-md-block">
+                                <a href="{{ route('hostingan_user', $port->link_hosting) }}" target="_blank"
+                                    class="btn">Buka Undangan :
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    {{ '...' }}
+                @endforelse
+
+                {{-- <div class="col-lg-3 col-md-6">
                     <div class="card">
                         <div class="kategori">
                             <span>Free</span>
@@ -86,24 +105,7 @@
                             </a>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="kategori">
-                            <span>Free</span>
-                        </div>
-                        <img src="{{ asset('user_page/template/public/img/cwi1.jpg') }}" class="img-fluid"
-                            alt="..." />
-                        <div class="pemesanan carousel-caption my-0 d-md-block">
-                            <a href="../undangan/data-undangan.html" class="btn">
-                                Pesan
-                            </a>
-                            <a href="#" class="btn">
-                                Preview
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>

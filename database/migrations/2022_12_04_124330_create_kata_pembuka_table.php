@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBiodataKeluargaBesarPriaTable extends Migration
+class CreateKataPembukaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateBiodataKeluargaBesarPriaTable extends Migration
      */
     public function up()
     {
-        Schema::create('biodata_keluarga_besar_pria', function (Blueprint $table) {
-            $table->bigIncrements('id_keluarga_besar_pria');
-            $table->string('mengundang_pria', '100')->nullable();
-            $table->text('nama_keluarga_pria')->nullable();
+        Schema::create('kata_pembuka', function (Blueprint $table) {
+            $table->bigIncrements('id_kata_pembuka');
+            $table->string('kategori_kata_pembuka', '40');
+            $table->text('kata_pembuka');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateBiodataKeluargaBesarPriaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('biodata_keluarga_besar_pria');
+        Schema::dropIfExists('kata_pembuka');
     }
 }

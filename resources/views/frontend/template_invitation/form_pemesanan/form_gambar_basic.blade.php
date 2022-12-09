@@ -86,6 +86,12 @@
                                                         Pria</label>
                                                     <input type="file" id="gambar_mempelai_pria"
                                                         onchange="gambarMempelaiPria()" class="form-control" />
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Potrait</small>
+                                                    </div>
                                                     <img src="{{ asset('user_page/template/public/img/img.png') }}"
                                                         class="img-fluid mt-1" id="imgMempelaiPria"
                                                         alt="background image" />
@@ -99,6 +105,12 @@
                                                         Wanita</label>
                                                     <input type="file" id="gambar_mempelai_wanita"
                                                         onchange="gambarMempelaiWanita()" class="form-control" />
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Potrait</small>
+                                                    </div>
                                                     <img src="{{ asset('user_page/template/public/img/img.png') }}"
                                                         class="img-fluid mt-1" id="imgMempelaiWanita"
                                                         alt="background image" />

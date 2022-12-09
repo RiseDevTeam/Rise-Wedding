@@ -14,22 +14,6 @@
                 <!-- Nav Tab -->
                 <!-- Kepala Undangan -->
                 <div class="col-lg-12 col-md-12 mx-auto kepala">
-                    {{-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <li class="nav-item col-md-3 mx-auto" role="presentation">
-                            <button class="nav-link active mx-auto" id="pills-data-undangan" data-bs-toggle="pill"
-                                data-bs-target="#pills-du" type="button" role="tab" aria-controls="pills-du"
-                                aria-selected="true">
-                                Data Undangan
-                            </button>
-                        </li>
-                        <li class="nav-item col-md-3 mx-auto" role="presentation">
-                            <button class="nav-link mx-auto" id="pills-upload-gambar" data-bs-toggle="pill"
-                                data-bs-target="#pills-ug" type="button" role="tab" aria-controls="pills-ug"
-                                aria-selected="false">
-                                Upload Gambar
-                            </button>
-                        </li>
-                    </ul> --}}
                     <!-- Isi Undangan -->
                     <div class="tab-content isi" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-du" role="tabpanel"
@@ -53,67 +37,62 @@
                                             <div id="flush-collapseOne" class="accordion-collapse collapse show"
                                                 aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
                                                 <div class="accordion-body">
-                                                    <form>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="mb-3">
-                                                                    <label for="ju" class="form-label">Judul
-                                                                        Undangan</label>
-                                                                    <input type="text" id="title"
-                                                                        class="form-control"
-                                                                        placeholder="ex: Undangan Pernikahan"
-                                                                        value="{{ old('title') }}" autofocus />
-                                                                    <div id="validationTitle" class="invalid-feedback">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="wa" class="form-label">Nomor What's
-                                                                        App</label>
-                                                                    <input type="number" id="nomor_telepon"
-                                                                        value="{{ old('nomor_telepon') ?? '' }}"
-                                                                        class="form-control" placeholder="Nomor What's App"
-                                                                        autofocus />
-                                                                    <div id="validationNomorTelepon"
-                                                                        class="invalid-feedback"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="mb-3">
-                                                                    <label for="npp" class="form-label">Nama Panggilan
-                                                                        Pria</label>
-                                                                    <input type="text" id="nama_panggilan_pria"
-                                                                        class="form-control"
-                                                                        placeholder="Nama Panggilan Pria"
-                                                                        value="{{ old('nama_panggilan_pria') ?? '' }}"
-                                                                        autofocus />
-                                                                    <div id="validationPanggilanPria"
-                                                                        class="invalid-feedback"></div>
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="npw" class="form-label">Nama Panggilan
-                                                                        Wanita</label>
-                                                                    <input type="text" id="nama_panggilan_wanita"
-                                                                        class="form-control"
-                                                                        placeholder="Nama Panggilan Wanita"
-                                                                        value="{{ old('nama_panggilan_wanita') ?? '' }}"
-                                                                        autofocus />
-                                                                    <div id="validationPanggilanWanita"
-                                                                        class="invalid-feedback"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
                                                             <div class="mb-3">
-                                                                <label for="kp" class="form-label">Kata
-                                                                    Pembuka</label>
-                                                                <div class="form-floating">
-                                                                    <textarea class="form-control" id="kata_pembuka" style="height: 200px; width: 100%"> Atas karunia Allah SWT izinkan Kami mengundang sekaligus mengharapkan doa restu dari bapak/ibu dalam acara pernikahan putra & putri kami. </textarea>
-                                                                    <div id="validationKataPembuka"
-                                                                        class="invalid-feedback"></div>
+                                                                <label for="ju" class="form-label">Judul
+                                                                    Undangan</label>
+                                                                <input type="text" id="title" class="form-control"
+                                                                    placeholder="ex: Undangan Pernikahan"
+                                                                    value="{{ old('title') }}" autofocus />
+                                                                <div id="validationTitle" class="invalid-feedback">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="wa" class="form-label">Nomor What's
+                                                                    App</label>
+                                                                <input type="number" id="nomor_telepon"
+                                                                    value="{{ old('nomor_telepon') ?? '' }}"
+                                                                    class="form-control" placeholder="Nomor What's App"
+                                                                    autofocus />
+                                                                <div id="validationNomorTelepon" class="invalid-feedback">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </form>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="npp" class="form-label">Nama Panggilan
+                                                                    Pria</label>
+                                                                <input type="text" id="nama_panggilan_pria"
+                                                                    class="form-control" placeholder="Nama Panggilan Pria"
+                                                                    value="{{ old('nama_panggilan_pria') ?? '' }}"
+                                                                    autofocus />
+                                                                <div id="validationPanggilanPria" class="invalid-feedback">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="npw" class="form-label">Nama Panggilan
+                                                                    Wanita</label>
+                                                                <input type="text" id="nama_panggilan_wanita"
+                                                                    class="form-control" placeholder="Nama Panggilan Wanita"
+                                                                    value="{{ old('nama_panggilan_wanita') ?? '' }}"
+                                                                    autofocus />
+                                                                <div id="validationPanggilanWanita"
+                                                                    class="invalid-feedback"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="mb-3">
+                                                            <label for="kp" class="form-label">Kata
+                                                                Pembuka</label>
+                                                            <div class="form-floating">
+                                                                <textarea class="form-control" id="kata_pembuka" style="height: 200px; width: 100%"> Atas karunia Allah SWT izinkan Kami mengundang sekaligus mengharapkan doa restu dari bapak/ibu dalam acara pernikahan putra & putri kami. </textarea>
+                                                                <div id="validationKataPembuka" class="invalid-feedback">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -861,7 +840,7 @@
                                 timer: 1000
                             }).then(function() {
                                 window.location.href =
-                                    "{{ route('data_gambar', $id_template) }}"
+                                    "{{ route('form_gambar_basic', $id_template) }}"
                             })
                         }
                     }

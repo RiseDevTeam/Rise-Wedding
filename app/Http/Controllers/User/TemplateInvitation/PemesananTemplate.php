@@ -281,10 +281,6 @@ class PemesananTemplate extends Controller
             'putri_dari' => 'required',
             'nama_bapak_wanita' => 'required',
             'nama_ibu_wanita' => 'required',
-            'mengundang_pria' => 'required',
-            'nama_keluarga_pria' => 'required',
-            'mengundang_wanita' => 'required',
-            'nama_keluarga_wanita' => 'required',
             'nama_instagram' => 'required',
             'link_hosting' => 'required|unique:pemesanan_invitation,link_hosting',
         ]);

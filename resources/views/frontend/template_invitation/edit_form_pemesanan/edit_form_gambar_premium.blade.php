@@ -5,7 +5,7 @@
 
 @section('content_user')
 
-    <form id="form-gambar-basic" enctype="multipart/form-data" method="POST">
+    <form id="form-gambar-premium" enctype="multipart/form-data" method="POST">
         @csrf
         <!-- Invitation Card -->
         <section class="isi-data-undangan">
@@ -14,22 +14,6 @@
                 <!-- Nav Tab -->
                 <!-- Kepala Undangan -->
                 <div class="col-lg-12 col-md-12 mx-auto kepala">
-                    {{-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <li class="nav-item col-md-3 mx-auto" role="presentation">
-                            <button class="nav-link active mx-auto" id="pills-data-undangan" data-bs-toggle="pill"
-                                data-bs-target="#pills-du" type="button" role="tab" aria-controls="pills-du"
-                                aria-selected="true">
-                                Data Undangan
-                            </button>
-                        </li>
-                        <li class="nav-item col-md-3 mx-auto" role="presentation">
-                            <button class="nav-link mx-auto" id="pills-upload-gambar" data-bs-toggle="pill"
-                                data-bs-target="#pills-ug" type="button" role="tab" aria-controls="pills-ug"
-                                aria-selected="false">
-                                Upload Gambar
-                            </button>
-                        </li>
-                    </ul> --}}
                     <!-- Isi Undangan -->
                     <div class="col-lg-10 col-md-10 mx-auto">
                         <div class="accordion accordion-flush" id="accordionFlush">
@@ -45,8 +29,6 @@
                                         </p>
                                     </button>
                                 </h2>
-                                <input type="hidden" id="id_biodata_pelanggan"
-                                    value="{{ $pemesanan->id_biodata_pelanggan }}">
                                 <div id="flush-collapseOne" class="accordion-collapse collapse"
                                     aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
                                     <div class="accordion-body">
@@ -56,9 +38,20 @@
                                                     Mempelai</label>
                                                 <input type="file" class="form-control" id="gambar_mempelai"
                                                     onchange="gambarMempelai()" />
-                                                <img src="{{ asset('user_page/template/public/img/img.png') }}"
-                                                    class="img-fluid mt-1" id="img_mempelai" alt="background image" />
-                                                <div id="validationImgMempelai" class="invalid-feedback"></div>
+                                                <div class="mt-1 mb-3">
+                                                    <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                        Posisi
+                                                        Potrait</small>
+                                                </div>
+                                                @if ($edit_pemesanan_gambar_premium->gambar_mempelai_pria)
+                                                    <img src="{{ url('user_page/template/public/biodata_pelanggan/gambar_mempelai_pria/', $edit_pemesanan_gambar_premium->gambar_mempelai_pria) }}"
+                                                        class="img-fluid mt-1" id="img_mempelai" alt="background image"
+                                                        width="50%" />
+                                                @else
+                                                    <img src="{{ asset('user_page/template/public/img/img.png') }}"
+                                                        class="img-fluid mt-1" id="img_mempelai" alt="background image" />
+                                                    <div id="validationImgMempelai" class="invalid-feedback"></div>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -86,9 +79,21 @@
                                                         Pria</label>
                                                     <input type="file" id="gambar_mempelai_pria"
                                                         onchange="gambarMempelaiPria()" class="form-control" />
-                                                    <img src="{{ asset('user_page/template/public/img/img.png') }}"
-                                                        class="img-fluid mt-1" id="imgMempelaiPria"
-                                                        alt="background image" />
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Potrait</small>
+                                                    </div>
+
+                                                    @if ($edit_pemesanan_gambar_premium->gambar_mempelai_pria)
+                                                        <img src="{{ url('user_page/template/public/biodata_pelanggan/gambar_mempelai_pria/', $edit_pemesanan_gambar_premium->gambar_mempelai_pria) }}"
+                                                            class="img-fluid mt-1" id="imgMempelaiPria"
+                                                            alt="background image" width="50%" />
+                                                    @else
+                                                        <img src="{{ asset('user_page/template/public/img/img.png') }}"
+                                                            class="img-fluid mt-1" id="imgMempelaiPria"
+                                                            alt="background image" />
+                                                    @endif
                                                     <div id="validationImgMempelaiPria" class="invalid-feedback">
                                                     </div>
                                                 </div>
@@ -99,9 +104,21 @@
                                                         Wanita</label>
                                                     <input type="file" id="gambar_mempelai_wanita"
                                                         onchange="gambarMempelaiWanita()" class="form-control" />
-                                                    <img src="{{ asset('user_page/template/public/img/img.png') }}"
-                                                        class="img-fluid mt-1" id="imgMempelaiWanita"
-                                                        alt="background image" />
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Potrait</small>
+                                                    </div>
+
+                                                    @if ($edit_pemesanan_gambar_premium->gambar_mempelai_wanita)
+                                                        <img src="{{ url('user_page/template/public/biodata_pelanggan/gambar_mempelai_wanita/', $edit_pemesanan_gambar_premium->gambar_mempelai_wanita) }}"
+                                                            class="img-fluid mt-1" id="imgMempelaiWanita"
+                                                            alt="background image" width="50%" />
+                                                    @else
+                                                        <img src="{{ asset('user_page/template/public/img/img.png') }}"
+                                                            class="img-fluid mt-1" id="imgMempelaiWanita"
+                                                            alt="background image" />
+                                                    @endif
                                                     <div id="validationGambarMempelaiWanita" class="invalid-feedback">
                                                     </div>
                                                 </div>
@@ -130,46 +147,168 @@
                                                 Foto Pernikahan Maksimal
                                                 10 Foto)</label>
                                             <div class="row">
-                                                <div class="col-lg-6 col-md-6">
+                                                <div class="col-lg-12 col-md-12">
                                                     <input type="file" id="galeri_foto1" class="form-control" />
                                                     <div id="validationgaleri_foto1" class="invalid-feedback">
                                                     </div>
-                                                    <br />
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Landscape untuk background galeri</small>
+                                                    </div>
+
+                                                    @if ($edit_pemesanan_gambar_premium->galeri_foto1 != 'undefined')
+                                                        <img src="{{ url('user_page/template/public/biodata_pelanggan/gambar_galeri/', $edit_pemesanan_gambar_premium->galeri_foto1) }}"
+                                                            class="img-fluid mt-1" id="imgMempelaiWanita"
+                                                            alt="background image" width="50%" />
+                                                    @endif
+
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6">
+
                                                     <input type="file" id="galeri_foto2" class="form-control" />
                                                     <div id="validationgaleri_foto2" class="invalid-feedback">
                                                     </div>
-                                                    <br />
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Potrait</small>
+                                                    </div>
+
+                                                    @if ($edit_pemesanan_gambar_premium->galeri_foto2 != 'undefined')
+                                                        <img src="{{ url('user_page/template/public/biodata_pelanggan/gambar_galeri/', $edit_pemesanan_gambar_premium->galeri_foto2) }}"
+                                                            class="img-fluid mt-1" id="imgMempelaiWanita"
+                                                            alt="background image" width="50%" />
+                                                    @endif
+
                                                     <input type="file" id="galeri_foto3" class="form-control" />
                                                     <div id="validationgaleri_foto3" class="invalid-feedback">
                                                     </div>
-                                                    <br />
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Landscape</small>
+                                                    </div>
+
+                                                    @if ($edit_pemesanan_gambar_premium->galeri_foto3 != 'undefined')
+                                                        <img src="{{ url('user_page/template/public/biodata_pelanggan/gambar_galeri/', $edit_pemesanan_gambar_premium->galeri_foto3) }}"
+                                                            class="img-fluid mt-1" id="imgMempelaiWanita"
+                                                            alt="background image" width="50%" />
+                                                    @endif
+
                                                     <input type="file" id="galeri_foto4" class="form-control" />
                                                     <div id="validationgaleri_foto4" class="invalid-feedback">
                                                     </div>
-                                                    <br />
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Landscape</small>
+                                                    </div>
+
+                                                    @if ($edit_pemesanan_gambar_premium->galeri_foto4 != 'undefined')
+                                                        <img src="{{ url('user_page/template/public/biodata_pelanggan/gambar_galeri/', $edit_pemesanan_gambar_premium->galeri_foto4) }}"
+                                                            class="img-fluid mt-1" id="imgMempelaiWanita"
+                                                            alt="background image" width="50%" />
+                                                    @endif
+
                                                     <input type="file" id="galeri_foto5" class="form-control" />
                                                     <div id="validationgaleri_foto5" class="invalid-feedback">
                                                     </div>
-                                                    <br>
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Landscape</small>
+                                                    </div>
+
+                                                    @if ($edit_pemesanan_gambar_premium->galeri_foto5 != 'undefined')
+                                                        <img src="{{ url('user_page/template/public/biodata_pelanggan/gambar_galeri/', $edit_pemesanan_gambar_premium->galeri_foto5) }}"
+                                                            class="img-fluid mt-1" id="imgMempelaiWanita"
+                                                            alt="background image" width="50%" />
+                                                    @endif
+
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+
+
                                                     <input type="file" id="galeri_foto6" class="form-control" />
                                                     <div id="validationgaleri_foto6" class="invalid-feedback">
                                                     </div>
-                                                    <br />
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Landscape</small>
+                                                    </div>
+
+                                                    @if ($edit_pemesanan_gambar_premium->galeri_foto6 != 'undefined')
+                                                        <img src="{{ url('user_page/template/public/biodata_pelanggan/gambar_galeri/', $edit_pemesanan_gambar_premium->galeri_foto6) }}"
+                                                            class="img-fluid mt-1" id="imgMempelaiWanita"
+                                                            alt="background image" width="50%" />
+                                                    @endif
+
                                                     <input type="file" id="galeri_foto7" class="form-control" />
                                                     <div id="validationgaleri_foto7" class="invalid-feedback">
                                                     </div>
-                                                    <br />
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Landscape</small>
+                                                    </div>
+
+                                                    @if ($edit_pemesanan_gambar_premium->galeri_foto7 != 'undefined')
+                                                        <img src="{{ url('user_page/template/public/biodata_pelanggan/gambar_galeri/', $edit_pemesanan_gambar_premium->galeri_foto7) }}"
+                                                            class="img-fluid mt-1" id="imgMempelaiWanita"
+                                                            alt="background image" width="50%" />
+                                                    @endif
+
                                                     <input type="file" id="galeri_foto8" class="form-control" />
                                                     <div id="validationgaleri_foto8" class="invalid-feedback">
                                                     </div>
-                                                    <br />
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Landscape</small>
+                                                    </div>
+
+                                                    @if ($edit_pemesanan_gambar_premium->galeri_foto8 != 'undefined')
+                                                        <img src="{{ url('user_page/template/public/biodata_pelanggan/gambar_galeri/', $edit_pemesanan_gambar_premium->galeri_foto8) }}"
+                                                            class="img-fluid mt-1" id="imgMempelaiWanita"
+                                                            alt="background image" width="50%" />
+                                                    @endif
+
+                                                    <input type="file" id="galeri_foto9" class="form-control" />
+                                                    <div id="validationgaleri_foto9" class="invalid-feedback">
+                                                    </div>
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Landscape</small>
+                                                    </div>
+
+                                                    @if ($edit_pemesanan_gambar_premium->galeri_foto9 != 'undefined')
+                                                        <img src="{{ url('user_page/template/public/biodata_pelanggan/gambar_galeri/', $edit_pemesanan_gambar_premium->galeri_foto9) }}"
+                                                            class="img-fluid mt-1" id="imgMempelaiWanita"
+                                                            alt="background image" width="50%" />
+                                                    @endif
+                                                    <br>
+                                                    <a class="pesan-undangan float-end mt-4 mx-2 btn btn-danger"
+                                                        href="{{ route('pemesanan_saya') }}">Kembali </a>
                                                     <button onclick="insertData()" type="submit"
-                                                        class="pesan-undangan btn float-end mt-3">
+                                                        class="pesan-undangan btn float-end mt-4">
                                                         Pesan
                                                     </button>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -224,10 +363,9 @@
     </script>
 
     <script>
-        let formGambarBasic = document.getElementById('form-gambar-basic');
-        formGambarBasic.addEventListener('submit', function(e) {
+        let formGambarPremium = document.getElementById('form-gambar-premium');
+        formGambarPremium.addEventListener('submit', function(e) {
             e.preventDefault();
-            let id_biodata_pelanggan = document.getElementById('id_biodata_pelanggan');
             let gambar_mempelai = document.getElementById('gambar_mempelai');
             let gambar_mempelai_pria = document.getElementById('gambar_mempelai_pria');
             let gambar_mempelai_wanita = document.getElementById('gambar_mempelai_wanita');
@@ -239,9 +377,9 @@
             let galeri_foto6 = document.getElementById('galeri_foto6');
             let galeri_foto7 = document.getElementById('galeri_foto7');
             let galeri_foto8 = document.getElementById('galeri_foto8');
+            let galeri_foto9 = document.getElementById('galeri_foto9');
 
             const formData = new FormData()
-            formData.append("id_biodata_pelanggan", id_biodata_pelanggan.value)
             formData.append("gambar_mempelai", gambar_mempelai.files[0])
             formData.append("gambar_mempelai_pria", gambar_mempelai_pria.files[0])
             formData.append("gambar_mempelai_wanita", gambar_mempelai_wanita.files[0])
@@ -253,8 +391,9 @@
             formData.append("galeri_foto6", galeri_foto6.files[0])
             formData.append("galeri_foto7", galeri_foto7.files[0])
             formData.append("galeri_foto8", galeri_foto8.files[0])
+            formData.append("galeri_foto9", galeri_foto9.files[0])
 
-            axios.post("{{ route('data_gambar_premium') }}", formData)
+            axios.post("{{ route('update_form_gambar', $idPemesanan_premium) }}", formData)
                 .then(function(response) {
                     if (response.status == 200) {
                         const data = response.data
@@ -348,6 +487,14 @@
                                 validationgaleri_foto8.style.display = "block"
                             }
 
+                            if (dataError.galeri_foto9) {
+                                let validationgaleri_foto9 = document.getElementById(
+                                    'validationgaleri_foto9')
+                                galeri_foto9.classList.add("is-invalid")
+                                validationgaleri_foto9.innerText = dataError.galeri_foto9[0]
+                                validationgaleri_foto9.style.display = "block"
+                            }
+
                         } else {
                             swal({
                                 position: 'center',
@@ -357,7 +504,7 @@
                                 timer: 1000
                             }).then(function() {
                                 window.location.href =
-                                    "{{ route('pembayaran_template', $id_template) }}"
+                                    "{{ route('pemesanan_saya') }}"
                             })
                         }
                     }

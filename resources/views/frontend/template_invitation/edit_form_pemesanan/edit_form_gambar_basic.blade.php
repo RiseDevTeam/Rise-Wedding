@@ -39,6 +39,11 @@
                                                     Mempelai</label>
                                                 <input type="file" class="form-control" id="gambar_mempelai"
                                                     onchange="gambarMempelai()" />
+                                                <div class="mt-1 mb-3">
+                                                    <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                        Posisi
+                                                        Landscape</small>
+                                                </div>
                                                 @if ($edit_pemesanan_gambar->gambar_mempelai)
                                                     <img src="{{ url('user_page/template/public/biodata_pelanggan/gambar_mempelai/', $edit_pemesanan_gambar->gambar_mempelai) }}"
                                                         class="img-fluid mt-1" id="img_mempelai" alt="background image" />
@@ -76,6 +81,12 @@
                                                         onchange="gambarMempelaiPria()"
                                                         value="{{ $edit_pemesanan_gambar->gambar_mempelai_pria }}"
                                                         class="form-control" />
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Potrait</small>
+                                                    </div>
                                                     @if ($edit_pemesanan_gambar->gambar_mempelai_pria)
                                                         <img src="{{ url('user_page/template/public/biodata_pelanggan/gambar_mempelai_pria/', $edit_pemesanan_gambar->gambar_mempelai_pria) }}"
                                                             class="img-fluid mt-1" id="imgMempelaiPria"
@@ -97,6 +108,12 @@
                                                         value="{{ $edit_pemesanan_gambar->gambar_mempelai_wanita }}"
                                                         id="gambar_mempelai_wanita" onchange="gambarMempelaiWanita()"
                                                         class="form-control" />
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Potrait</small>
+                                                    </div>
                                                     @if ($edit_pemesanan_gambar->gambar_mempelai_wanita)
                                                         <img src="{{ url('user_page/template/public/biodata_pelanggan/gambar_mempelai_wanita/', $edit_pemesanan_gambar->gambar_mempelai_wanita) }}"
                                                             class="img-fluid mt-1" id="imgMempelaiWanita"
@@ -218,6 +235,10 @@
                                                         class="pesan-undangan btn float-end mt-3">
                                                         Pesan
                                                     </button>
+                                                    <a href="{{ route('pemesanan_saya') }}"
+                                                        class="pesan-undangan float-end mt-3 mx-3 btn btn-danger">Kembali
+                                                        Ke
+                                                        Pesanan Saya</a>
                                                 </div>
                                             </div>
                                         </div>

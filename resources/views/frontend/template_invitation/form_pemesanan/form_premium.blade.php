@@ -1,10 +1,11 @@
 @extends('layouts.user')
 @section('css_khusus')
     <link rel="stylesheet" href="{{ asset('user_page/template/public/css/data-undangan.css') }}" />
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
 @section('title', 'Template Invitation')
 @section('content_user')
-
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
     <form method="POST" id="form-biodata-pelanggan" enctype="multipart/form-data">
         @csrf
@@ -500,78 +501,85 @@
                                         @endif
 
                                         <!-- Undangan Keluarga Besar Mempelai Pria -->
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="flush-headingEight">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseEight"
-                                                    aria-expanded="false" aria-controls="flush-collapseEight">
-                                                    <p>
-                                                        <i class="bi bi-envelope pr-2"></i>
-                                                        Undangan Keluarga Besar Mempelai Pria
-                                                    </p>
-                                                </button>
-                                            </h2>
-                                            <div id="flush-collapseEight" class="accordion-collapse collapse"
-                                                aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlush">
-                                                <div class="accordion-body">
-                                                    <div class="mb-3">
-                                                        <label for="kpm" class="form-label">Turut Menundang</label>
-                                                        <input type="text" id="mengundang_pria" class="form-control"
-                                                            value="Keluarga Besar Mempelai Pria" />
-                                                        <div id="validationMengundangPria" class="invalid-feedback"></div>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="dnkbp">Daftar Nama Keluarga Besar Mempelai
-                                                            Pria</label>
-                                                        <textarea class="text-area1" id="nama_keluarga_pria"></textarea>
-                                                        {{-- <div class="form-floating">
-                                                        </div> --}}
-                                                        <div id="validationNamaKeluargaPria" class="invalid-feedback">
+                                        @if (in_array('keluarga besar mempelai', $previewTemplate))
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="flush-headingEight">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseEight"
+                                                        aria-expanded="false" aria-controls="flush-collapseEight">
+                                                        <p>
+                                                            <i class="bi bi-envelope pr-2"></i>
+                                                            Undangan Keluarga Besar Mempelai Pria
+                                                        </p>
+                                                    </button>
+                                                </h2>
+                                                <div id="flush-collapseEight" class="accordion-collapse collapse"
+                                                    aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlush">
+                                                    <div class="accordion-body">
+                                                        <div class="mb-3">
+                                                            <label for="kpm" class="form-label">Turut
+                                                                Menundang</label>
+                                                            <input type="text" id="mengundang_pria"
+                                                                class="form-control"
+                                                                value="Keluarga Besar Mempelai Pria" />
+                                                            <div id="validationMengundangPria" class="invalid-feedback">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="dnkbp">Daftar Nama Keluarga Besar Mempelai
+                                                                Pria</label>
+                                                            <div class="form-floating">
+                                                                <textarea class="editor1" id="nama_keluarga_pria" cols="30" rows="10" required></textarea>
+                                                            </div>
+                                                            <div id="validationNamaKeluargaPria" class="invalid-feedback">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- Undangan Keluarga Besar Mempelai Wanita -->
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="flush-headingNine">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseNine"
-                                                    aria-expanded="false" aria-controls="flush-collapseNine">
-                                                    <p>
-                                                        <i class="bi bi-envelope pr-2"></i>
-                                                        Undangan Keluarga Besar Mempelai Wanita
-                                                    </p>
-                                                </button>
-                                            </h2>
-                                            <div id="flush-collapseNine" class="accordion-collapse collapse"
-                                                aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlush">
-                                                <div class="accordion-body">
 
-                                                    <div class="mb-3">
-                                                        <label for="kpm" class="form-label">Turut Mengundang</label>
-                                                        <input type="text" id="mengundang_wanita" class="form-control"
-                                                            value="Keluarga Besar Mempelai Wanita" />
-                                                        <div id="validationMengundangWanita" class="invalid-feedback">
+                                            <!-- Undangan Keluarga Besar Mempelai Wanita -->
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="flush-headingNine">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseNine"
+                                                        aria-expanded="false" aria-controls="flush-collapseNine">
+                                                        <p>
+                                                            <i class="bi bi-envelope pr-2"></i>
+                                                            Undangan Keluarga Besar Mempelai Wanita
+                                                        </p>
+                                                    </button>
+                                                </h2>
+                                                <div id="flush-collapseNine" class="accordion-collapse collapse"
+                                                    aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlush">
+                                                    <div class="accordion-body">
+
+                                                        <div class="mb-3">
+                                                            <label for="kpm" class="form-label">Turut
+                                                                Mengundang</label>
+                                                            <input type="text" id="mengundang_wanita"
+                                                                class="form-control"
+                                                                value="Keluarga Besar Mempelai Wanita" />
+                                                            <div id="validationMengundangWanita" class="invalid-feedback">
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="mb-3">
-                                                        <label for="dnkbw"> Daftar Nama Keluarga Besar Mempelai
-                                                            Wanita </label>
-                                                        <br>
-                                                        {{-- <textarea class="ckeditor" id="ckedtor"></textarea> --}}
-                                                        {{-- <div class="form-floating"> --}}
-                                                        {{-- </div> --}}
-                                                        <div id="validationNamaKeluargaWanita" class="invalid-feedback">
-                                                            {{-- <textarea class="form-control text-area" id="nama_keluarga_wanita" style="height: 200px; width: 100%"></textarea> --}}
+                                                        <div class="mb-3">
+                                                            <label for="dnkbw"> Daftar Nama Keluarga Besar Mempelai
+                                                                Wanita </label>
+                                                            <br>
+                                                            <div class="form-floating">
+                                                                <textarea class="editor" id="nama_keluarga_wanita" required></textarea>
+                                                            </div>
+                                                            <div id="validationNamaKeluargaWanita"
+                                                                class="invalid-feedback">
+                                                            </div>
                                                         </div>
-                                                    </div>
 
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-
+                                        @endif
                                         <!-- Masukkan Lagu Pernikahan -->
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="flush-headingTen">
@@ -689,13 +697,10 @@
 
                                 <!-- Kanan -->
                                 <div class="col-lg-5 col-md-5 kanan">
-                                    {{-- <div class="daftar-gambar">
+                                    <div class="daftar-gambar">
                                         <iframe src="{{ $datas->link_hosting }}" frameborder="0" width="100%"
                                             height="100%"></iframe>
-                                    </div> --}}
-                                    {{-- id="nama_keluarga_wanita" --}}
-                                    <textarea class="editor1" id="editor1"></textarea>
-                                    {{-- <textarea name="nama_keluarga_wanita" id="nama_keluarga_wanita" style="height: 200px; width: 100%"></textarea> --}}
+                                    </div>
 
                                 </div>
 
@@ -712,26 +717,16 @@
 
         {{-- @dd($previewTemplate); --}}
 
-
     </form>
-
     <script>
-        // Replace the <textarea id="editor1"> with a CKEditor 4
-        // instance, using default configuration.
-        CKEDITOR.replace('editor1');
+        var quill = new Quill('.editor', {
+            theme: 'snow'
+        });
+
+        var quill = new Quill('.editor1', {
+            theme: 'snow'
+        });
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
 
     <script>
         function insertData() {
@@ -740,6 +735,7 @@
                 icon: 'success',
                 title: 'Peringatan',
                 text: 'tunggu yaa, Data mu sedang diproses',
+                buttons: false,
             })
         }
     </script>
@@ -783,10 +779,12 @@
                 let waktu_wilayah_resepsi2 = document.getElementById('waktu_wilayah_resepsi2');
                 let lokasi_resepsi_2 = document.getElementById('lokasi_resepsi_2');
             }
-            let mengundang_pria = document.getElementById('mengundang_pria');
-            let nama_keluarga_pria = document.getElementById('nama_keluarga_pria');
-            let mengundang_wanita = document.getElementById('mengundang_wanita');
-            let nama_keluarga_wanita = document.getElementById('nama_keluarga_wanita');
+            if (previewTemplate.includes("keluarga besar mempelai")) {
+                let mengundang_pria = document.getElementById('mengundang_pria');
+                let nama_keluarga_pria = document.getElementById('nama_keluarga_pria');
+                let mengundang_wanita = document.getElementById('mengundang_wanita');
+                let nama_keluarga_wanita = document.getElementById('nama_keluarga_wanita');
+            }
             let musik = document.getElementById('musik');
             let musik1 = document.getElementById('musik1');
             let link_hosting = document.getElementById('link_hosting');
@@ -826,10 +824,12 @@
                 formData.append("waktu_wilayah_resepsi_2", waktu_wilayah_resepsi_2.value)
                 formData.append("lokasi_resepsi_2", lokasi_resepsi_2.value)
             }
-            formData.append("mengundang_pria", mengundang_pria.value)
-            formData.append("nama_keluarga_pria", nama_keluarga_pria.value)
-            formData.append("mengundang_wanita", mengundang_wanita.value)
-            formData.append("nama_keluarga_wanita", nama_keluarga_wanita.value)
+            if (previewTemplate.includes("keluarga besar mempelai")) {
+                formData.append("mengundang_pria", mengundang_pria.value)
+                formData.append("nama_keluarga_pria", nama_keluarga_pria.value)
+                formData.append("mengundang_wanita", mengundang_wanita.value)
+                formData.append("nama_keluarga_wanita", nama_keluarga_wanita.value)
+            }
             formData.append("musik", musik.value)
             formData.append("musik1", musik1.files[0])
             formData.append("nama_instagram", nama_instagram.value)
@@ -946,41 +946,22 @@
                                 validationNamaIbuWanita.style.display = "block"
                             }
 
-                            if (dataError.mengundang_pria) {
-                                let validationMengundangPria = document.getElementById(
-                                    'validationMengundangPria')
-                                mengundang_pria.classList.add("is-invalid")
-                                validationMengundangPria.innerText = dataError.mengundang_pria[0]
-                                validationMengundangPria.style.display = "block"
+                            if (dataError.nama_instagram) {
+                                let validationNamaLink = document.getElementById(
+                                    'validationNamaInstagram')
+                                nama_instagram.classList.add("is-invalid")
+                                validationNamaInstagram.innerText = dataError.nama_instagram[0]
+                                validationNamaInstagram.style.display = "block"
                             }
-                            if (dataError.nama_keluarga_pria) {
-                                let validationNamaKeluargaPria = document.getElementById(
-                                    'validationNamaKeluargaPria')
-                                nama_keluarga_pria.classList.add("is-invalid")
-                                validationNamaKeluargaPria.innerText = dataError.nama_keluarga_pria[0]
-                                validationNamaKeluargaPria.style.display = "block"
-                            }
-                            if (dataError.mengundang_wanita) {
-                                let validationMengundangWanita = document.getElementById(
-                                    'validationMengundangWanita')
-                                mengundang_wanita.classList.add("is-invalid")
-                                validationMengundangWanita.innerText = dataError.mengundang_wanita[0]
-                                validationMengundangWanita.style.display = "block"
-                            }
-                            if (dataError.nama_keluarga_wanita) {
-                                let validationNamaKeluargaWanita = document.getElementById(
-                                    'validationNamaKeluargaWanita')
-                                nama_keluarga_wanita.classList.add("is-invalid")
-                                validationNamaKeluargaWanita.innerText = dataError.nama_keluarga_wanita[0]
-                                validationNamaKeluargaWanita.style.display = "block"
-                            }
-                            if (dataError.nama_link) {
+
+                            if (dataError.link_hosting) {
                                 let validationNamaLink = document.getElementById(
                                     'validationNamaLink')
-                                nama_link.classList.add("is-invalid")
-                                validationNamaLink.innerText = dataError.nama_link[0]
+                                link_hosting.classList.add("is-invalid")
+                                validationNamaLink.innerText = dataError.link_hosting[0]
                                 validationNamaLink.style.display = "block"
                             }
+
                         } else {
                             swal({
                                 position: 'center',
@@ -990,7 +971,7 @@
                                 timer: 1000
                             }).then(function() {
                                 window.location.href =
-                                    "{{ route('data_gambar', $id_template) }}"
+                                    "{{ route('form_gambar_premium', $id_template) }}"
                             })
                         }
                     }

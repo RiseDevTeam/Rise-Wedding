@@ -15,8 +15,8 @@ class CreateBiodataKeluargaBesarWanitaTable extends Migration
     {
         Schema::create('biodata_keluarga_besar_wanita', function (Blueprint $table) {
             $table->bigIncrements('id_keluarga_besar_wanita');
-            $table->string('mengundang_wanita', '100');
-            $table->text('nama_keluarga_wanita');
+            $table->string('mengundang_wanita', '100')->nullable();
+            $table->text('nama_keluarga_wanita')->nullable();
             $table->timestamps();
         });
     }

@@ -27,7 +27,7 @@
     <form id="formPemesanan" method="POST" enctype="multipart/form-data"
         action="{{ route('pemesanan_template', $id_template) }}">
         @csrf
-        <div class="container">
+        <div class="container mb-5">
             <!-- Header -->
             <div class="kepala">
                 <div class="logo">
@@ -38,6 +38,14 @@
                 <button type="submit" class="btn"
                     style="background: var(--warna1); color: var(--warna2)">Selesai</button>
             </div>
+            <div class="keterangan">
+                <center>
+                    <h3>Hapus <span>Komponen Undangan</span> Yang Tidak Kamu Butuhkan <span> <i
+                                class="bi bi-chevron-double-down"></i></span></h3>
+                    <hr>
+                </center>
+            </div>
+
         </div>
 
         <div class="container">

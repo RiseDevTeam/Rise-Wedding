@@ -5,7 +5,7 @@
 
 @section('content_user')
 
-    <form id="form-gambar-basic" enctype="multipart/form-data" method="POST">
+    <form id="form-gambar-premium" enctype="multipart/form-data" method="POST">
         @csrf
         <!-- Invitation Card -->
         <section class="isi-data-undangan">
@@ -92,6 +92,11 @@
                                                     <div id="validationImgMempelaiPria" class="invalid-feedback">
                                                     </div>
                                                 </div>
+                                                <div class="mt-1 mb-3">
+                                                    <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                        Posisi
+                                                        Potrait</small>
+                                                </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
@@ -104,6 +109,11 @@
                                                         alt="background image" />
                                                     <div id="validationGambarMempelaiWanita" class="invalid-feedback">
                                                     </div>
+                                                </div>
+                                                <div class="mt-1 mb-3">
+                                                    <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                        Posisi
+                                                        Potrait</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -130,46 +140,112 @@
                                                 Foto Pernikahan Maksimal
                                                 10 Foto)</label>
                                             <div class="row">
-                                                <div class="col-lg-6 col-md-6">
+                                                <div class="col-lg-12 col-md-12">
                                                     <input type="file" id="galeri_foto1" class="form-control" />
                                                     <div id="validationgaleri_foto1" class="invalid-feedback">
                                                     </div>
-                                                    <br />
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Landscape untuk background galeri</small>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6">
+
                                                     <input type="file" id="galeri_foto2" class="form-control" />
                                                     <div id="validationgaleri_foto2" class="invalid-feedback">
                                                     </div>
-                                                    <br />
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Potrait</small>
+                                                    </div>
+
                                                     <input type="file" id="galeri_foto3" class="form-control" />
                                                     <div id="validationgaleri_foto3" class="invalid-feedback">
                                                     </div>
-                                                    <br />
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Landscape</small>
+                                                    </div>
+
                                                     <input type="file" id="galeri_foto4" class="form-control" />
                                                     <div id="validationgaleri_foto4" class="invalid-feedback">
                                                     </div>
-                                                    <br />
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Landscape</small>
+                                                    </div>
+
                                                     <input type="file" id="galeri_foto5" class="form-control" />
                                                     <div id="validationgaleri_foto5" class="invalid-feedback">
                                                     </div>
-                                                    <br>
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Landscape</small>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+
+
                                                     <input type="file" id="galeri_foto6" class="form-control" />
                                                     <div id="validationgaleri_foto6" class="invalid-feedback">
                                                     </div>
-                                                    <br />
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Landscape</small>
+                                                    </div>
+
                                                     <input type="file" id="galeri_foto7" class="form-control" />
                                                     <div id="validationgaleri_foto7" class="invalid-feedback">
                                                     </div>
-                                                    <br />
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Landscape</small>
+                                                    </div>
+
                                                     <input type="file" id="galeri_foto8" class="form-control" />
                                                     <div id="validationgaleri_foto8" class="invalid-feedback">
                                                     </div>
-                                                    <br />
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Landscape</small>
+                                                    </div>
+
+                                                    <input type="file" id="galeri_foto9" class="form-control" />
+                                                    <div id="validationgaleri_foto9" class="invalid-feedback">
+                                                    </div>
+
+                                                    <div class="mt-1 mb-3">
+                                                        <small class="text-muted" style="font-style: italic">Upload Gambar
+                                                            Posisi
+                                                            Landscape</small>
+                                                    </div>
+
                                                     <button onclick="insertData()" type="submit"
                                                         class="pesan-undangan btn float-end mt-3">
                                                         Pesan
                                                     </button>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -224,8 +300,8 @@
     </script>
 
     <script>
-        let formGambarBasic = document.getElementById('form-gambar-basic');
-        formGambarBasic.addEventListener('submit', function(e) {
+        let formGambarPremium = document.getElementById('form-gambar-premium');
+        formGambarPremium.addEventListener('submit', function(e) {
             e.preventDefault();
             let id_biodata_pelanggan = document.getElementById('id_biodata_pelanggan');
             let gambar_mempelai = document.getElementById('gambar_mempelai');
@@ -239,6 +315,7 @@
             let galeri_foto6 = document.getElementById('galeri_foto6');
             let galeri_foto7 = document.getElementById('galeri_foto7');
             let galeri_foto8 = document.getElementById('galeri_foto8');
+            let galeri_foto9 = document.getElementById('galeri_foto9');
 
             const formData = new FormData()
             formData.append("id_biodata_pelanggan", id_biodata_pelanggan.value)
@@ -253,8 +330,9 @@
             formData.append("galeri_foto6", galeri_foto6.files[0])
             formData.append("galeri_foto7", galeri_foto7.files[0])
             formData.append("galeri_foto8", galeri_foto8.files[0])
+            formData.append("galeri_foto9", galeri_foto9.files[0])
 
-            axios.post("{{ route('data_gambar_premium') }}", formData)
+            axios.post("{{ route('data_gambar_premium', $id_template) }}", formData)
                 .then(function(response) {
                     if (response.status == 200) {
                         const data = response.data
@@ -346,6 +424,14 @@
                                 galeri_foto8.classList.add("is-invalid")
                                 validationgaleri_foto8.innerText = dataError.galeri_foto8[0]
                                 validationgaleri_foto8.style.display = "block"
+                            }
+
+                            if (dataError.galeri_foto9) {
+                                let validationgaleri_foto9 = document.getElementById(
+                                    'validationgaleri_foto9')
+                                galeri_foto9.classList.add("is-invalid")
+                                validationgaleri_foto9.innerText = dataError.galeri_foto9[0]
+                                validationgaleri_foto9.style.display = "block"
                             }
 
                         } else {

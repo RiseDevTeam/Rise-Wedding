@@ -25,9 +25,21 @@ class LinkHostingController extends Controller
                 ->where('pemesanan_invitation.link_hosting', $link_hosting)
                 ->where('biodata_pelanggan.id_user', Auth::User()->id)
                 ->first();
+            // dd($hostingan);
             return view('frontend.hosting.link_hostingan', compact('hostingan'));
         } else {
-            # code...
+            $hostingan =  PemesananInvitation::leftjoin('template_invitation', 'pemesanan_invitation.id_template', '=', 'template_invitation.id_template')
+                ->leftjoin('biodata_pelanggan', 'pemesanan_invitation.id_biodata_pelanggan', '=', 'biodata_pelanggan.id_biodata_pelanggan')
+                ->select(
+                    'pemesanan_invitation.id_pemesanan',
+                    'pemesanan_invitation.kategori_template',
+                    'pemesanan_invitation.link_hosting',
+                    'template_invitation.file_master',
+                    'biodata_pelanggan.id_user',
+                )
+                ->where('pemesanan_invitation.link_hosting', $link_hosting)
+                ->first();
+            return view('frontend.hosting.link_hostingan', compact('hostingan'));
         }
     }
 

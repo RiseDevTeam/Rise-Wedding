@@ -461,7 +461,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
+                                                        {{-- @dd($edit_form_pemesanan->waktu_wilayah_resepsi2) --}}
                                                         <div class="col-12">
                                                             <div class="mb-3">
                                                                 <label for="tanggal" class="form-label">Waktu
@@ -563,8 +563,9 @@
 
                                                     <div class="mb-3">
                                                         <label for="kpm" class="form-label">Nama Instagram :</label>
-                                                        <input type="text" id="nama_instagram" class="form-control"
-                                                            placeholder="ex : Nama Instagram" />
+                                                        <input type="text" id="nama_instagram"
+                                                            value="{{ $edit_form_pemesanan->nama_instagram }}"
+                                                            class="form-control" placeholder="ex : Nama Instagram" />
 
                                                         <div id="validationNamaInstagram" class="invalid-feedback"></div>
                                                     </div>

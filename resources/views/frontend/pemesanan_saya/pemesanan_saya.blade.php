@@ -87,13 +87,16 @@
                                                 {{-- <button class="btn">
                                                     Preview
                                                 </button> --}}
-                                                <a href="{{ route('hostingan_user', $pesananSaya->link_hosting) }}"
-                                                    class="btn" target="_blank">Preview</a>
-                                                <a href="{{ route('edit_form_pemesanan', Crypt::encrypt($pesananSaya->id_pemesanan)) }}"
-                                                    class="btn">Sunting</a>
-                                                <a class="btn"
-                                                    href="{{ route('upload_tamu_undangan', $pesananSaya->link_hosting) }}">
-                                                    Tamu Undangan</a>
+                                                @if ($pesananSaya->status_pemesanan == 'sudah bayar')
+                                                    <a href="{{ route('hostingan_user', $pesananSaya->link_hosting) }}"
+                                                        class="btn" target="_blank">Preview</a>
+                                                    <a href="{{ route('edit_form_pemesanan', Crypt::encrypt($pesananSaya->id_pemesanan)) }}"
+                                                        class="btn">Sunting</a>
+                                                    <a class="btn"
+                                                        href="{{ route('tamu_undangan', $pesananSaya->link_hosting) }}"
+                                                        target="_blank">
+                                                        Tamu Undangan</a>
+                                                @endif
                                                 {{-- <button class="btn">
                                                     Sunting
                                                 </button> --}}
