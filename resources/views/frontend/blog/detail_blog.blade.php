@@ -8,7 +8,7 @@
     <!-- Search News -->
     <section class="pencarian-news">
         <div class="container h-10 mb-4">
-            <h3 class="text-center mb-4">Blog Terinci</h3>
+            <h3 class="text-center mb-4">Detail Blog</h3>
             <div class="d-flex justify-content-center align-items-center">
                 <div class="col-lg-6">
                     <div class="input-group">
